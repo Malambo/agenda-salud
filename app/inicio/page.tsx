@@ -12,7 +12,7 @@ export default function InicioPage() {
             width={850}
             height={0} />
 
-            <div className='flex gap-x-14 mt-48'>
+            <div className='flex gap-x-14 mt-24'>
                 <button
                 className='border-2 border-emerald-900 w-[400px] py-4 rounded-md text-xl hover:bg-emerald-50 hover:border-emerald-950 transition'>
                     Consultar agenda
@@ -23,10 +23,19 @@ export default function InicioPage() {
                 </button>
             </div>
 
-            <div className='my-24 flex gap-12 bottom-2'>
-                <TarjetaGeneral />
-                <TarjetaGeneral />
-                <TarjetaGeneral />
+            <div className='mx-auto mt-48 grid grid-cols-3 gap-12'>
+                <TarjetaGeneral
+                urlIcono='/CentrosSalud.svg'
+                titulo='Centros de salud'
+                descripcion='El sistema sanitario municipal tiene espacios modernos y acordes a la demanda actual de salud de los vecinos del partido de La Costa.'/>
+                <TarjetaGeneral
+                urlIcono='/Especialidades.svg'
+                titulo='Especialidades'
+                descripcion='La Costa pone a disposición de los vecinos y las vecinas más de 300 especialidades médicas para atender el aumento en la demanda de servicios.'/>
+                <TarjetaGeneral
+                urlIcono='/Profesionales.svg'
+                titulo='Profesionales'
+                descripcion='El sistema sanitario municipal tiene espacios modernos y acordes a la demanda actual de salud de los vecinos del partido de La Costa.'/>
             </div>
 
         </div>

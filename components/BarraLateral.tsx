@@ -10,6 +10,12 @@ import {
 import {Input} from "./ui/input"
 import {Button} from "./ui/button"
 
+import CentrosSalud from '@/public/CentrosSalud.svg'
+import IsoLogo from '@/public/IsoLogo.svg'
+import Especialidades from '@/public/Especialidades.svg'
+import Profesionales from '@/public/Profesionales.svg'
+import MiAccordionTrigger from "./ui/MiAccordionTrigger"
+
 
 const zonasSanitarias = await api.listaZonasSanitarias()
 const zonas = zonasSanitarias.zonas
@@ -27,36 +33,30 @@ const especialidadesConProfesionales = mapearRelacionados(
 )
 
 
-export default function AppSidebar() {
+export default function BarraLateral() {
+    const profesionalesMap = new Map(profesionales.map(p => [p.id, p.nombre]))
     return (
     <div className="w-96 min-h-screen p-2 bg-gradient-to-r from-emerald-200 to-emerald-300 border-r border-emerald-600">
 
         <span className='mt-2 py-2 flex items-center justify-center gap-2 text-3xl text-emerald-900 text-pretty font-montserrat font-thin'>
             <Image
-            src='/IsoLogo.svg'
-            alt='img Logo'
+            src={IsoLogo}
+            alt='Logo AgendaSalud'
             width={40}
             height={40} />
             Agenda Salud
         </span>
-            <div className="flex w-full my-8 max-w-sm items-center space-x-2 p-2">
-                <Input className='bg-zinc-200 border border-emerald-900' type="text" placeholder="Buscar" />
-                <Button type="submit">buscar</Button>
-            </div>
+        <div className="flex w-full my-8 max-w-sm items-center space-x-2 p-2">
+            <Input className='bg-zinc-100 border border-emerald-900' type="text" placeholder="Buscar" />
+            <Button type="submit">buscar</Button>
+        </div>
 
-        <div className='bg-emerald-900 p-2 rounded-md'>
-            <Accordion type="multiple">
+        <Accordion type="single" collapsible className='bg-emerald-900 p-2 rounded-md'>
+            <Accordion type="single" collapsible>
                 <AccordionItem value={'1'}>
-                    <AccordionTrigger className='flex items-center p-2 bg-emerald-900 text-start shadow-lg'>
-                        <div className='flex gap-4'>
-                            <Image
-                            src='CentrosSalud.svg'
-                            alt="img centro de salud"
-                            width={24}
-                            height={24}/>
-                            <p className="font-bold text-white text-lg text-start">Centros Médicos</p>
-                        </div>
-                    </AccordionTrigger>
+
+                    <MiAccordionTrigger urlImagen={CentrosSalud} nombre={'Centros de salud'} />
+
                     <AccordionContent>
                         <Accordion type="single" collapsible className='bg-zinc-700 rounded text-white p-2'>
                             {zonas.map((zona) => (
@@ -65,7 +65,7 @@ export default function AppSidebar() {
                                     <AccordionTrigger className='font-bold'>{zona.nombreZona}</AccordionTrigger>
                                 </div>
                                 {zona.centrosMedicos.map(centro => (
-                                <AccordionContent key={centro.id} className='flex p-2 gap-x-2 text-sm items-baseline'>
+                                <AccordionContent key={centro.id} className='flex p-2 gap-x-4 text-sm items-baseline'>
                                     <Image
                                     src={centro.urlIcon}
                                     alt="img centro de salud"
@@ -81,18 +81,11 @@ export default function AppSidebar() {
                 </AccordionItem>
             </Accordion>
 
-            <Accordion type="multiple" >
+            <Accordion type="single" collapsible>
                 <AccordionItem value={'2'}>
-                    <AccordionTrigger className='flex items-center p-2 bg-emerald-900 text-start shadow-lg'>
-                        <div className='flex gap-4'>
-                            <Image
-                            src='Especialidades.svg'
-                            alt="img centro de salud"
-                            width={24}
-                            height={24}/>
-                            <p className="font-bold text-white text-lg text-start">Especialidades</p>
-                        </div>
-                    </AccordionTrigger>
+
+                    <MiAccordionTrigger urlImagen={Especialidades} nombre={'Especialidades'} />
+
                     <AccordionContent>
                         <Accordion type="single" collapsible className='bg-zinc-700 rounded text-white p-2'>
                             {especialidadesConProfesionales.map((especialidad) => (
@@ -100,11 +93,14 @@ export default function AppSidebar() {
                             <div className='flex gap-2 items-center'>
                                 <AccordionTrigger className='font-bold'>{especialidad.nombre}</AccordionTrigger>
                             </div>
-                            {especialidad.relacionados.map(idProf => (
-                                <AccordionContent key={idProf} className='flex gap-2 text-sm px-2'>
-                                    <User className="size-4"/> {profesionales.filter(p => p.id === idProf)[0].nombre.split('. ')[1]}
-                                </AccordionContent>
-                            ))}
+                            {especialidad.relacionados.map(idProf => {
+                                const profesionalNombre = profesionalesMap.get(idProf);
+                                return (
+                                    <AccordionContent key={idProf} className='flex gap-2 text-sm px-2'>
+                                        <User className="size-4"/> {profesionalNombre && profesionalNombre.split('. ')[1]}
+                                    </AccordionContent>
+                                );
+                            })}
                             </AccordionItem>
                             ))}
                         </Accordion>
@@ -112,18 +108,11 @@ export default function AppSidebar() {
                 </AccordionItem>
             </Accordion>
 
-            <Accordion type="multiple" >
+            <Accordion type="single" collapsible>
                 <AccordionItem value={'3'}>
-                    <AccordionTrigger className='flex items-center p-2 bg-emerald-900 text-start shadow-lg'>
-                        <div className='flex gap-4'>
-                            <Image
-                            src='Profesionales.svg'
-                            alt="img centro de salud"
-                            width={24}
-                            height={24}/>
-                            <p className="font-bold text-white text-lg">Profesionales</p>
-                        </div>
-                    </AccordionTrigger>
+
+                    <MiAccordionTrigger urlImagen={Profesionales} nombre={'Profesionales'} />
+
                     <AccordionContent>
                         <Accordion type="single" collapsible className='bg-zinc-700 rounded text-white p-2'>
                             {profesionalesABC.map((profesional) => (
@@ -144,7 +133,8 @@ export default function AppSidebar() {
                 </AccordionItem>
             </Accordion>
 
-        </div>
+        </Accordion>
     </div>
     )
 }
+
