@@ -61,7 +61,7 @@ export default function BarraLateral() {
             <Accordion type="single" collapsible>
                 <AccordionItem value={'1'}>
 
-                    <MiAccordionTrigger urlImagen={CentrosSalud} nombre={'Centros de salud'} />
+                    <MiAccordionTrigger url={'/centro-salud'} urlImagen={CentrosSalud} nombre={'Centros de salud'} />
 
                     <AccordionContent>
                         <Accordion type="single" collapsible className='bg-zinc-800 rounded text-zinc-50 p-2'>
@@ -90,7 +90,7 @@ export default function BarraLateral() {
             <Accordion type="single" collapsible>
                 <AccordionItem value={'2'}>
 
-                    <MiAccordionTrigger urlImagen={Especialidades} nombre={'Especialidades'} />
+                    <MiAccordionTrigger url={'/centro-salud'} urlImagen={Especialidades} nombre={'Especialidades'} />
 
                     <AccordionContent>
                         <Accordion type="single" collapsible className='bg-zinc-800 rounded text-white p-2'>
@@ -117,7 +117,7 @@ export default function BarraLateral() {
             <Accordion type="single" collapsible>
                 <AccordionItem value={'3'}>
 
-                    <MiAccordionTrigger urlImagen={Profesionales} nombre={'Profesionales'} />
+                    <MiAccordionTrigger url={'/centro-salud'} urlImagen={Profesionales} nombre={'Profesionales'} />
 
                     <AccordionContent>
                         <Accordion type="single" collapsible className='bg-zinc-800 rounded text-white p-2'>

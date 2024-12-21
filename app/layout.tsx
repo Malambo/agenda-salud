@@ -1,6 +1,6 @@
-import BarraLateral from "@/components/BarraLateral"
-import type { Metadata } from "next"
+import type {Metadata} from "next"
 import "./globals.css"
+import BarraLateral from "@/components/BarraLateral"
 
 
 export const metadata: Metadata = {
