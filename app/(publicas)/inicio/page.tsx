@@ -1,4 +1,3 @@
-import Link from "next/link"
 import Image from "next/image"
 import TarjetaGeneral from "@/components/TarjetaGeneral"
 
@@ -57,12 +56,12 @@ export default function InicioPage() {
 
         <div className='mx-auto mt-36 grid grid-cols-3 gap-12'>
             {Tarjetas.map(tarjeta => (
-                <Link key={tarjeta.url} href={tarjeta.url}>
-                    <TarjetaGeneral
-                    urlIcono={tarjeta.urlIcono}
-                    titulo={tarjeta.titulo}
-                    descripcion={tarjeta.descripcion}/>
-                </Link>
+            <TarjetaGeneral
+            key={tarjeta.url}
+            url={tarjeta.url}
+            urlIcono={tarjeta.urlIcono}
+            titulo={tarjeta.titulo}
+            descripcion={tarjeta.descripcion}/>
             ))}
         </div>
         </>
