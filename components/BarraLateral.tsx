@@ -1,5 +1,6 @@
+import Link from "next/link"
 import Image from "next/image"
-import {User} from "lucide-react"
+import {User, Search} from "lucide-react"
 import api from "@/app/api"
 import {mapearRelacionados} from "@/lib/utils"
 import {
@@ -38,17 +39,22 @@ export default function BarraLateral() {
     return (
     <div className="w-96 min-h-screen p-2 bg-gradient-to-r from-emerald-200 to-emerald-300 border-r border-emerald-600">
 
-        <span className='mt-2 py-2 flex items-center justify-center gap-2 text-3xl text-emerald-900 text-pretty font-montserrat font-thin'>
+        <Link
+        href={'/inicio'}
+        className='mt-2 py-2 flex items-center justify-center gap-2 text-3xl text-emerald-900 text-pretty font-montserrat font-thin'>
             <Image
             src={IsoLogo}
             alt='Logo AgendaSalud'
             width={40}
             height={40} />
             Agenda Salud
-        </span>
-        <div className="flex w-full my-8 max-w-sm items-center space-x-2 p-2">
-            <Input className='bg-zinc-100 border border-emerald-900' type="text" placeholder="Buscar" />
-            <Button type="submit">buscar</Button>
+        </Link>
+        
+        <div className="my-8 p-1 rounded-md border border-emerald-900 bg-zinc-50">
+            <div className="flex w-full max-w-sm items-center space-x-2 p-2">
+                <Input type="text" placeholder="Buscar" />
+                <Button type="submit"><Search />Buscar</Button>
+            </div>
         </div>
 
         <Accordion type="single" collapsible className='bg-emerald-900 p-2 rounded-md'>
@@ -58,7 +64,7 @@ export default function BarraLateral() {
                     <MiAccordionTrigger urlImagen={CentrosSalud} nombre={'Centros de salud'} />
 
                     <AccordionContent>
-                        <Accordion type="single" collapsible className='bg-zinc-700 rounded text-white p-2'>
+                        <Accordion type="single" collapsible className='bg-zinc-800 rounded text-zinc-50 p-2'>
                             {zonas.map((zona) => (
                             <AccordionItem key={zona.nombreZona} value={zona.nombreZona}>
                                 <div className='flex'>
@@ -87,7 +93,7 @@ export default function BarraLateral() {
                     <MiAccordionTrigger urlImagen={Especialidades} nombre={'Especialidades'} />
 
                     <AccordionContent>
-                        <Accordion type="single" collapsible className='bg-zinc-700 rounded text-white p-2'>
+                        <Accordion type="single" collapsible className='bg-zinc-800 rounded text-white p-2'>
                             {especialidadesConProfesionales.map((especialidad) => (
                             <AccordionItem key={especialidad.id} value={especialidad.id}>
                             <div className='flex gap-2 items-center'>
@@ -114,7 +120,7 @@ export default function BarraLateral() {
                     <MiAccordionTrigger urlImagen={Profesionales} nombre={'Profesionales'} />
 
                     <AccordionContent>
-                        <Accordion type="single" collapsible className='bg-zinc-700 rounded text-white p-2'>
+                        <Accordion type="single" collapsible className='bg-zinc-800 rounded text-white p-2'>
                             {profesionalesABC.map((profesional) => (
                             <AccordionItem key={profesional.id} value={profesional.id}>
                             <div className='flex gap-2 items-center'>

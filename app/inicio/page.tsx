@@ -12,18 +12,28 @@ export default function InicioPage() {
             width={850}
             height={0} />
 
-            <div className='flex gap-x-14 mt-24'>
+            <div className='flex gap-x-14 mt-48'>
                 <button
-                className='border-2 border-emerald-900 w-[400px] py-4 rounded-md text-xl hover:bg-emerald-50 hover:border-emerald-950 transition'>
+                className='
+                w-[400px] py-4 rounded-md
+                text-xl
+                border border-emerald-600
+                hover:border-emerald-900
+                hover:bg-gradient-to-br hover:from-zinc-50 hover:to-zinc-100 
+                transition transition-duration-500'>
                     Consultar agenda
                 </button>
                 <button
-                className='bg-emerald-900 w-[400px] py-4 rounded-md text-xl text-white hover:bg-emerald-950 transition'>
+                className='
+                w-[400px] py-4 rounded-md bg-emerald-800
+                text-xl text-zinc-50
+                hover:bg-emerald-800/90
+                transition transition-duration-500'>
                     Pedir turno
                 </button>
             </div>
 
-            <div className='mx-auto mt-48 grid grid-cols-3 gap-12'>
+            <div className='mx-auto mt-36 grid grid-cols-3 gap-12'>
                 <TarjetaGeneral
                 urlIcono='/CentrosSalud.svg'
                 titulo='Centros de salud'

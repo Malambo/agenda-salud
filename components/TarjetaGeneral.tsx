@@ -11,7 +11,12 @@ interface TarjetaProps {
 export default function TarjetaGeneral({urlIcono, titulo, descripcion}: TarjetaProps) {
 
     return (
-        <div className='p-8 rounded-md border-2 border-emerald-600 hover:border-orange-800 hover:bg-zinc-300 transition cursor-pointer'>
+        <div className='
+        p-8 rounded-md
+        border border-emerald-600
+        hover:border-emerald-900
+        hover:bg-gradient-to-br hover:from-zinc-50 hover:to-zinc-100
+        cursor-pointer transition transition-duration-500'>
             <div className='flex gap-10'>
                 <div className='size-44'>
                     <Image

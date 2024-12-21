@@ -11,14 +11,16 @@ interface MiAccordionProps {
 export default function MiAccordionTrigger({urlImagen, nombre}: MiAccordionProps) {
 
     return (
-        <AccordionTrigger className='flex items-center p-2 bg-emerald-900 text-start shadow-lg'>
-            <div className='flex gap-4'>
-                <Image
-                src={urlImagen}
-                alt={`imagen de ${nombre}`}
-                width={24}
-                height={24}/>
-                <p className="font-bold text-white text-lg text-start">{nombre}</p>
+        <AccordionTrigger className='flex items-center px-2 bg-emerald-900 text-start shadow-lg'>
+            <div className='flex gap-4 items-center'>
+                <div className='bg-zinc-100 rounded-full p-2'>
+                    <Image
+                    src={urlImagen}
+                    alt={`imagen de ${nombre}`}
+                    width={24}
+                    height={24}/>
+                </div>
+                <p className="font-bold text-zinc-50 text-lg text-start">{nombre}</p>
             </div>
         </AccordionTrigger>
     )
