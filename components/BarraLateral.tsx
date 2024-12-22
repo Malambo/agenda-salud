@@ -1,7 +1,7 @@
 import Link                 from "next/link"
 import Image                from "next/image"
 import {User, Search}       from "lucide-react"
-import api                  from "@/app/api"
+import api                  from "@/lib/api"
 import {mapearRelacionados} from "@/lib/utils"
 import {
     Accordion,
@@ -60,7 +60,7 @@ export default function BarraLateral() {
                     <MiAccordionTrigger url={'/centro-salud'} urlIcono={'/CentrosSalud.svg'} titulo={'Centros de salud'} />
 
                     <AccordionContent>
-                        <Accordion type="single" collapsible className='bg-zinc-800 rounded text-zinc-50 p-2'>
+                        <Accordion type="single" collapsible className='bg-zinc-800 rounded-md text-zinc-50 p-4'>
                             {zonas.map((zona) => (
                             <AccordionItem key={zona.nombreZona} value={zona.nombreZona}>
                                 <div className='flex'>
@@ -89,8 +89,8 @@ export default function BarraLateral() {
                     <MiAccordionTrigger url={'/especialidades'} urlIcono={'/Especialidades.svg'} titulo={'Especialidades'} />
 
                     <AccordionContent>
-                        <Accordion type="single" collapsible className='bg-zinc-800 rounded text-white p-2'>
-                            {especialidadesConProfesionales.map((especialidad) => (
+                        <Accordion type="single" collapsible className='bg-zinc-800 rounded-md text-white p-4'>
+                            {especialidadesConProfesionales.map(async (especialidad) => (
                             <AccordionItem key={especialidad.id} value={especialidad.id}>
                             <div className='flex gap-2 items-center'>
                                 <AccordionTrigger className='font-bold'>{especialidad.nombre}</AccordionTrigger>
@@ -116,7 +116,7 @@ export default function BarraLateral() {
                     <MiAccordionTrigger url={'/profesionales'} urlIcono={'/Profesionales.svg'} titulo={'Profesionales'} />
 
                     <AccordionContent>
-                        <Accordion type="single" collapsible className='bg-zinc-800 rounded text-white p-2'>
+                        <Accordion type="single" collapsible className='bg-zinc-800 rounded-md text-white p-4'>
                             {profesionalesABC.map((profesional) => (
                             <AccordionItem key={profesional.id} value={profesional.id}>
                             <div className='flex gap-2 items-center'>

@@ -1,10 +1,16 @@
-import TituloPagina from "@/components/ui/TituloPagina";
+import api from "@/lib/api"
+import TituloPagina from "@/components/ui/TituloPagina"
 
-export default function CategoriaPage({searchParams}: {searchParams: {urlIcono: string; titulo: string}}) {
+export default async function CategoriaPage({params}: {params: {categoria: string}}) {
+    console.log("🚀 ~ CategoriaPage ~ params:", params.categoria)
+
+    const {urlIcono, titulo, descripcion} = await api.traeCategoria('/'+params.categoria)
+    
 
     return (
-        <div>
-            <TituloPagina urlIcono={searchParams.urlIcono} titulo={searchParams.titulo} />
+        <div className='flex flex-col gap-24'>
+            <TituloPagina urlIcono={urlIcono} titulo={titulo} />
+            <p>{descripcion}</p>
         </div>
     )
 }

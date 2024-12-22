@@ -30,6 +30,13 @@ export interface Especialidad {
     [key: string]: string
 }
 
+export interface Categorias {
+    url: string
+    urlIcono: string
+    titulo: string
+    descripcion: string
+}
+
 const zonasSanitarias: ZonasSanitarias = {
     zonas: [
         {
@@ -264,6 +271,27 @@ const especialidades: Especialidad[] = [
     {id: '20', nombre: 'Urología'}
 ]
 
+const categorias: Categorias[] = [
+    {
+        url: '/centro-salud',
+        urlIcono: '/CentrosSalud.svg',
+        titulo: 'Centros de salud',
+        descripcion: 'El sistema sanitario municipal tiene espacios modernos y acordes a la demanda actual de salud de los vecinos del partido de La Costa.'
+    },
+    {
+        url: '/especialidades',
+        urlIcono: '/Especialidades.svg',
+        titulo: 'Especialidades',
+        descripcion: 'La Costa pone a disposición de los vecinos y las vecinas más de 300 especialidades médicas para atender el aumento en la demanda de servicios.'
+    },
+    {
+        url: '/profesionales',
+        urlIcono: '/Profesionales.svg',
+        titulo: 'Profesionales',
+        descripcion: 'Los profesionales de la salud de La Costa están capacitados para brindar atención de calidad y calidez a los vecinos y las vecinas.'
+    }
+]
+
 const api = {
     // Obtener todas las zonas sanitarias
     listaZonasSanitarias: async (): Promise<ZonasSanitarias> => {
@@ -308,6 +336,20 @@ const api = {
             throw new Error(`No se encontró la especialidad con id ${id}`)
        }
         return especialidad
+    },
+
+    // Obtener todas las categorías
+    listaCategorias: async (): Promise<Categorias[]> => {
+        return categorias
+    },
+
+    // Obtener una categoría específica por su URL
+    traeCategoria: async (url: Categorias['url']): Promise<Categorias> => {
+        const categoria = categorias.find((categoria) => categoria.url === url)
+        if (!categoria) {
+            throw new Error(`No se encontró la categoría con URL ${url}`)
+       }
+        return categoria
     }
 }
 

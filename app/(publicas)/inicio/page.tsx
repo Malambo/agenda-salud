@@ -1,27 +1,10 @@
 import Image from "next/image"
 import TarjetaGeneral from "@/components/TarjetaGeneral"
+import api from "@/lib/api"
 
 
-const Tarjetas = [
-    {
-        url: '/centros-salud',
-        urlIcono: '/CentrosSalud.svg',
-        titulo: 'Centros de salud',
-        descripcion: 'El sistema sanitario municipal tiene espacios modernos y acordes a la demanda actual de salud de los vecinos del partido de La Costa.'
-    },
-    {
-        url: '/especialidades',
-        urlIcono: '/Especialidades.svg',
-        titulo: 'Especialidades',
-        descripcion: 'La Costa pone a disposición de los vecinos y las vecinas más de 300 especialidades médicas para atender el aumento en la demanda de servicios.'
-    },
-    {
-        url: '/profesionales',
-        urlIcono: '/Profesionales.svg',
-        titulo: 'Profesionales',
-        descripcion: 'El sistema sanitario municipal tiene espacios modernos y acordes a la demanda actual de salud de los vecinos del partido de La Costa.'
-    }
-]
+const Tarjetas = await api.listaCategorias()
+
 
 export default function InicioPage() {
 
