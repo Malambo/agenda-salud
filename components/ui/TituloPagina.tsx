@@ -2,9 +2,8 @@ import Image from 'next/image'
 
 
 interface TituloPaginaProps {
-    urlIcono: string;
-    titulo: string;
-    descripcion: string;
+    urlIcono: string
+    titulo: string
 }
 
 

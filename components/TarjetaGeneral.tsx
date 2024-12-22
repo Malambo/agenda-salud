@@ -13,7 +13,13 @@ interface TarjetaProps {
 export default function TarjetaGeneral({url, urlIcono, titulo, descripcion}: TarjetaProps) {
 
     return (
-        <Link href={url}>
+        <Link href={{
+            pathname: url,
+            query: {
+                urlIcono,
+                titulo,
+            },
+        }}>
             <div className='
             p-8 rounded-md
             border border-emerald-600

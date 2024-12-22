@@ -1,21 +1,17 @@
-import Link from "next/link"
-import Image from "next/image"
-import {User, Search} from "lucide-react"
-import api from "@/app/api"
+import Link                 from "next/link"
+import Image                from "next/image"
+import {User, Search}       from "lucide-react"
+import api                  from "@/app/api"
 import {mapearRelacionados} from "@/lib/utils"
 import {
     Accordion,
     AccordionContent,
     AccordionItem,
-    AccordionTrigger} from "@/components/ui/accordion"
-import {Input} from "./ui/input"
-import {Button} from "./ui/button"
-
-import CentrosSalud from '@/public/CentrosSalud.svg'
-import IsoLogo from '@/public/IsoLogo.svg'
-import Especialidades from '@/public/Especialidades.svg'
-import Profesionales from '@/public/Profesionales.svg'
-import MiAccordionTrigger from "./ui/MiAccordionTrigger"
+    AccordionTrigger}       from "@/components/ui/accordion"
+import {Input}              from "@/components/ui/input"
+import {Button}             from "@/components/ui/button"
+import MiAccordionTrigger   from "@/components/ui/MiAccordionTrigger"
+import IsoLogo              from '@/public/IsoLogo.svg'
 
 
 const zonasSanitarias = await api.listaZonasSanitarias()
@@ -61,7 +57,7 @@ export default function BarraLateral() {
             <Accordion type="single" collapsible>
                 <AccordionItem value={'1'}>
 
-                    <MiAccordionTrigger url={'/centro-salud'} urlImagen={CentrosSalud} nombre={'Centros de salud'} />
+                    <MiAccordionTrigger url={'/centro-salud'} urlIcono={'/CentrosSalud.svg'} titulo={'Centros de salud'} />
 
                     <AccordionContent>
                         <Accordion type="single" collapsible className='bg-zinc-800 rounded text-zinc-50 p-2'>
@@ -90,7 +86,7 @@ export default function BarraLateral() {
             <Accordion type="single" collapsible>
                 <AccordionItem value={'2'}>
 
-                    <MiAccordionTrigger url={'/especialidades'} urlImagen={Especialidades} nombre={'Especialidades'} />
+                    <MiAccordionTrigger url={'/especialidades'} urlIcono={'/Especialidades.svg'} titulo={'Especialidades'} />
 
                     <AccordionContent>
                         <Accordion type="single" collapsible className='bg-zinc-800 rounded text-white p-2'>
@@ -117,7 +113,7 @@ export default function BarraLateral() {
             <Accordion type="single" collapsible>
                 <AccordionItem value={'3'}>
 
-                    <MiAccordionTrigger url={'/profesionales'} urlImagen={Profesionales} nombre={'Profesionales'} />
+                    <MiAccordionTrigger url={'/profesionales'} urlIcono={'/Profesionales.svg'} titulo={'Profesionales'} />
 
                     <AccordionContent>
                         <Accordion type="single" collapsible className='bg-zinc-800 rounded text-white p-2'>

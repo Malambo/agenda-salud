@@ -5,23 +5,29 @@ import Link from "next/link"
 
 interface MiAccordionProps {
     url: string
-    urlImagen: string
-    nombre: string
+    urlIcono: string
+    titulo: string
 }
 
 
-export default function MiAccordionTrigger({url, urlImagen, nombre}: MiAccordionProps) {
+export default function MiAccordionTrigger({url, urlIcono, titulo}: MiAccordionProps) {
 
     return (
-        <Link href={url}>
+        <Link href={{
+            pathname: url,
+            query: {
+                urlIcono,
+                titulo,
+            },
+        }}>
             <AccordionTrigger className='flex items-center px-2 text-start '>
                 <div className='flex gap-4 items-baseline'>
                         <Image
-                        src={urlImagen}
-                        alt={`imagen de ${nombre}`}
+                        src={urlIcono}
+                        alt={`imagen de ${titulo}`}
                         width={24}
                         height={24}/>
-                    <p className="font-bold text-emerald-900 text-lg text-start">{nombre}</p>
+                    <p className="font-bold text-emerald-900 text-lg text-start">{titulo}</p>
                 </div>
             </AccordionTrigger>
         </Link>
