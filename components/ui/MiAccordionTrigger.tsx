@@ -13,20 +13,14 @@ interface MiAccordionProps {
 export default function MiAccordionTrigger({url, urlIcono, titulo}: MiAccordionProps) {
 
     return (
-        <Link href={{
-            pathname: url,
-            query: {
-                urlIcono,
-                titulo,
-            },
-        }}>
+        <Link href={url}>
             <AccordionTrigger className='flex items-center px-2 text-start '>
                 <div className='flex gap-4 items-baseline'>
-                        <Image
-                        src={urlIcono}
-                        alt={`imagen de ${titulo}`}
-                        width={24}
-                        height={24}/>
+                    <Image
+                    src={urlIcono}
+                    alt={`imagen de ${titulo}`}
+                    width={32}
+                    height={32}/>
                     <p className="font-bold text-emerald-900 text-lg text-start">{titulo}</p>
                 </div>
             </AccordionTrigger>

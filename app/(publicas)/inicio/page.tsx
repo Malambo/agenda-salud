@@ -16,10 +16,10 @@ export default function InicioPage() {
         width={850}
         height={850 * 0.4} />
 
-        <div className='flex gap-x-14 mt-48'>
+        <div className='flex gap-x-12 mt-48'>
             <button
             className='
-            w-[400px] py-4 rounded-md
+            w-[408px] py-4 rounded-md
             text-xl
             border border-emerald-600
             hover:border-emerald-900
@@ -29,7 +29,7 @@ export default function InicioPage() {
             </button>
             <button
             className='
-            w-[400px] py-4 rounded-md bg-emerald-800
+            w-[408px] py-4 rounded-md bg-emerald-800
             text-xl text-zinc-50
             hover:bg-emerald-800/90
             transition transition-duration-500'>

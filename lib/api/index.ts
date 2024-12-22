@@ -35,6 +35,7 @@ export interface Categorias {
     urlIcono: string
     titulo: string
     descripcion: string
+    [key: string]: string | string[]
 }
 
 const zonasSanitarias: ZonasSanitarias = {
@@ -276,19 +277,19 @@ const categorias: Categorias[] = [
         url: '/centro-salud',
         urlIcono: '/CentrosSalud.svg',
         titulo: 'Centros de salud',
-        descripcion: 'El sistema sanitario municipal tiene espacios modernos y acordes a la demanda actual de salud de los vecinos del partido de La Costa.'
+        descripcion: 'En La Costa podés acceder a una amplia red de Salud. Encontrá el centro más cercano a tu domicilio y accedé al tratamiento adecuado a tus necesidades.'
     },
     {
         url: '/especialidades',
         urlIcono: '/Especialidades.svg',
         titulo: 'Especialidades',
-        descripcion: 'La Costa pone a disposición de los vecinos y las vecinas más de 300 especialidades médicas para atender el aumento en la demanda de servicios.'
+        descripcion: 'La Costa ofrece a sus vecinos y vecinas una amplia variedad de especialidades médicas. Encontrá al especialista que necesitás en el centro de salud más conveniente para vos.'
     },
     {
         url: '/profesionales',
         urlIcono: '/Profesionales.svg',
         titulo: 'Profesionales',
-        descripcion: 'Los profesionales de la salud de La Costa están capacitados para brindar atención de calidad y calidez a los vecinos y las vecinas.'
+        descripcion: 'Conocé a quienes cuidan tu salud en la red de atención sanitaria de La Costa. Encontrá el apoyo profesional que necesitás para tu consulta.'
     }
 ]
 
