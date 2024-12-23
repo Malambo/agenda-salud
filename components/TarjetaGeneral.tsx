@@ -29,7 +29,7 @@ export default function TarjetaGeneral({url, urlIcono, titulo, descripcion}: Tar
                         width={60}/>
                     </div>
                     <div className='flex flex-col'>
-                        <h2 className='text-3xl text-orange-500'>{titulo}</h2>
+                        <h2 className='text-3xl font-bold text-orange-500'>{titulo}</h2>
                         <p className='text-pretty mt-6'>{descripcion}</p>
                     </div>
                 </div>

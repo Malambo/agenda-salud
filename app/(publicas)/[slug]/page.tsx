@@ -4,7 +4,6 @@ import TituloPagina from "@/components/ui/TituloPagina"
 export default async function CategoriaPage({params}: {params: Promise<{slug: string}>}) {
     
     const {slug} = await params
-    
     const {urlIcono, titulo, descripcion} = await api.traeCategoria('/' + slug)
     
     return (

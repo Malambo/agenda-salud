@@ -11,6 +11,9 @@ importers:
       '@fontsource/montserrat':
         specifier: ^5.1.0
         version: 5.1.0
+      '@fontsource/roboto':
+        specifier: ^5.1.0
+        version: 5.1.0
       '@radix-ui/react-accordion':
         specifier: ^1.2.2
         version: 1.2.2(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)
@@ -123,6 +126,9 @@ packages:
 
   '@fontsource/montserrat@5.1.0':
     resolution: {integrity: sha512-HB4+rWP9Y8g6T9RGRVJk2SvAJtx2eBAXuivvPOqQdD806/9WESUfucfH9LqFj3bGgdhNCfh0Rv0NGuwEmBLRiw==}
+
+  '@fontsource/roboto@5.1.0':
+    resolution: {integrity: sha512-cFRRC1s6RqPygeZ8Uw/acwVHqih8Czjt6Q0MwoUoDe9U3m4dH1HmNDRBZyqlMSFwgNAUKgFImncKdmDHyKpwdg==}
 
   '@humanwhocodes/config-array@0.13.0':
     resolution: {integrity: sha512-DZLEEqFWQFiyK6h5YIeynKx7JlvCYWL0cImfSRXZ9l4Sg2efkFGTuFf6vzXjK1cq6IYkU+Eg/JizXw+TD2vRNw==}
@@ -2135,6 +2141,8 @@ snapshots:
   '@floating-ui/utils@0.2.8': {}
 
   '@fontsource/montserrat@5.1.0': {}
+
+  '@fontsource/roboto@5.1.0': {}
 
   '@humanwhocodes/config-array@0.13.0':
     dependencies:

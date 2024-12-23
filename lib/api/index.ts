@@ -283,7 +283,7 @@ const categorias: Categorias[] = [
         url: '/especialidades',
         urlIcono: '/Especialidades.svg',
         titulo: 'Especialidades',
-        descripcion: 'La Costa ofrece a sus vecinos y vecinas una amplia variedad de especialidades médicas. Encontrá al especialista que necesitás en el centro de salud más conveniente para vos.'
+        descripcion: 'La Costa ofrece una amplia variedad de especialidades médicas. Encontrá al especialista que necesitás en el centro de salud más conveniente para vos.'
     },
     {
         url: '/profesionales',
