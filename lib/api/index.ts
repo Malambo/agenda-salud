@@ -250,26 +250,26 @@ const Profesionales: Profesional[] = [
 ]
 
 const especialidades: Especialidad[] = [
-    {id:  '1', nombre: 'Cardiología'},
-    {id:  '2', nombre: 'Cirugía General'},
-    {id:  '3', nombre: 'Dermatología'},
-    {id:  '4', nombre: 'Endocrinología'},
-    {id:  '5', nombre: 'Gastroenterología'},
-    {id:  '6', nombre: 'Geriatría'},
-    {id:  '7', nombre: 'Hematología'},
-    {id:  '8', nombre: 'Infectología'},
-    {id:  '9', nombre: 'Medicina General'},
-    {id: '10', nombre: 'Nefrología'},
-    {id: '11', nombre: 'Neurología'},
-    {id: '12', nombre: 'Neumología'},
-    {id: '13', nombre: 'Oftalmología'},
-    {id: '14', nombre: 'Oncología'},
-    {id: '15', nombre: 'Otorrinolaringología'},
-    {id: '16', nombre: 'Pediatría'},
-    {id: '17', nombre: 'Psiquiatría'},
-    {id: '18', nombre: 'Reumatología'},
-    {id: '19', nombre: 'Traumatología'},
-    {id: '20', nombre: 'Urología'}
+    {id:  '1', nombre: 'Cardiología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades del corazón y del aparato circulatorio.'},
+    {id:  '2', nombre: 'Cirugía General', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de enfermedades que requieren procedimientos quirúrgicos.'},
+    {id:  '3', nombre: 'Dermatología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades de la piel.'},
+    {id:  '4', nombre: 'Endocrinología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades de las glándulas endocrinas.'},   
+    {id:  '5', nombre: 'Gastroenterología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades del aparato digestivo.'},
+    {id:  '6', nombre: 'Geriatría', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades de las personas mayores.'},
+    {id:  '7', nombre: 'Hematología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades de la sangre.'},
+    {id:  '8', nombre: 'Infectología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades infecciosas.'},
+    {id:  '9', nombre: 'Medicina General', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades comunes.'},
+    {id: '10', nombre: 'Nefrología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades de los riñones.'},
+    {id: '11', nombre: 'Neurología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades del sistema nervioso.'},
+    {id: '12', nombre: 'Neumología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades del aparato respiratorio.'},
+    {id: '13', nombre: 'Oftalmología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades de los ojos.'},
+    {id: '14', nombre: 'Oncología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades del cáncer.'},
+    {id: '15', nombre: 'Otorrinolaringología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades del oído, nariz y garganta.'},
+    {id: '16', nombre: 'Pediatría', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades de los niños.'},
+    {id: '17', nombre: 'Psiquiatría', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades mentales.'},
+    {id: '18', nombre: 'Reumatología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades de las articulaciones.'},
+    {id: '19', nombre: 'Traumatología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades de los huesos.'},
+    {id: '20', nombre: 'Urología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades del aparato urinario.'}
 ]
 
 const categorias: Categorias[] = [
@@ -283,7 +283,7 @@ const categorias: Categorias[] = [
         url: '/especialidades',
         urlIcono: '/Especialidades.svg',
         titulo: 'Especialidades',
-        descripcion: 'La Costa ofrece una amplia variedad de especialidades médicas. Encontrá al especialista que necesitás en el centro de salud más conveniente para vos.'
+        descripcion: 'La Costa ofrece una amplia variedad de especialidades médicas. Encontrá tu especialista en el centro de salud que más te convenga.'
     },
     {
         url: '/profesionales',

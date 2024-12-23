@@ -26,7 +26,7 @@ const especialidadesConProfesionales = mapearRelacionados(
     profesionales,      // pide con ids los nombres a especialidades
     'especialidades',   // campo que tiene los id (en profesionales)(?)
     'id',               // vínculo (en especialidades)(?)
-    'nombre'            // otro campo que debe estar (desde especiialidades)
+    'nombre'            // otro campo que debe estar (desde especialidades)
 )
 
 

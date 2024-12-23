@@ -14,19 +14,21 @@ export default function TarjetaGeneral({url, urlIcono, titulo, descripcion}: Tar
 
     return (
         <Link href={url}>
-            <div className='
+            <div
+            className="
             p-8 rounded-md
             border border-emerald-600
-            hover:border-emerald-900
+            hover:border-emerald-800
             hover:bg-gradient-to-br hover:from-zinc-50 hover:via-zinc-50 hover:to-zinc-200
-            cursor-pointer transition transition-duration-500'>
-                <div className='flex flex-col gap-6 sm:flex-row sm:top-0 sm:gap-x-10'>
-                    <div className='size-16 sm:size-44'>
+            cursor-pointer transition transition-duration-500">
+                <div className='flex flex-col gap-6 sm:flex-row sm:gap-12'>
+                    <div className='flex items-center justify-center size-12 sm:size-16 rounded-full shrink-0'>
                         <Image
                         src={urlIcono}
                         alt='img Tarjeta'
                         height={60}
-                        width={60}/>
+                        width={60}
+                        className='size-12'/>
                     </div>
                     <div className='flex flex-col'>
                         <h2 className='text-3xl font-bold text-orange-500'>{titulo}</h2>
