@@ -16,7 +16,7 @@ export default function InicioPage() {
         width={850}
         height={850 * 0.4} />
 
-        <div className='flex gap-x-12 mt-48'>
+        <div className='flex flex-col gap-y-6 sm:flex-row sm:gap-x-12 mt-48'>
             <button
             className='
             w-[408px] py-4 rounded-md
@@ -37,7 +37,7 @@ export default function InicioPage() {
             </button>
         </div>
 
-        <div className='mx-auto mt-36 grid grid-cols-3 gap-12'>
+        <div className='mx-auto mt-36 grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-12'>
             {Tarjetas.map(tarjeta => (
             <TarjetaGeneral
             key={tarjeta.url}

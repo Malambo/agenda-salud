@@ -66,91 +66,83 @@ export default function BarraLateral() {
         </div>
 
         <Accordion type="single" collapsible>
-            <Accordion type="single" collapsible>
-                <AccordionItem value={'1'}>
-                    <div className='sticky top-52 bg-gradient-to-r from-emerald-200 to-emerald-300'>
-                        <MiAccordionTrigger
-                        url={'/centro-salud'} urlIcono={'/CentrosSalud.svg'} titulo={'Centros de salud'} />
-                    </div>
-                    <AccordionContent>
-                        <Accordion type="single" collapsible className='bg-zinc-800 rounded-md text-zinc-50 p-4'>
-                            {zonas.map((zona) => (
-                            <AccordionItem key={zona.nombreZona} value={zona.nombreZona}>
-                                <div className='flex'>
-                                    <AccordionTrigger className='font-bold'>{zona.nombreZona}</AccordionTrigger>
-                                </div>
-                                {zona.centrosMedicos.map(centro => (
-                                <AccordionContent key={centro.id} className='flex p-2 gap-x-4 text-sm items-baseline'>
-                                    <Image
-                                    src={centro.urlIcon}
-                                    alt="img centro de salud"
-                                    width={24}
-                                    height={24}/>
-                                    {centro.nombre}
-                                </AccordionContent>
-                                ))}
-                            </AccordionItem>
-                            ))}
-                        </Accordion>
-                    </AccordionContent>
-                </AccordionItem>
-            </Accordion>
-
-            
-            <Accordion type="single" collapsible>
-                <AccordionItem value={'2'}>
-                    <div className='sticky top-52 bg-gradient-to-r from-emerald-200 to-emerald-300'>
-                        <MiAccordionTrigger
-                        url={'/especialidades'} urlIcono={'/Especialidades.svg'} titulo={'Especialidades'} />
-                    </div>
-                    <AccordionContent>
-                        <Accordion type="single" collapsible className='bg-zinc-800 rounded-md text-white p-4'>
-                            {especialidadesConProfesionales.map(async (especialidad) => (
-                            <AccordionItem key={especialidad.id} value={especialidad.id}>
-                            <div className='flex gap-2 items-center'>
-                                <AccordionTrigger className='font-bold'>{especialidad.nombre}</AccordionTrigger>
+            <AccordionItem value={'1'}>
+                <div className='sticky top-52 bg-gradient-to-r from-emerald-200 to-emerald-300'>
+                    <MiAccordionTrigger
+                    url={'/centro-salud'} urlIcono={'/CentrosSalud.svg'} titulo={'Centros de salud'} />
+                </div>
+                <AccordionContent>
+                    <Accordion type="single" collapsible className='bg-zinc-800 rounded-md text-zinc-50 p-4'>
+                        {zonas.map((zona) => (
+                        <AccordionItem key={zona.nombreZona} value={zona.nombreZona}>
+                            <div className='flex'>
+                                <AccordionTrigger className='font-bold'>{zona.nombreZona}</AccordionTrigger>
                             </div>
-                            {especialidad.relacionados.map(idProf => {
-                                const profesionalNombre = profesionalesMap.get(idProf);
-                                return (
-                                    <AccordionContent key={idProf} className='flex gap-2 text-sm px-2'>
-                                        <User className="size-4"/> {profesionalNombre && profesionalNombre.split('. ')[1]}
-                                    </AccordionContent>
-                                );
-                            })}
-                            </AccordionItem>
+                            {zona.centrosMedicos.map(centro => (
+                            <AccordionContent key={centro.id} className='flex p-2 gap-x-4 text-sm items-baseline'>
+                                <Image
+                                src={centro.urlIcon}
+                                alt="img centro de salud"
+                                width={24}
+                                height={24}/>
+                                {centro.nombre}
+                            </AccordionContent>
                             ))}
-                        </Accordion>
-                    </AccordionContent>
-                </AccordionItem>
-            </Accordion>
+                        </AccordionItem>
+                        ))}
+                    </Accordion>
+                </AccordionContent>
+            </AccordionItem>
             
-            <Accordion type="single" collapsible>
-                <AccordionItem value={'3'}>
-                    <div className='sticky top-52 bg-gradient-to-r from-emerald-200 to-emerald-300'>
-                        <MiAccordionTrigger
-                        url={'/profesionales'} urlIcono={'/Profesionales.svg'} titulo={'Profesionales'} />
-                    </div>
-                    <AccordionContent>
-                        <Accordion type="single" collapsible className='bg-zinc-800 rounded-md text-white p-4'>
-                            {profesionalesABC.map((profesional) => (
-                            <AccordionItem key={profesional.id} value={profesional.id}>
-                            <div className='flex gap-2 items-center'>
-                                <User className='size-4' />
-                                <AccordionTrigger className='font-bold'>{profesional.nombre}</AccordionTrigger>
-                            </div>
-                            {profesional.especialidades.map(idProf => (
-                                <AccordionContent key={idProf} className='text-sm px-4'>
-                                    {especialidades.filter(especialidad => especialidad.id === idProf)[0].nombre}
+            <AccordionItem value={'2'}>
+                <div className='sticky top-52 bg-gradient-to-r from-emerald-200 to-emerald-300'>
+                    <MiAccordionTrigger
+                    url={'/especialidades'} urlIcono={'/Especialidades.svg'} titulo={'Especialidades'} />
+                </div>
+                <AccordionContent>
+                    <Accordion type="single" collapsible className='bg-zinc-800 rounded-md text-white p-4'>
+                        {especialidadesConProfesionales.map(async (especialidad) => (
+                        <AccordionItem key={especialidad.id} value={especialidad.id}>
+                        <div className='flex gap-2 items-center'>
+                            <AccordionTrigger className='font-bold'>{especialidad.nombre}</AccordionTrigger>
+                        </div>
+                        {especialidad.relacionados.map(idProf => {
+                            const profesionalNombre = profesionalesMap.get(idProf);
+                            return (
+                                <AccordionContent key={idProf} className='flex gap-2 text-sm px-2'>
+                                    <User className="size-4"/> {profesionalNombre && profesionalNombre.split('. ')[1]}
                                 </AccordionContent>
-                            ))}
-                            </AccordionItem>
-                            ))}
-                        </Accordion>
-                    </AccordionContent>
-                </AccordionItem>
-            </Accordion>
-
+                            );
+                        })}
+                        </AccordionItem>
+                        ))}
+                    </Accordion>
+                </AccordionContent>
+            </AccordionItem>
+            
+            <AccordionItem value={'3'}>
+                <div className='sticky top-52 bg-gradient-to-r from-emerald-200 to-emerald-300'>
+                    <MiAccordionTrigger
+                    url={'/profesionales'} urlIcono={'/Profesionales.svg'} titulo={'Profesionales'} />
+                </div>
+                <AccordionContent>
+                    <Accordion type="single" collapsible className='bg-zinc-800 rounded-md text-white p-4'>
+                        {profesionalesABC.map((profesional) => (
+                        <AccordionItem key={profesional.id} value={profesional.id}>
+                        <div className='flex gap-2 items-center'>
+                            <User className='size-4' />
+                            <AccordionTrigger className='font-bold'>{profesional.nombre}</AccordionTrigger>
+                        </div>
+                        {profesional.especialidades.map(idProf => (
+                            <AccordionContent key={idProf} className='text-sm px-4'>
+                                {especialidades.filter(especialidad => especialidad.id === idProf)[0].nombre}
+                            </AccordionContent>
+                        ))}
+                        </AccordionItem>
+                        ))}
+                    </Accordion>
+                </AccordionContent>
+            </AccordionItem>
         </Accordion>
     </div>
     )
