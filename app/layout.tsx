@@ -13,9 +13,14 @@ export default async function RootLayout({children}: Readonly<{children: React.R
     return (
         <html lang="es">
             <body>
-                <main className='flex mx-auto'>
-                    <BarraLateral />
-                    {children}
+                <main className='flex h-screen overflow-hidden'>
+                    <aside className="h-full overflow-y-auto no-scrollbar">
+                        <BarraLateral />
+                    </aside>
+                    <section className="flex-1 overflow-auto">
+                        {children}
+                    </section>
+                    
                 </main>
             </body>
         </html>

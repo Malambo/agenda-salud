@@ -33,32 +33,45 @@ const especialidadesConProfesionales = mapearRelacionados(
 export default function BarraLateral() {
     const profesionalesMap = new Map(profesionales.map(p => [p.id, p.nombre]))
     return (
-    <div className="w-96 min-h-screen p-2 bg-gradient-to-r from-emerald-200 to-emerald-300 border-r border-emerald-600">
+    <div className="w-96 min-h-screen px-2 bg-gradient-to-r from-emerald-200 to-emerald-300 border-r border-emerald-600">
 
-        <Link
-        href={'/inicio'}
-        className='mt-2 py-2 flex items-center justify-center gap-2 text-3xl text-emerald-900 text-pretty font-montserrat font-thin'>
-            <Image
-            src={IsoLogo}
-            alt='Logo AgendaSalud'
-            width={40}
-            height={40} />
-            Agenda Salud
-        </Link>
-        
-        <div className="my-8 p-1 rounded-md border border-emerald-900 bg-zinc-50">
-            <div className="flex w-full max-w-sm items-center space-x-2 p-2">
-                <Input type="text" placeholder="Buscar" />
-                <Button type="submit"><Search />Buscar</Button>
+        <div className='
+        z-10 sticky top-0 py-4
+        bg-gradient-to-r from-emerald-200 to-emerald-300'>
+            <Link
+            href={'/inicio'}
+            className='mt-2 py-2 flex items-center justify-center gap-2 text-3xl text-emerald-900 text-pretty font-montserrat font-thin'>
+                <Image
+                src={IsoLogo}
+                alt='Logo AgendaSalud'
+                width={40}
+                height={40} />
+                Agenda Salud
+            </Link>
+            
+            <div className="my-8 p-1 rounded-md border border-emerald-900 bg-zinc-50">
+                <div className="flex w-full max-w-sm items-center space-x-2 p-2">
+                    <Input type="text" placeholder="Buscar" />
+                    <Button
+                    className='
+                    py-4 rounded-md bg-emerald-800
+                    text-zinc-50
+                    hover:bg-gradient-to-br hover:from-emerald-700 hover:via-emerald-900 hover:to-emerald-950
+                    transition transition-duration-500 ease-in-out'
+                    type="submit">
+                        <Search /> Buscar
+                    </Button>
+                </div>
             </div>
         </div>
 
-        <Accordion type="single" collapsible className='p-2 rounded-md'>
+        <Accordion type="single" collapsible>
             <Accordion type="single" collapsible>
                 <AccordionItem value={'1'}>
-
-                    <MiAccordionTrigger url={'/centro-salud'} urlIcono={'/CentrosSalud.svg'} titulo={'Centros de salud'} />
-
+                    <div className='sticky top-52 bg-gradient-to-r from-emerald-200 to-emerald-300'>
+                        <MiAccordionTrigger
+                        url={'/centro-salud'} urlIcono={'/CentrosSalud.svg'} titulo={'Centros de salud'} />
+                    </div>
                     <AccordionContent>
                         <Accordion type="single" collapsible className='bg-zinc-800 rounded-md text-zinc-50 p-4'>
                             {zonas.map((zona) => (
@@ -83,11 +96,13 @@ export default function BarraLateral() {
                 </AccordionItem>
             </Accordion>
 
+            
             <Accordion type="single" collapsible>
                 <AccordionItem value={'2'}>
-
-                    <MiAccordionTrigger url={'/especialidades'} urlIcono={'/Especialidades.svg'} titulo={'Especialidades'} />
-
+                    <div className='sticky top-52 bg-gradient-to-r from-emerald-200 to-emerald-300'>
+                        <MiAccordionTrigger
+                        url={'/especialidades'} urlIcono={'/Especialidades.svg'} titulo={'Especialidades'} />
+                    </div>
                     <AccordionContent>
                         <Accordion type="single" collapsible className='bg-zinc-800 rounded-md text-white p-4'>
                             {especialidadesConProfesionales.map(async (especialidad) => (
@@ -109,12 +124,13 @@ export default function BarraLateral() {
                     </AccordionContent>
                 </AccordionItem>
             </Accordion>
-
+            
             <Accordion type="single" collapsible>
                 <AccordionItem value={'3'}>
-
-                    <MiAccordionTrigger url={'/profesionales'} urlIcono={'/Profesionales.svg'} titulo={'Profesionales'} />
-
+                    <div className='sticky top-52 bg-gradient-to-r from-emerald-200 to-emerald-300'>
+                        <MiAccordionTrigger
+                        url={'/profesionales'} urlIcono={'/Profesionales.svg'} titulo={'Profesionales'} />
+                    </div>
                     <AccordionContent>
                         <Accordion type="single" collapsible className='bg-zinc-800 rounded-md text-white p-4'>
                             {profesionalesABC.map((profesional) => (

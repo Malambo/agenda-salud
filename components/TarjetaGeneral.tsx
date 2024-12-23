@@ -18,7 +18,7 @@ export default function TarjetaGeneral({url, urlIcono, titulo, descripcion}: Tar
             p-8 rounded-md
             border border-emerald-600
             hover:border-emerald-900
-            hover:bg-gradient-to-br hover:from-zinc-50 hover:to-zinc-100
+            hover:bg-gradient-to-br hover:from-zinc-50 hover:via-zinc-50 hover:to-zinc-200
             cursor-pointer transition transition-duration-500'>
                 <div className='flex gap-10'>
                     <div className='size-44'>
