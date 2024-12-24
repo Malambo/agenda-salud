@@ -42,3 +42,14 @@ export function mapearRelacionados<
     }
   })
 }
+
+// Slug permite barra "/"
+export function crearSlug(texto: string): string {
+      // Eliminar caracteres especiales y acentos
+      const slug = texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+                        .replace(/[^\w\s-/\\]/g, '')
+                        .trim()
+                        .replace(/\s+/g, '-')
+                        .toLowerCase()
+      return slug
+  }

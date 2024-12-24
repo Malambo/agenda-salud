@@ -24,7 +24,7 @@ export default function InicioPage() {
             border border-emerald-600
             hover:border-emerald-900
             hover:bg-gradient-to-br hover:from-zinc-50 hover:via-zinc-50 hover:to-zinc-200
-            transition transition-duration-500'>
+            transition duration-500 ease-in-out'>
                 Consultar agenda
             </button>
             <button
@@ -32,7 +32,7 @@ export default function InicioPage() {
             w-[408px] py-4 rounded-md bg-emerald-800
             text-xl text-zinc-50
             hover:bg-gradient-to-br hover:from-emerald-700 hover:via-emerald-900 hover:to-emerald-950
-            transition transition-duration-500 ease-in-out'>
+            transition duration-500 ease-in-out'>
                 Pedir turno
             </button>
         </div>

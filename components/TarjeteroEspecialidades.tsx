@@ -9,19 +9,25 @@ const especialidadesConProfesionales = mapearRelacionados(
     profesionales,      // pide con ids los nombres a especialidades
     'especialidades',   // campo que tiene los id (en profesionales)(?)
     'id',               // vínculo (en especialidades)(?)
-    'nombre'            // otro campo que debe estar (desde especialidades)
+    'nombre',           // otro campo que debe estar (desde especialidades)
 )
 
 
 export default async function TarjeteroEspecialidades() {
 
+    const traeDescripcion = async (id: string) => {
+        const {descripcion} = await api.traeEspecialidad(id)
+        return descripcion
+    }
+
     return (
-        <div className='mt-36 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8'>
+        <div className='grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8'>
             {especialidadesConProfesionales.map(especialidad => (
             <div key={especialidad.id}>
                 <TarjetaEspecialidad
                 especialidad={especialidad.nombre}
-                cantProfesionales={especialidad.relacionados.length} />
+                cantProfesionales={especialidad.relacionados.length}
+                descripcion={traeDescripcion(especialidad.id)} />
             </div>
             ))}
         </div>

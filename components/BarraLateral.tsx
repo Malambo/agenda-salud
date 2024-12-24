@@ -50,7 +50,7 @@ export default function BarraLateral() {
             </Link>
             
             <div className="my-8 p-1 rounded-md border border-emerald-900 bg-zinc-50">
-                <div className="flex w-full max-w-sm items-center space-x-2 p-2">
+                <div className="flex w-full max-w-sm items-center space-x-2 p-1">
                     <Input type="text" placeholder="Buscar" />
                     <Button
                     className='

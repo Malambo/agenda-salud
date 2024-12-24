@@ -250,26 +250,26 @@ const Profesionales: Profesional[] = [
 ]
 
 const especialidades: Especialidad[] = [
-    {id:  '1', nombre: 'Cardiología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades del corazón y del aparato circulatorio.'},
-    {id:  '2', nombre: 'Cirugía General', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de enfermedades que requieren procedimientos quirúrgicos.'},
-    {id:  '3', nombre: 'Dermatología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades de la piel.'},
-    {id:  '4', nombre: 'Endocrinología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades de las glándulas endocrinas.'},   
-    {id:  '5', nombre: 'Gastroenterología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades del aparato digestivo.'},
-    {id:  '6', nombre: 'Geriatría', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades de las personas mayores.'},
-    {id:  '7', nombre: 'Hematología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades de la sangre.'},
-    {id:  '8', nombre: 'Infectología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades infecciosas.'},
-    {id:  '9', nombre: 'Medicina General', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades comunes.'},
-    {id: '10', nombre: 'Nefrología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades de los riñones.'},
-    {id: '11', nombre: 'Neurología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades del sistema nervioso.'},
-    {id: '12', nombre: 'Neumología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades del aparato respiratorio.'},
-    {id: '13', nombre: 'Oftalmología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades de los ojos.'},
-    {id: '14', nombre: 'Oncología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades del cáncer.'},
-    {id: '15', nombre: 'Otorrinolaringología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades del oído, nariz y garganta.'},
-    {id: '16', nombre: 'Pediatría', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades de los niños.'},
-    {id: '17', nombre: 'Psiquiatría', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades mentales.'},
-    {id: '18', nombre: 'Reumatología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades de las articulaciones.'},
-    {id: '19', nombre: 'Traumatología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades de los huesos.'},
-    {id: '20', nombre: 'Urología', descripcion: 'Especialidad médica que se ocupa del diagnóstico y tratamiento de las enfermedades del aparato urinario.'}
+    {id:  '1', nombre: 'Cardiología', descripcion: 'Diagnóstico y tratamiento de las enfermedades del corazón y del aparato circulatorio.'},
+    {id:  '2', nombre: 'Cirugía General', descripcion: 'Diagnóstico y tratamiento de enfermedades que requieren procedimientos quirúrgicos.'},
+    {id:  '3', nombre: 'Dermatología', descripcion: 'Diagnóstico y tratamiento de las enfermedades de la piel.'},
+    {id:  '4', nombre: 'Endocrinología', descripcion: 'Diagnóstico y tratamiento de las enfermedades de las glándulas endocrinas.'},   
+    {id:  '5', nombre: 'Gastroenterología', descripcion: 'Diagnóstico y tratamiento de las enfermedades del aparato digestivo.'},
+    {id:  '6', nombre: 'Geriatría', descripcion: 'Diagnóstico y tratamiento de las enfermedades de las personas mayores.'},
+    {id:  '7', nombre: 'Hematología', descripcion: 'Diagnóstico y tratamiento de las enfermedades de la sangre.'},
+    {id:  '8', nombre: 'Infectología', descripcion: 'Diagnóstico y tratamiento de las enfermedades infecciosas.'},
+    {id:  '9', nombre: 'Medicina General', descripcion: 'Diagnóstico y tratamiento de las enfermedades comunes.'},
+    {id: '10', nombre: 'Nefrología', descripcion: 'Diagnóstico y tratamiento de las enfermedades de los riñones.'},
+    {id: '11', nombre: 'Neurología', descripcion: 'Diagnóstico y tratamiento de las enfermedades del sistema nervioso.'},
+    {id: '12', nombre: 'Neumonología', descripcion: 'Diagnóstico y tratamiento de las enfermedades del aparato respiratorio.'},
+    {id: '13', nombre: 'Oftalmología', descripcion: 'Diagnóstico y tratamiento de las enfermedades de los ojos.'},
+    {id: '14', nombre: 'Oncología', descripcion: 'Diagnóstico y tratamiento de las enfermedades del cáncer.'},
+    {id: '15', nombre: 'Otorrinolaringología', descripcion: 'Diagnóstico y tratamiento de las enfermedades del oído, nariz y garganta.'},
+    {id: '16', nombre: 'Pediatría', descripcion: 'Diagnóstico y tratamiento de las enfermedades de los niños.'},
+    {id: '17', nombre: 'Psiquiatría', descripcion: 'Diagnóstico y tratamiento de las enfermedades mentales.'},
+    {id: '18', nombre: 'Reumatología', descripcion: 'Diagnóstico y tratamiento de las enfermedades de las articulaciones.'},
+    {id: '19', nombre: 'Traumatología', descripcion: 'Diagnóstico y tratamiento de las enfermedades de los huesos.'},
+    {id: '20', nombre: 'Urología', descripcion: 'Diagnóstico y tratamiento de las enfermedades del aparato urinario.'}
 ]
 
 const categorias: Categorias[] = [
@@ -277,7 +277,7 @@ const categorias: Categorias[] = [
         url: '/centro-salud',
         urlIcono: '/CentrosSalud.svg',
         titulo: 'Centros de salud',
-        descripcion: 'En La Costa podés acceder a una amplia red de Salud. Encontrá el centro más cercano a tu domicilio y accedé al tratamiento adecuado a tus necesidades.'
+        descripcion: 'En La Costa tenés a disposición una amplia red de Salud. Encontrá el centro de atención más cercano y accedé al tratamiento que necesitás.'
     },
     {
         url: '/especialidades',
