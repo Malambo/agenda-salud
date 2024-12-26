@@ -25,7 +25,7 @@ export default function InicioPage() {
             hover:border-emerald-900
             hover:bg-gradient-to-br hover:from-zinc-50 hover:via-zinc-50 hover:to-zinc-200
             transition duration-500 ease-in-out'>
-                Consultar agenda
+                Consultar agenda médica
             </button>
             <button
             className='
@@ -33,7 +33,7 @@ export default function InicioPage() {
             text-xl text-zinc-50
             hover:bg-gradient-to-br hover:from-emerald-700 hover:via-emerald-900 hover:to-emerald-950
             transition duration-500 ease-in-out'>
-                Pedir turno
+                Reservar turno
             </button>
         </div>
 
