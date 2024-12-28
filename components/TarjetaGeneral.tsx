@@ -16,7 +16,7 @@ export default function TarjetaGeneral({url, urlIcono, titulo, descripcion}: Tar
         <Link href={url}>
             <div
             className="
-            p-8 rounded-md
+            p-8 rounded-md shadow
             border border-emerald-600
             hover:border-emerald-800
             hover:bg-gradient-to-br hover:from-zinc-50 hover:via-zinc-50 hover:to-zinc-200

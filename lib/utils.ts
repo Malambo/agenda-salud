@@ -45,11 +45,13 @@ export function mapearRelacionados<
 
 // Slug permite barra "/"
 export function crearSlug(texto: string): string {
-      // Eliminar caracteres especiales y acentos
-      const slug = texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-                        .replace(/[^\w\s-/\\]/g, '')
-                        .trim()
-                        .replace(/\s+/g, '-')
-                        .toLowerCase()
-      return slug
-  }
+    // Normalizar el texto para eliminar acentos y caracteres especiales
+    const slug = texto
+        .normalize('NFD')                   // Descomponer caracteres Unicode
+        .replace(/[\u0300-\u036f]/g, '')    // Eliminar marcas diacríticas
+        .replace(/[^\w\s-]/g, '')           // Eliminar caracteres no alfanuméricos excepto guiones y espacios
+        .trim()                             // Eliminar espacios en blanco al inicio y al final
+        .replace(/\s+/g, '-')               // Reemplazar espacios por guiones
+        .toLowerCase();                     // Convertir a minúsculas
+    return slug
+}

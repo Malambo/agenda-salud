@@ -1,6 +1,7 @@
 import api from '@/lib/api';
 import TituloPagina from '@/components/ui/TituloPagina';
 import TarjeteroEspecialidades from '@/components/TarjeteroEspecialidades';
+import CentrosSalud from '@/components/CentrosSalud';
 
 
 export default async function CategoriaPage({params}: {params: Promise<{slug: string}>}) {
@@ -16,11 +17,7 @@ export default async function CategoriaPage({params}: {params: Promise<{slug: st
         </div>
 
         <div className='mt-44'>
-            {slug === 'centro-salud' && (
-            <p className='font-bold text-orange-500'>
-                {slug.toLocaleUpperCase()}
-            </p>
-            )}
+            {slug === 'centro-salud' && (<CentrosSalud />)}
 
             {slug === 'especialidades' && <TarjeteroEspecialidades />}
             
