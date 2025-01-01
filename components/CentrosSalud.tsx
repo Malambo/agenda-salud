@@ -3,6 +3,7 @@ import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious}
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "./ui/accordion"
 import Link from "next/link"
 import {crearSlug} from "@/lib/utils"
+import BarraDeslizante from "./ui/BarraDeslizante"
 
 
 
@@ -10,16 +11,13 @@ const zonasSanitarias = await api.listaZonasSanitarias()
 
 
 export default async function CentrosSalud() {
-
-    
-    console.log("🚀 ~ CentrosSalud ~ zonasSanitarias:", zonasSanitarias)
-
     
     return (
         <div className='border-t border-emerald-500'>
             <Carousel
             className="w-full"
-            opts={{align: "center", loop: false}}>
+            opts={{align: "center", loop: false}}
+            orientation="horizontal">
                 <CarouselContent className="-ml-1">
                     {zonasSanitarias.zonas.map(zona => (
                     <CarouselItem key={zona.nombreZona} className="pl-1 basis-1/3 w-64">
@@ -30,7 +28,7 @@ export default async function CentrosSalud() {
                                 <AccordionContent className='flex p-2 gap-x-4 text-sm items-baseline text-zinc-500'>
                                     <Carousel
                                     className="w-full"
-                                    opts={{align: "center",loop: false}}>
+                                    opts={{align: "center", loop: false}}>
                                         {zona.centrosMedicos.map(centro => (
                                         <CarouselContent 
                                         key={centro.id}
@@ -46,7 +44,7 @@ export default async function CentrosSalud() {
                                         <CarouselPrevious />
                                         <CarouselNext />
                                     </Carousel>
-
+                                    
                                 </AccordionContent>
                             </AccordionItem>
                         </Accordion>
@@ -56,6 +54,11 @@ export default async function CentrosSalud() {
                 <CarouselPrevious />
                 <CarouselNext />
             </Carousel>
+
+            <div className='mt-36'>
+                <BarraDeslizante matriz={["A", "B", "C", 'D', 'E']} />
+            </div>
+            
         </div>
     )
 }

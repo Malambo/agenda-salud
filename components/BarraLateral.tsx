@@ -71,7 +71,7 @@ export default function BarraLateral() {
             
             <Accordion type="single" collapsible>
                 <AccordionItem value={'1'}>
-                    <div className='sticky top-52 bg-gradient-to-r from-emerald-50 to-emerald-100'>
+                    <div className='sticky top-52 bg-gradient-to-r from-emerald-50 to-emerald-100 font-medium'>
                         <MiAccordionTrigger
                         url={'/centro-salud'} urlIcono={'/CentrosSalud.svg'} titulo={'Centros de salud'} />
                     </div>

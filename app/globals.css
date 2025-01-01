@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Onest Variable', Helvetica, sans-serif;
   letter-spacing: -0.01em;
