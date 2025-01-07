@@ -3,8 +3,6 @@ import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious}
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "./ui/accordion"
 import Link from "next/link"
 import {crearSlug} from "@/lib/utils"
-import BarraDeslizante from "./ui/BarraDeslizante"
-
 
 
 const zonasSanitarias = await api.listaZonasSanitarias()
@@ -23,9 +21,10 @@ export default async function CentrosSalud() {
                     <CarouselItem key={zona.nombreZona} className="pl-1 basis-1/3 w-64">
                         <Accordion type="single" collapsible >
                             <AccordionItem key={zona.nombreZona} value={zona.nombreZona}>
-                                <AccordionTrigger className='uppercase font-extralight text-zinc-400'>{zona.nombreZona}</AccordionTrigger>
-                                
-                                <AccordionContent className='flex p-2 gap-x-4 text-sm items-baseline text-zinc-500'>
+                                <div className="flex justify-center">
+                                    <AccordionTrigger className='uppercase font-extralight text-zinc-500'>{zona.nombreZona}</AccordionTrigger>
+                                </div>
+                                <AccordionContent className='flex p-2 gap-x-4 text-sm items-baseline'>
                                     <Carousel
                                     className="w-full"
                                     opts={{align: "center", loop: false}}>
@@ -33,7 +32,7 @@ export default async function CentrosSalud() {
                                         <CarouselContent 
                                         key={centro.id}
                                         className="-ml-1">
-                                            <CarouselItem className="pl-1 text-emerald-800/60 text-sm">
+                                            <CarouselItem className="pl-1 text-emerald-800/80 text-sm">
                                                 <Link
                                                 href={`/centro-salud/${crearSlug(centro.nombre)}`}>
                                                     {centro.nombre}
@@ -56,7 +55,7 @@ export default async function CentrosSalud() {
             </Carousel>
 
             <div className='mt-36'>
-                <BarraDeslizante matriz={["A", "B", "C", 'D', 'E']} />
+                {/* <BarraDeslizante matriz={["A", "B", "C", 'D', 'E']} /> */}
             </div>
             
         </div>

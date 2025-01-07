@@ -53,12 +53,12 @@ export default function BarraLateral() {
                     Agenda Salud
                 </Link>
         
-                <div className="my-8 p-1 rounded-md border border-emerald-600 bg-zinc-50">
+                <div className="my-8 p-1 rounded border border-emerald-600 bg-zinc-50">
                     <div className="flex w-full max-w-sm items-center space-x-2 p-1">
                         <Input type="text" placeholder="Buscar" />
                         <Button
                         className='
-                        py-4 rounded-md bg-emerald-800
+                        py-4 rounded bg-emerald-800
                         text-zinc-50
                         hover:bg-gradient-to-br hover:from-emerald-700 hover:via-emerald-900 hover:to-emerald-950
                         transition transition-duration-500 ease-in-out'
@@ -73,10 +73,12 @@ export default function BarraLateral() {
                 <AccordionItem value={'1'}>
                     <div className='sticky top-52 bg-gradient-to-r from-emerald-50 to-emerald-100 font-medium'>
                         <MiAccordionTrigger
-                        url={'/centro-salud'} urlIcono={'/CentrosSalud.svg'} titulo={'Centros de salud'} />
+                        url={'/centro-salud'}
+                        urlIcono={'/CentrosSalud.svg'}
+                        titulo={'Centros de salud'} />
                     </div>
                     <AccordionContent>
-                        <Accordion type="single" collapsible className='bg-zinc-800 rounded-md text-zinc-50 p-4'>
+                        <Accordion type="single" collapsible className='bg-zinc-800 rounded text-zinc-50 p-4'>
                             {zonas.map((zona) => (
                             <AccordionItem key={zona.nombreZona} value={zona.nombreZona}>
                                 <div className='flex'>
@@ -97,14 +99,16 @@ export default function BarraLateral() {
                         </Accordion>
                     </AccordionContent>
                 </AccordionItem>
-        
+
                 <AccordionItem value={'2'}>
                     <div className='sticky top-52 bg-gradient-to-r from-emerald-50 to-emerald-100'>
                         <MiAccordionTrigger
-                        url={'/especialidades'} urlIcono={'/Especialidades.svg'} titulo={'Especialidades'} />
+                        url={'/especialidades'}
+                        urlIcono={'/Especialidades.svg'}
+                        titulo={'Especialidades'} />
                     </div>
                     <AccordionContent>
-                        <Accordion type="single" collapsible className='bg-zinc-800 rounded-md text-white p-4'>
+                        <Accordion type="single" collapsible className='bg-zinc-800 rounded text-white p-4'>
                             {especialidadesConProfesionales.map(async (especialidad) => (
                             <AccordionItem key={especialidad.id} value={especialidad.id}>
                             <div className='flex gap-2 items-center'>
@@ -127,21 +131,23 @@ export default function BarraLateral() {
                 <AccordionItem value={'3'}>
                     <div className='sticky top-52 bg-gradient-to-r from-emerald-50 to-emerald-100'>
                         <MiAccordionTrigger
-                        url={'/profesionales'} urlIcono={'/Profesionales.svg'} titulo={'Profesionales'} />
+                        url={'/profesionales'}
+                        urlIcono={'/Profesionales.svg'}
+                        titulo={'Profesionales'} />
                     </div>
                     <AccordionContent>
-                        <Accordion type="single" collapsible className='bg-zinc-800 rounded-md text-white p-4'>
+                        <Accordion type="single" collapsible className='bg-zinc-800 rounded text-white p-4'>
                             {profesionalesABC.map((profesional) => (
                             <AccordionItem key={profesional.id} value={profesional.id}>
-                            <div className='flex gap-2 items-center'>
-                                <User className='size-4' />
-                                <AccordionTrigger className='font-bold'>{profesional.nombre}</AccordionTrigger>
-                            </div>
-                            {profesional.especialidades.map(idProf => (
+                                <div className='flex gap-2 items-center'>
+                                    <User className='size-4' />
+                                    <AccordionTrigger className='font-bold'>{profesional.nombre}</AccordionTrigger>
+                                </div>
+                                {profesional.especialidades.map(idProf => (
                                 <AccordionContent key={idProf} className='text-sm px-4'>
                                     {especialidades.filter(especialidad => especialidad.id === idProf)[0].nombre}
                                 </AccordionContent>
-                            ))}
+                                ))}
                             </AccordionItem>
                             ))}
                         </Accordion>

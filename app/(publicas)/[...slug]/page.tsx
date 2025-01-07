@@ -7,7 +7,9 @@ import CentrosSalud from '@/components/CentrosSalud';
 export default async function CategoriaPage({params}: {params: Promise<{slug: string}>}) {
 
     const slug = (await params).slug[0]
-    const {urlIcono, titulo, descripcion} = await api.traeCategoria('/' + slug)
+    const slug1 = (await params).slug
+
+    const {urlIcono, titulo, descripcion} = await api.traeCategoria('/' + slug1[0])
 
     return (
         <>
@@ -18,13 +20,13 @@ export default async function CategoriaPage({params}: {params: Promise<{slug: st
 
         <div className='mt-44'>
             {slug === 'centro-salud' && (<CentrosSalud />)}
-
             {slug === 'especialidades' && <TarjeteroEspecialidades />}
-            
             {slug === 'profesionales' && (
-            <p className='font-bold text-orange-500'>
-                {slug.toLocaleUpperCase()}
-            </p>
+            <div>
+                <p className='font-bold text-orange-500'>
+                    {slug.toLocaleUpperCase()}
+                </p>
+            </div>
             )}
         </div>
         </>
