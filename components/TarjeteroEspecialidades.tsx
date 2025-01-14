@@ -21,12 +21,12 @@ export default async function TarjeteroEspecialidades() {
     }
 
     return (
-        <div className='grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8'>
+        <div className='grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 xl:grid-cols-3'>
             {especialidadesConProfesionales.map(especialidad => (
             <div key={especialidad.id}>
                 <TarjetaEspecialidad
                 especialidad={especialidad.nombre}
-                cantProfesionales={especialidad.relacionados.length}
+                cantProfesionales={especialidad.relacionados.length ?? 0}
                 descripcion={traeDescripcion(especialidad.id)} />
             </div>
             ))}

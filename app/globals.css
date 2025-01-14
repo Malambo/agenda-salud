@@ -11,7 +11,7 @@ body {
   font-family: 'Onest Variable', Helvetica, sans-serif;
   letter-spacing: -0.01em;
   color: #464646;
-  background-color: #FAFEE7;
+  background: linear-gradient(to bottom right, #f5fcf9, #c9f2d5);
 }
 
 @layer base {

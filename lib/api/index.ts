@@ -1,4 +1,4 @@
-interface CentroMedico {
+interface CentroSalud {
     id:             string
     urlIcon:        string
     nombre:         string
@@ -10,7 +10,7 @@ interface CentroMedico {
 
 interface ZonaSanitaria {
     nombreZona:     string
-    centrosMedicos: CentroMedico[]
+    centrosSalud: CentroSalud[]
 }
 
 interface ZonasSanitarias {
@@ -42,7 +42,7 @@ const zonasSanitarias: ZonasSanitarias = {
     zonas: [
         {
         "nombreZona": "Zona norte",
-        "centrosMedicos": [
+        "centrosSalud": [
             {
             "id": "1",
             "urlIcon": "/Hospital.svg",
@@ -84,7 +84,7 @@ const zonasSanitarias: ZonasSanitarias = {
         
         {
         "nombreZona": "Zona centro",
-        "centrosMedicos": [
+        "centrosSalud": [
             {
             "id": "14",
             "urlIcon": "/UnidadSanitaria.svg",
@@ -126,7 +126,7 @@ const zonasSanitarias: ZonasSanitarias = {
     
         {
         "nombreZona": "Zona sur",
-        "centrosMedicos": [
+        "centrosSalud": [
             {
             "id": "8",
             "urlIcon": "/Hospital.svg",
@@ -177,7 +177,7 @@ const zonasSanitarias: ZonasSanitarias = {
         
         {
         "nombreZona": "Zona altos médanos",
-        "centrosMedicos": [
+        "centrosSalud": [
             {
             "id": "13",
             "urlIcon": "/CentroMedico.svg",
@@ -202,7 +202,7 @@ const Profesionales: Profesional[] = [
   { id: '6', nombre: 'Dr. Jorge Ramírez', especialidades: ['3'], centrosSalud: ['8', '9'] },
   { id: '7', nombre: 'Dra. Elena Sánchez', especialidades: ['1', '2'], centrosSalud: ['10'] },
   { id: '8', nombre: 'Dr. Pedro Gutiérrez', especialidades: ['4'], centrosSalud: ['11', '12'] },
-  { id: '9', nombre: 'Dra. Claudia Castro', especialidades: ['5'], centrosSalud: ['13'] },
+  { id: '9', nombre: 'Dra. Claudia Castro', especialidades: ['5', '21', '22'], centrosSalud: ['13'] },
   { id: '10', nombre: 'Dr. Ricardo Morales', especialidades: ['2', '6'], centrosSalud: ['14'] },
   { id: '11', nombre: 'Dra. Teresa Vega', especialidades: ['3'], centrosSalud: ['1', '2'] },
   { id: '12', nombre: 'Dr. Andrés Herrera', especialidades: ['7'], centrosSalud: ['3'] },
@@ -220,15 +220,15 @@ const Profesionales: Profesional[] = [
   { id: '24', nombre: 'Dr. Eduardo Álvarez', especialidades: ['17'], centrosSalud: ['7'] },
   { id: '25', nombre: 'Dra. Beatriz Rojas', especialidades: ['8'], centrosSalud: ['8', '9'] },
   { id: '26', nombre: 'Dr. Antonio Soto', especialidades: ['18'], centrosSalud: ['10'] },
-  { id: '27', nombre: 'Dra. Patricia León', especialidades: ['9'], centrosSalud: ['11', '12'] },
+  { id: '27', nombre: 'Dra. Patricia León', especialidades: ['9', '21', '22'], centrosSalud: ['11', '12'] },
   { id: '28', nombre: 'Dr. Ernesto Vargas', especialidades: ['19'], centrosSalud: ['13'] },
   { id: '29', nombre: 'Dra. Susana Domínguez', especialidades: ['10'], centrosSalud: ['14'] },
   { id: '30', nombre: 'Dr. Jaime Cano', especialidades: ['20'], centrosSalud: ['1', '2'] },
   { id: '31', nombre: 'Dra. Carolina Aguilar', especialidades: ['1'], centrosSalud: ['3'] },
-  { id: '32', nombre: 'Dr. Rafael Paredes', especialidades: ['2'], centrosSalud: ['4', '5'] },
+  { id: '32', nombre: 'Dr. Rafael Paredes', especialidades: ['2'], centrosSalud: ['5'] },
   { id: '33', nombre: 'Dra. Sofía Lozano', especialidades: ['3'], centrosSalud: ['6'] },
   { id: '34', nombre: 'Dr. Sergio Méndez', especialidades: ['4'], centrosSalud: ['7', '8'] },
-  { id: '35', nombre: 'Dra. Inés Campos', especialidades: ['5'], centrosSalud: ['9'] },
+  { id: '35', nombre: 'Dra. Inés Campos', especialidades: ['5', '21', '22'], centrosSalud: ['9'] },
   { id: '36', nombre: 'Dr. Óscar Gil', especialidades: ['6'], centrosSalud: ['10', '11'] },
   { id: '37', nombre: 'Dra. Alicia Guzmán', especialidades: ['7'], centrosSalud: ['12'] },
   { id: '38', nombre: 'Dr. Luis Romero', especialidades: ['8'], centrosSalud: ['13', '14'] },
@@ -238,7 +238,7 @@ const Profesionales: Profesional[] = [
   { id: '42', nombre: 'Dr. César Nieto', especialidades: ['12'], centrosSalud: ['5', '6'] },
   { id: '43', nombre: 'Dra. Natalia Estévez', especialidades: ['13'], centrosSalud: ['7'] },
   { id: '44', nombre: 'Dr. Álvaro Peña', especialidades: ['14'], centrosSalud: ['8', '9'] },
-  { id: '45', nombre: 'Dra. Carmen Beltrán', especialidades: ['15'], centrosSalud: ['10'] },
+  { id: '45', nombre: 'Dra. Carmen Beltrán', especialidades: ['15', '22'], centrosSalud: ['10'] },
   { id: '46', nombre: 'Dr. Daniel Fuentes', especialidades: ['16'], centrosSalud: ['11', '12'] },
   { id: '47', nombre: 'Dra. Verónica Maldonado', especialidades: ['17'], centrosSalud: ['13'] },
   { id: '48', nombre: 'Dr. Hugo Ponce', especialidades: ['18'], centrosSalud: ['14'] },
@@ -248,7 +248,7 @@ const Profesionales: Profesional[] = [
   { id: '52', nombre: 'Dr. Martín Serrano', especialidades: ['2'], centrosSalud: ['6'] },
   { id: '53', nombre: 'Dra. Andrea Villalobos', especialidades: ['3'], centrosSalud: ['7', '8'] },
   { id: '54', nombre: 'Dr. Adrián Torres', especialidades: ['4'], centrosSalud: ['9'] },
-  { id: '55', nombre: 'Dra. Pilar Delgado', especialidades: ['5'], centrosSalud: ['10', '11'] },
+  { id: '55', nombre: 'Dra. Pilar Delgado', especialidades: ['5', '21'], centrosSalud: ['10', '11'] },
   { id: '56', nombre: 'Dr. Germán Tapia', especialidades: ['6'], centrosSalud: ['12'] },
   { id: '57', nombre: 'Dra. Mónica Barrios', especialidades: ['7'], centrosSalud: ['13', '14'] },
   { id: '58', nombre: 'Dr. Luis Aragón', especialidades: ['8'], centrosSalud: ['1'] },
@@ -264,12 +264,14 @@ const especialidades: Especialidad[] = [
     {id:  '4', nombre: 'Endocrinología', descripcion: ENTRADA_DESCRIPCION + 'de las glándulas endocrinas.'},   
     {id:  '5', nombre: 'Gastroenterología', descripcion: ENTRADA_DESCRIPCION + 'del aparato digestivo.'},
     {id:  '6', nombre: 'Geriatría', descripcion: ENTRADA_DESCRIPCION + 'de las personas mayores.'},
+    {id: '21', nombre: 'Ginecología', descripcion: ENTRADA_DESCRIPCION + 'del sistema reproductor femenino.'},
     {id:  '7', nombre: 'Hematología', descripcion: ENTRADA_DESCRIPCION + 'de la sangre.'},
     {id:  '8', nombre: 'Infectología', descripcion: ENTRADA_DESCRIPCION + 'infecciosas.'},
     {id:  '9', nombre: 'Medicina General', descripcion: ENTRADA_DESCRIPCION + 'comunes.'},
     {id: '10', nombre: 'Nefrología', descripcion: ENTRADA_DESCRIPCION + 'de los riñones.'},
     {id: '11', nombre: 'Neurología', descripcion: ENTRADA_DESCRIPCION + 'del sistema nervioso.'},
     {id: '12', nombre: 'Neumonología', descripcion: ENTRADA_DESCRIPCION + 'del aparato respiratorio.'},
+    {id: '22', nombre: 'Obstetricia', descripcion: 'Tratamiento del embarazo, el parto y cuidados después del nacimiento.'},
     {id: '13', nombre: 'Oftalmología', descripcion: ENTRADA_DESCRIPCION + 'de los ojos.'},
     {id: '14', nombre: 'Oncología', descripcion: ENTRADA_DESCRIPCION + 'del cáncer.'},
     {id: '15', nombre: 'Otorrinolaringología', descripcion: ENTRADA_DESCRIPCION + 'del oído, nariz y garganta.'},
@@ -308,9 +310,9 @@ const api = {
     },
 
     // Obtener un centro médico específico por su ID
-    traeCentro: async (id: string): Promise<CentroMedico> => {
+    traeCentro: async (id: string): Promise<CentroSalud> => {
         // Usar flatMap para aplanar los centros médicos de todas las zonas
-        const centrosMedicos = zonasSanitarias.zonas.flatMap(zona => zona.centrosMedicos)
+        const centrosMedicos = zonasSanitarias.zonas.flatMap(zona => zona.centrosSalud)
         // Buscar el centro médico por ID
         const centro = centrosMedicos.find(centro => centro.id === id)
         if (!centro) {

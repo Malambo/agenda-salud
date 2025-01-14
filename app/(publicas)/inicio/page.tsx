@@ -2,7 +2,6 @@ import TarjeteroGeneral from "@/components/TarjeteroGeneral"
 import Image from "next/image"
 
 
-
 export default function InicioPage() {
 
     return (
@@ -20,7 +19,8 @@ export default function InicioPage() {
             text-xl
             border border-emerald-600
             hover:border-emerald-900
-            hover:bg-gradient-to-br hover:from-orange-50 hover:via-orange-50 hover:to-orange-200
+            hover:bg-gradient-to-br hover:from-emerald-50 hover:via-emerald-50 hover:to-emerald-100
+            hover:shadow-lg
             transition duration-500 ease-in-out'>
                 Consultar agenda médica
             </button>
@@ -29,6 +29,7 @@ export default function InicioPage() {
             w-[408px] py-4 rounded bg-emerald-800
             text-xl text-zinc-50
             hover:bg-gradient-to-br hover:from-emerald-600 hover:via-emerald-900 hover:to-emerald-950
+            hover:shadow-lg
             transition duration-500 ease-in-out'>
                 Reservar turno
             </button>

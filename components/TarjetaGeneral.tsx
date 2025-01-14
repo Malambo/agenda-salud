@@ -17,9 +17,11 @@ export default function TarjetaGeneral({url, urlIcono, titulo, descripcion}: Tar
             <div
             className="
             p-8 rounded shadow
+            bg-[#e8faf0]
             border border-emerald-600
             hover:border-emerald-800
-            hover:bg-gradient-to-br hover:from-zinc-50 hover:via-zinc-50 hover:to-zinc-200
+            hover:bg-gradient-to-br hover:from-emerald-50 hover:via-emerald-50 hover:to-emerald-100
+            hover:shadow-lg
             cursor-pointer transition duration-500 ease-in-out">
                 <div className='flex flex-col gap-6 sm:flex-row sm:gap-12'>
                     <div className='flex items-center justify-center size-12 sm:size-16 rounded-full shrink-0'>

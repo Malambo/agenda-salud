@@ -16,18 +16,32 @@ export default async function TarjetaEspecialidad({especialidad, cantProfesional
 
     const descripcionEspecialidad = await descripcion
 
+    if (cantProfesionales <= 0) return
+
     return (
-        <Link href="#" aria-label={`Ir a la especialidad ${especialidad}`}>
+        <Link
+        href="#"
+        aria-label={`Ir a la especialidad ${especialidad}`}>
             <div
             className="
+            relative group
             flex-1 p-8 rounded shadow
+            bg-[#e8faf0]
             border border-emerald-600
             hover:border-emerald-800
-            hover:bg-gradient-to-br hover:from-zinc-50 hover:via-zinc-50 hover:to-zinc-200
+            hover:bg-gradient-to-br hover:from-emerald-50 hover:via-emerald-50 hover:to-emerald-100
+            hover:shadow-lg
             cursor-pointer transition duration-500 ease-in-out">
                 
                 <div className="flex flex-col gap-6 sm:flex-row sm:gap-8">
-                    <div className="flex items-center justify-center size-12 sm:size-16 rounded-full bg-emerald-100 border-2 border-emerald-200/80 shrink-0">
+                    <div
+                    className="
+                    flex items-center justify-center shrink-0
+                    size-10 sm:size-16
+                    rounded-full border-2
+                    bg-emerald-100 border-emerald-200/80
+                    group-hover:scale-110 group-hover:shadow group-hover:animate-out
+                    transition duration-700">
                         <Image
                         src={`/especialidades/${crearSlug(especialidad)}.svg`}
                         alt={`especialidad ${especialidad}`}
@@ -37,27 +51,32 @@ export default async function TarjetaEspecialidad({especialidad, cantProfesional
                     </div>
 
                     <div className="flex flex-col ">
-                        <div className='relative group inline-block'>
+                        <div className='group/tooltip relative inline-block'>
                             <h2 className="text-xl font-bold text-orange-500">{especialidad}</h2>
-                            
+
                             {/* Tooltip */}
                             <div className="
-                            absolute left-1/2 hidden sm:block
-                            w-64 px-5 py-2 mb-2 bottom-full
-                            transform -translate-x-1/2
-                            rounded border-l-8 border-orange-500
-                            bg-zinc-700/90 text-white
-                            text-sm text-pretty
+                            absolute hidden sm:block z-10 left-1/2 
+                            w-max px-3 pt-1 bottom-full
+                            transform -translate-x-1/2 -translate-y-4
+                            rounded border-b-8 border-orange-500
+                            bg-zinc-700/80 text-white
+                            text-sm text-pretty text-center
                             shadow-lg
-                            opacity-0 group-hover:opacity-100
-                            delay-500 transition-opacity duration-500">
+                            opacity-0 group-hover/tooltip:opacity-100
+                            delay-1000 transition-opacity duration-300">
                                 {descripcionEspecialidad}
+                                <div className="relative left-1/2 top-5 size-0
+                                border-l-[10px] border-l-transparent
+                                border-t-[15px] border-t-orange-500
+                                border-r-[10px] border-r-transparent" />
                             </div>
                         </div>
                         <p className="text-zinc-400 text-sm font-medium">{cantProfesionales} profesionales</p>
                     </div>
-
+                    
                 </div>
+                
             </div>
         </Link>
     )

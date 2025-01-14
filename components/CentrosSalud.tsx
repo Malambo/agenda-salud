@@ -3,9 +3,11 @@ import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious}
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "./ui/accordion"
 import Link from "next/link"
 import {crearSlug} from "@/lib/utils"
+import BarraDeslizante from "./ui/BarraDeslizante"
 
 
 const zonasSanitarias = await api.listaZonasSanitarias()
+const centrosMedicos = zonasSanitarias.zonas.map(zona => zona.centrosSalud.map(centro => centro.nombre))
 
 
 export default async function CentrosSalud() {
@@ -28,13 +30,13 @@ export default async function CentrosSalud() {
                                     <Carousel
                                     className="w-full"
                                     opts={{align: "center", loop: false}}>
-                                        {zona.centrosMedicos.map(centro => (
+                                        {zona.centrosSalud.map(centro => (
                                         <CarouselContent 
                                         key={centro.id}
                                         className="-ml-1">
                                             <CarouselItem className="pl-1 text-emerald-800/80 text-sm">
                                                 <Link
-                                                href={`/centro-salud/${crearSlug(centro.nombre)}`}>
+                                                href={`/centro-salud/${crearSlug(zona.nombreZona)}/${crearSlug(centro.nombre)}`}>
                                                     {centro.nombre}
                                                 </Link>
                                             </CarouselItem>
@@ -53,9 +55,10 @@ export default async function CentrosSalud() {
                 <CarouselPrevious />
                 <CarouselNext />
             </Carousel>
+            
 
             <div className='mt-36'>
-                {/* <BarraDeslizante matriz={["A", "B", "C", 'D', 'E']} /> */}
+                <BarraDeslizante matriz={centrosMedicos[2]} />
             </div>
             
         </div>

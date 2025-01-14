@@ -4,12 +4,11 @@ import TarjeteroEspecialidades from '@/components/TarjeteroEspecialidades';
 import CentrosSalud from '@/components/CentrosSalud';
 
 
-export default async function CategoriaPage({params}: {params: Promise<{slug: string}>}) {
+export default async function CategoriaPage({params}: {params: Promise<{slug: string[]}>}) {
 
-    const slug = (await params).slug[0]
-    const slug1 = (await params).slug
+    const slug = (await params).slug
+    const {urlIcono, titulo, descripcion} = await api.traeCategoria('/' + slug[0])
 
-    const {urlIcono, titulo, descripcion} = await api.traeCategoria('/' + slug1[0])
 
     return (
         <>
@@ -19,12 +18,12 @@ export default async function CategoriaPage({params}: {params: Promise<{slug: st
         </div>
 
         <div className='mt-44'>
-            {slug === 'centro-salud' && (<CentrosSalud />)}
-            {slug === 'especialidades' && <TarjeteroEspecialidades />}
-            {slug === 'profesionales' && (
+            {slug[0] === 'centro-salud' && (<CentrosSalud />)}
+            {slug[0] === 'especialidades' && <TarjeteroEspecialidades />}
+            {slug[0] === 'profesionales' && (
             <div>
                 <p className='font-bold text-orange-500'>
-                    {slug.toLocaleUpperCase()}
+                    {slug[0].toLocaleUpperCase()}
                 </p>
             </div>
             )}
