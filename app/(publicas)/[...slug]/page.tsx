@@ -7,7 +7,7 @@ import CentrosSalud from '@/components/CentrosSalud';
 export default async function CategoriaPage({params}: {params: Promise<{slug: string[]}>}) {
 
     const slug = (await params).slug
-    const {urlIcono, titulo, descripcion} = await api.traeCategoria('/' + slug[0])
+    const {urlIcono, titulo, descripcion} = await api.traeCategoria(`/${slug[0]}`)
 
 
     return (

@@ -47,7 +47,10 @@ export default async function BarraLateral() {
             bg-gradient-to-r from-emerald-50 to-emerald-100'>
                 <Link
                 href={'/inicio'}
-                className='mt-2 py-2 flex items-center justify-center gap-2 text-3xl text-emerald-900 text-pretty font-montserrat font-thin'>
+                className='
+                mt-2 py-2
+                flex items-center justify-center gap-2
+                text-3xl text-emerald-900 text-pretty font-montserrat font-thin'>
                     <Image
                     src={IsoLogo}
                     alt='Logo AgendaSalud'
@@ -55,7 +58,7 @@ export default async function BarraLateral() {
                     height={40} />
                     Agenda Salud
                 </Link>
-        
+
                 <div className="my-8 p-1 rounded border border-emerald-600 bg-zinc-50">
                     <div className="flex w-full max-w-sm items-center space-x-2 p-1">
                         <Input type="text" placeholder="Buscar" />
@@ -74,7 +77,7 @@ export default async function BarraLateral() {
             
             <Accordion type="single" collapsible>
                 <AccordionItem value={'1'}>
-                    <div className={`sticky top-52 ${'centro-salud' === 'centro-salud' ? 'bg-emerald-200' : 'bg-gradient-to-r from-emerald-50 to-emerald-100'} font-medium`}>
+                    <div className={`sticky top-52 ${'centro-salud' === 'centro-salud' ? 'bg-emerald-100' : 'bg-gradient-to-r from-emerald-50 to-emerald-100'} font-medium`}>
                         <MiAccordionTrigger
                         url={'/centro-salud'}
                         urlIcono={'/CentrosSalud.svg'}
@@ -82,10 +85,10 @@ export default async function BarraLateral() {
                     </div>
                     <AccordionContent>
                         <Accordion type="single" collapsible className='bg-[#e8faf0] rounded text-zinc-800 p-4 shadow-md'>
-                            {zonas.map((zona) => (
+                            {zonas.map(zona => (
                             <AccordionItem key={zona.nombreZona} value={zona.nombreZona}>
                                 <div className='flex'>
-                                    <AccordionTrigger className='font-bold'>{zona.nombreZona}</AccordionTrigger>
+                                    <AccordionTrigger className='font-medium'>{zona.nombreZona}</AccordionTrigger>
                                 </div>
                                 {zona.centrosSalud.map(centro => (
                                 <AccordionContent key={centro.id} className='flex p-2 gap-x-4 text-sm items-baseline'>
@@ -115,13 +118,13 @@ export default async function BarraLateral() {
                             {especialidadesConProfesionales.map((especialidad) => (
                             <AccordionItem key={especialidad.id} value={especialidad.id}>
                             <div className='flex gap-2 items-center'>
-                                <AccordionTrigger className='font-bold'>{especialidad.nombre}</AccordionTrigger>
+                                <AccordionTrigger className='font-medium'>{especialidad.nombre}</AccordionTrigger>
                             </div>
                             {especialidad.relacionados.map(idProf => {
                                 const profesionalNombre = profesionalesMap.get(idProf);
                                 return (
                                     <AccordionContent key={idProf} className='flex gap-2 px-2 text-sm text-zinc-700'>
-                                        <User className="size-4"/> {profesionalNombre && profesionalNombre.split('. ')[1]}
+                                        <User className="size-4"/> {profesionalNombre?.split('. ')[1]}
                                     </AccordionContent>
                                 );
                             })}
@@ -144,7 +147,7 @@ export default async function BarraLateral() {
                             <AccordionItem key={profesional.id} value={profesional.id}>
                                 <div className='flex gap-2 items-center'>
                                     <User className='size-4' />
-                                    <AccordionTrigger className='font-bold'>{profesional.nombre}</AccordionTrigger>
+                                    <AccordionTrigger className='font-medium'>{profesional.nombre}</AccordionTrigger>
                                 </div>
                                 {profesional.especialidades.map(idProf => (
                                 <AccordionContent key={idProf} className='text-sm px-4'>
