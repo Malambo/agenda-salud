@@ -1,7 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-// import {ChevronDown} from 'lucide-react'
-// import {Button} from './ui/button'
 import {crearSlug} from '@/lib/utils'
 
 
@@ -16,7 +14,7 @@ export default async function TarjetaEspecialidad({especialidad, cantProfesional
 
     const descripcionEspecialidad = await descripcion
 
-    if (cantProfesionales <= 0) return
+    if (cantProfesionales <= 0) return null
 
     return (
         <Link
@@ -32,7 +30,7 @@ export default async function TarjetaEspecialidad({especialidad, cantProfesional
             hover:bg-gradient-to-br hover:from-emerald-50 hover:via-emerald-50 hover:to-emerald-100
             hover:shadow-lg
             cursor-pointer transition duration-500 ease-in-out">
-                
+
                 <div className="flex flex-col gap-6 sm:flex-row sm:gap-8">
                     <div
                     className="
@@ -65,7 +63,10 @@ export default async function TarjetaEspecialidad({especialidad, cantProfesional
                             shadow-lg
                             opacity-0 group-hover/tooltip:opacity-100
                             delay-1000 transition-opacity duration-300">
+
                                 {descripcionEspecialidad}
+                                
+                                {/* Triángulo */}
                                 <div className="relative left-1/2 top-5 size-0
                                 border-l-[10px] border-l-transparent
                                 border-t-[15px] border-t-orange-500
@@ -74,9 +75,7 @@ export default async function TarjetaEspecialidad({especialidad, cantProfesional
                         </div>
                         <p className="text-zinc-400 text-sm font-medium">{cantProfesionales} profesionales</p>
                     </div>
-                    
                 </div>
-                
             </div>
         </Link>
     )

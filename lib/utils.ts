@@ -48,6 +48,7 @@ export function crearSlug(texto: string): string {
     // Normalizar el texto para eliminar acentos y caracteres especiales
     const slug = texto
         .normalize('NFD')                   // Descomponer caracteres Unicode
+        // biome-ignore lint/suspicious/noMisleadingCharacterClass: <explanation>
         .replace(/[\u0300-\u036f]/g, '')    // Eliminar marcas diacríticas
         .replace(/[^\w\s-]/g, '')           // Eliminar caracteres no alfanuméricos excepto guiones y espacios
         .trim()                             // Eliminar espacios en blanco al inicio y al final

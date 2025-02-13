@@ -9,6 +9,7 @@ interface CentroSalud {
 }
 
 interface ZonaSanitaria {
+    id?:            string
     nombreZona:     string
     centrosSalud: CentroSalud[]
 }

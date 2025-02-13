@@ -23,7 +23,7 @@ export default function MiAccordionTrigger({url, urlIcono, titulo}: MiAccordionP
                     width={32}
                     height={32}/>
                     }
-                    <p className="font-bold text-emerald-900 text-lg text-start">{titulo}</p>
+                    <p className="text-emerald-900 text-lg text-start">{titulo}</p>
                 </div>
             </AccordionTrigger>
         </Link>
