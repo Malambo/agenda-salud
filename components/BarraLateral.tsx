@@ -14,6 +14,7 @@ import MiAccordionTrigger   from "@/components/ui/MiAccordionTrigger"
 import IsoLogo              from '@/public/IsoLogo.svg'
 
 
+
 const zonasSanitarias = await api.listaZonasSanitarias()
 const zonas = zonasSanitarias.zonas
 const profesionales = await api.listaProfesionales()
@@ -57,7 +58,7 @@ export default async function BarraLateral() {
             z-10 sticky top-0 py-4
             bg-gradient-to-r from-emerald-50 to-emerald-100'>
                 <Link
-                href={'/inicio'}
+                href={'/'}
                 className='
                 mt-2 py-2
                 flex items-center justify-center gap-2
@@ -171,7 +172,7 @@ export default async function BarraLateral() {
                                     <AccordionContent key={idProf} className='flex gap-2 px-2 text-sm text-zinc-700'>
                                         <User className="size-4"/> {profesionalNombre?.split('. ')[1]}
                                     </AccordionContent>
-                                );
+                                )
                             })}
                             </AccordionItem>
                             ))}

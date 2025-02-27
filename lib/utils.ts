@@ -15,6 +15,7 @@ interface Relacion<T extends string> {
   id: T
   nombre: string                        // Campo adicional para el nombre u otra propiedad relevante.
   relacionados: string[]                // Lista de IDs relacionados.
+  [key: string]: string | string[]
 }
 
 export function mapearRelacionados<

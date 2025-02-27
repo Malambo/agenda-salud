@@ -17,10 +17,11 @@ export default async function RootLayout({children}: Readonly<{children: React.R
                     <aside className="h-full overflow-y-auto no-scrollbar hidden sm:block">
                         <BarraLateral />
                     </aside>
+
                     <section className="flex-1 overflow-y-auto no-scrollbar">
                         {children}
                     </section>
-                    
+
                 </main>
             </body>
         </html>
