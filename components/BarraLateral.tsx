@@ -137,12 +137,12 @@ export default async function BarraLateral() {
                                     <AccordionTrigger className='font-medium'>{especialidad.nombre}</AccordionTrigger>
                                 </div>
                             {especialidad.relacionados.map(idProf => {
-                                const profesionalNombre = profesionalesMap.get(idProf);
+                                const profesionalNombre = profesionalesMap.get(idProf)
                                 return (
                                     <AccordionContent key={idProf} className='flex gap-2 px-2 text-sm text-zinc-700'>
                                         <User className="size-4"/> {profesionalNombre?.split('. ')[1]}
                                     </AccordionContent>
-                                );
+                                )
                             })}
                             </AccordionItem>
                             ))}
@@ -166,14 +166,15 @@ export default async function BarraLateral() {
                                 <div className='flex gap-2 items-center'>
                                     <AccordionTrigger className='font-medium'>{centro.nombre}</AccordionTrigger>
                                 </div>
-                            {centro.relacionados.map(idProf => {
-                                const profesionalNombre = profesionalesMap.get(idProf);
+                                
+                                {centro.relacionados.map(idProf => {
+                                const profesionalNombre = profesionalesMap.get(idProf)
                                 return (
                                     <AccordionContent key={idProf} className='flex gap-2 px-2 text-sm text-zinc-700'>
                                         <User className="size-4"/> {profesionalNombre?.split('. ')[1]}
                                     </AccordionContent>
                                 )
-                            })}
+                                })}
                             </AccordionItem>
                             ))}
                         </Accordion>

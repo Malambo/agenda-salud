@@ -1,6 +1,7 @@
 import type {Metadata} from "next"
 import "./globals.css"
 import BarraLateral from "@/components/BarraLateral"
+import {headers} from 'next/headers'
 
 
 export const metadata: Metadata = {
@@ -9,22 +10,24 @@ export const metadata: Metadata = {
 }
 
 export default async function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
-    
+    const headerList = await headers()
+    const currentPath = headerList.get('x-pathname')
+
     return (
         <html lang="es">
             <body>
                 <main className='flex h-screen overflow-hidden'>
-                    <aside className="h-full overflow-y-auto no-scrollbar hidden sm:block">
-                        <BarraLateral />
-                    </aside>
+                    {currentPath !== '/inicio' && 
+                        <aside className="h-full overflow-y-auto no-scrollbar hidden sm:block">
+                            <BarraLateral />
+                        </aside>
+                    }
 
                     <section className="flex-1 overflow-y-auto no-scrollbar">
                         {children}
                     </section>
-
                 </main>
             </body>
         </html>
-
     )
 }
