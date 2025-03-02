@@ -24,7 +24,8 @@ export default function InicioPage() {
                     hover:bg-gradient-to-br hover:from-emerald-500 hover:via-emerald-800 hover:to-emerald-950
                     hover:shadow-xl 
                     transition duration-500 ease-in-out'>
-                            <p className='group-hover:scale-105 transition duration-500 ease-in-out'>Reservar turno</p>
+                        <p className='group-hover:scale-105 group-hover:animate-out transition duration-500'>Reservar turno</p>
+
                     </button>
 
                     <button
@@ -38,13 +39,13 @@ export default function InicioPage() {
                     hover:bg-gradient-to-br hover:from-white hover:via-emerald-100 hover:to-emerald-200
                     hover:shadow-lg
                     transition duration-500 ease-in-out'>
-                        <p className='group-hover:scale-105 transition duration-500 ease-in-out'>Consultar agenda médica</p>
+                        <p className='group-hover:scale-105 group-hover:animate-out transition duration-500'>Consultar agenda médica</p>
                     </button>
                 </div>
             </div>
 
             <Image
-            src='/Hero2.svg'
+            src='/Hero3.png'
             alt='img Hero'
             width={850}
             height={850 * 0.4} />

@@ -21,12 +21,10 @@ import
 
 
 export default function CentrosSalud() {
-
-  
     const [datos, setDatos] = useState<ZonasSanitarias | null>(null)
     const [zonaActiva, setZonaActiva] = useState<string | null>(null)
 
-  // Cargar datos usando async/await dentro de useEffect
+    // Cargar datos usando async/await dentro de useEffect
     useEffect(() => {
         async function fetchData() {
             try {
@@ -90,7 +88,7 @@ export default function CentrosSalud() {
                                 <CarouselItem
                                 key={centro.id}
                                 style={{flexBasis: `${100 / numCentros}%`}}
-                                className="shrink-0 w-fit hover:text-emerald-600 transition duration-300">
+                                className="shrink-0 w-fit hover:scale-105 hover:animate-out transition duration-300">
                                     <Link
                                     className="flex gap-2 whitespace-nowrap"
                                     href={`/centro-salud/${crearSlug(zonaSeleccionada.nombreZona)}/${crearSlug(centro.nombre)}`}>
