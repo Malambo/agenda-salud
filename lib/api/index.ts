@@ -6,6 +6,7 @@ interface CentroSalud {
     direccion:      string
     ciudad:         string
     telefonos:      string[]
+    [key: string]:  string | string[]
 }
 
 interface ZonaSanitaria {

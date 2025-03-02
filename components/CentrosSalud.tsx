@@ -11,12 +11,10 @@ import {
     AccordionContent,
     AccordionItem,
     AccordionTrigger}   from "./ui/accordion"
-import BarraDeslizante  from "./ui/BarraDeslizante"
 import {crearSlug}      from "@/lib/utils"
 
 
 const zonasSanitarias = await api.listaZonasSanitarias()
-const centrosMedicos = zonasSanitarias.zonas.map(zona => zona.centrosSalud.map(centro => centro.nombre))
 
 
 export default async function CentrosSalud() {    
@@ -67,13 +65,7 @@ export default async function CentrosSalud() {
 
                 <CarouselPrevious />
                 <CarouselNext />
-            </Carousel>
-
-            <div className='mt-36'>
-                <BarraDeslizante lista={zonasSanitarias.zonas.map(zona => zona.nombreZona)} />
-                <BarraDeslizante lista={centrosMedicos[2]} />
-            </div>
-            
+            </Carousel>           
         </div>
     )
 }

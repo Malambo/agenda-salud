@@ -36,11 +36,17 @@ export function mapearRelacionados<
       })
       .map(itemRelacionado => itemRelacionado.id)   // Agregar solo el ID de los relacionados.
 
-    return {
+    const result: Relacion<T> = {
       id: itemBase.id,
       nombre: itemBase[nombreCampo] as string,      // Añade el campo adicional especificado.
       relacionados,
     }
+
+    if (itemBase.urlIcon) {
+      result.urlIcon = itemBase.urlIcon as string    // Añade la URL de la imagen si existe.
+    }
+
+    return result;
   })
 }
 

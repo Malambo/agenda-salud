@@ -1,3 +1,4 @@
+import {headers}            from "next/headers"
 import Link                 from "next/link"
 import Image                from "next/image"
 import {User, Search}       from "lucide-react"
@@ -8,11 +9,10 @@ import {
     AccordionContent,
     AccordionItem,
     AccordionTrigger}       from "@/components/ui/accordion"
+import MiAccordionTrigger   from "@/components/ui/MiAccordionTrigger"
 import {Input}              from "@/components/ui/input"
 import {Button}             from "@/components/ui/button"
-import MiAccordionTrigger   from "@/components/ui/MiAccordionTrigger"
 import IsoLogo              from '@/public/IsoLogo.svg'
-
 
 
 const zonasSanitarias = await api.listaZonasSanitarias()
@@ -45,6 +45,9 @@ const centrosConProfesionales = mapearRelacionados(
 
 
 export default async function BarraLateral() {
+    const headerList = await headers()
+    const currentPath = headerList.get('x-pathname')            // Ruta actual
+    const PAGINA_ACTIVA = currentPath?.split('/')[1]  ?? ''     // Página activa
 
     return (
         <div
@@ -90,7 +93,7 @@ export default async function BarraLateral() {
             <Accordion type="single" collapsible>
                 <AccordionItem value={'1'}>
                     <div className={
-                        `sticky top-52 ${'centro-salud' === 'centro-salud' ?
+                        `sticky top-52 ${PAGINA_ACTIVA === 'centro-salud' ?
                         'bg-emerald-100' : 'bg-gradient-to-r from-emerald-50 to-emerald-100'}`}>
                         <MiAccordionTrigger
                         url={'/centro-salud'}
@@ -122,7 +125,9 @@ export default async function BarraLateral() {
                 </AccordionItem>
 
                 <AccordionItem value={'2'}>
-                    <div className='sticky top-52 bg-gradient-to-r from-emerald-50 to-emerald-100'>
+                    <div className={
+                        `sticky top-52 ${PAGINA_ACTIVA === 'especialidades' ?
+                        'bg-emerald-100' : 'bg-gradient-to-r from-emerald-50 to-emerald-100'}`}>
                         <MiAccordionTrigger
                         url={'/especialidades'}
                         urlIcono={'/Especialidades.svg'}
@@ -131,7 +136,7 @@ export default async function BarraLateral() {
 
                     <AccordionContent>
                         <Accordion type="single" collapsible className='bg-[#e8faf0] rounded text-zinc-800 p-4 shadow-md'>
-                            {especialidadesConProfesionales.map((especialidad) => (
+                            {especialidadesConProfesionales.map(especialidad => (
                             <AccordionItem key={especialidad.id} value={especialidad.id}>
                                 <div className='flex gap-2 items-center'>
                                     <AccordionTrigger className='font-medium'>{especialidad.nombre}</AccordionTrigger>
@@ -152,7 +157,9 @@ export default async function BarraLateral() {
 
                 {/* --- */}
                 <AccordionItem value={'5'}>
-                    <div className='sticky top-52 bg-gradient-to-r from-emerald-50 to-emerald-100'>
+                    <div className={
+                        `sticky top-52 ${PAGINA_ACTIVA === 'profesionales' ?
+                        'bg-emerald-100' : 'bg-gradient-to-r from-emerald-50 to-emerald-100'}`}>
                         <MiAccordionTrigger
                         url={'/profesionales'}
                         urlIcono={'/Profesionales.svg'}
@@ -161,10 +168,18 @@ export default async function BarraLateral() {
 
                     <AccordionContent>
                         <Accordion type="single" collapsible className='bg-[#e8faf0] rounded text-zinc-800 p-4 shadow-md'>
-                            {centrosConProfesionales.map((centro) => (
+                            {centrosConProfesionales.map(centro => (
                             <AccordionItem key={centro.id} value={centro.id}>
                                 <div className='flex gap-2 items-center'>
-                                    <AccordionTrigger className='font-medium'>{centro.nombre}</AccordionTrigger>
+                                    <AccordionTrigger className='font-medium flex gap-2 items-center'>
+                                        <Image
+                                        src={centro.urlIcon as string}
+                                        alt="img centro de salud"
+                                        width={24}
+                                        height={24} />
+
+                                        {centro.nombre}
+                                    </AccordionTrigger>
                                 </div>
                                 
                                 {centro.relacionados.map(idProf => {
