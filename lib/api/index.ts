@@ -1,4 +1,4 @@
-interface CentroSalud {
+export interface CentroSalud {
     id:             string
     urlIcon:        string
     nombre:         string
@@ -9,13 +9,13 @@ interface CentroSalud {
     [key: string]:  string | string[]
 }
 
-interface ZonaSanitaria {
+export interface ZonaSanitaria {
     id?:            string
     nombreZona:     string
     centrosSalud: CentroSalud[]
 }
 
-interface ZonasSanitarias {
+export interface ZonasSanitarias {
     zonas:          ZonaSanitaria[]
 }
 
