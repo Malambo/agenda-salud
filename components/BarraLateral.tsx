@@ -1,4 +1,7 @@
-import {headers}            from "next/headers"
+'use client'
+
+// import {headers}            from "next/headers"
+import {usePathname}        from 'next/navigation'
 import Link                 from "next/link"
 import Image                from "next/image"
 import {User, Search}       from "lucide-react"
@@ -13,41 +16,96 @@ import MiAccordionTrigger   from "@/components/ui/MiAccordionTrigger"
 import {Input}              from "@/components/ui/input"
 import {Button}             from "@/components/ui/button"
 import IsoLogo              from '@/public/IsoLogo.svg'
+import { useEffect, useState } from 'react'
+import type {ZonasSanitarias, Profesional, Especialidad} from '@/lib/api'
 
-
-const zonasSanitarias = await api.listaZonasSanitarias()
-const zonas = zonasSanitarias.zonas
-const profesionales = await api.listaProfesionales()
+// const zonasSanitarias = await api.listaZonasSanitarias()
+// const zonas = zonasSanitarias.zonas
+// const profesionales = await api.listaProfesionales()
 // Ordena por apellido.
 // Si el formato no es exactamente "Dr. Nombre Apellido" va a fallar:
-const profesionalesABC = profesionales.sort((a, b) => a.nombre.split(' ')[2].localeCompare(b.nombre.split(' ')[2]))
-const especialidades = await api.listaEspecialidades()
+// const profesionalesABC = profesionales.sort((a, b) => a.nombre.split(' ')[2].localeCompare(b.nombre.split(' ')[2]))
+// const especialidades = await api.listaEspecialidades()
 // Mira el id de la especialidad en el profesional y busca el nombre en especialidades
-const especialidadesConProfesionales = mapearRelacionados(
-    especialidades,     // fuente de los nombres
-    profesionales,      // pide con ids los nombres a especialidades
-    'especialidades',   // campo que tiene los id (en profesionales)(?)
-    'id',               // vínculo (en especialidades)(?)
-    'nombre'            // otro campo que debe estar (desde especialidades)
-)
-// console.log("☸ ~ especialidadesConProfesionales:", especialidadesConProfesionales)
+// const especialidadesConProfesionales = mapearRelacionados(
+//     especialidades,     // fuente de los nombres
+//     profesionales,      // pide con ids los nombres a especialidades
+//     'especialidades',   // campo que tiene los id (en profesionales)(?)
+//     'id',               // vínculo (en especialidades)(?)
+//     'nombre'            // otro campo que debe estar (desde especialidades)
+// )
 
-const profesionalesMap = new Map(profesionales.map(p => [p.id, p.nombre]))
-const centrosSalud = zonasSanitarias.zonas.flatMap((zona) => zona.centrosSalud)
+// const profesionalesMap = new Map(profesionales.map(p => [p.id, p.nombre]))
+// const centrosSalud = zonasSanitarias.zonas.flatMap((zona) => zona.centrosSalud)
 
-const centrosConProfesionales = mapearRelacionados(
-    centrosSalud,
-    profesionales,
-    'centrosSalud',
-    'id',
-    'nombre'
-)
+// const centrosConProfesionales = mapearRelacionados(
+//     centrosSalud,
+//     profesionales,
+//     'centrosSalud',
+//     'id',
+//     'nombre'
+// )
 
 
-export default async function BarraLateral() {
-    const headerList = await headers()
-    const currentPath = headerList.get('x-pathname')            // Ruta actual
-    const PAGINA_ACTIVA = currentPath?.split('/')[1]  ?? ''     // Página activa
+export default function BarraLateral() {
+    // const headerList = await headers()
+    // const currentPath = headerList.get('x-pathname')            // Ruta actual
+    // const PAGINA_ACTIVA = currentPath?.split('/')[1]  ?? ''     // Página activa
+
+    const pathname = usePathname()
+    const PAGINA_ACTIVA = pathname.split('/')[1] ?? ''
+  
+    // Estados para almacenar los datos
+    const [zonasSanitarias, setZonasSanitarias] = useState<ZonasSanitarias>({zonas: []})
+    const [profesionales, setProfesionales] = useState<Profesional[]>([])
+    const [especialidades, setEspecialidades] = useState<Especialidad[]>([])
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        async function fetchData() {
+        try {
+            const zonasSanitariasData = await api.listaZonasSanitarias()
+            const profesionalesData = await api.listaProfesionales()
+            const especialidadesData = await api.listaEspecialidades()
+
+            setZonasSanitarias(zonasSanitariasData)
+            setProfesionales(profesionalesData)
+            setEspecialidades(especialidadesData)
+        } catch (error) {
+            console.error("Error fetching data:", error)
+        }
+        setLoading(false)
+        }
+        fetchData()
+    }, [])
+
+    if (loading) {
+        return <div>Cargando...</div>
+    }
+    // No mostrar la barra lateral en la página de inicio
+    if (PAGINA_ACTIVA === 'inicio' || pathname === '/') return null
+
+    // Procesar los datos una vez que ya están cargados
+    const zonas = zonasSanitarias.zonas
+    const profesionalesABC = [...profesionales].sort((a, b) =>
+        a.nombre.split(" ")[2].localeCompare(b.nombre.split(" ")[2])
+    )
+    const profesionalesMap = new Map(profesionales.map(p => [p.id, p.nombre]))
+    const especialidadesConProfesionales = mapearRelacionados(
+        especialidades,
+        profesionales,
+        "especialidades",
+        "id",
+        "nombre"
+    )
+    const centrosSalud = zonasSanitarias.zonas.flatMap((zona) => zona.centrosSalud)
+    const centrosConProfesionales = mapearRelacionados(
+        centrosSalud,
+        profesionales,
+        'centrosSalud',
+        'id',
+        'nombre'
+    )
 
     return (
         <div
@@ -226,4 +284,3 @@ export default async function BarraLateral() {
         </div>
     )
 }
-

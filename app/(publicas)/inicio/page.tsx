@@ -14,7 +14,7 @@ export default function InicioPage() {
                 width={720}
                 height={720 * 0.4} />
 
-                <div className='flex flex-col gap-y-6 lg:flex-row lg:gap-x-12'>
+                <div className='flex flex-col gap-y-6 lg:flex-row lg:gap-x-12 lg:flex-1'>
                     <button
                     type='button'
                     className='
@@ -25,7 +25,6 @@ export default function InicioPage() {
                     hover:shadow-xl 
                     transition duration-500 ease-in-out'>
                         <p className='group-hover:scale-105 group-hover:animate-out transition duration-500'>Reservar turno</p>
-
                     </button>
 
                     <button

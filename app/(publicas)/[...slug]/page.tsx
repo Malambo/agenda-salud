@@ -1,7 +1,7 @@
-import api from '@/lib/api';
-import TituloPagina from '@/components/ui/TituloPagina';
-import TarjeteroEspecialidades from '@/components/TarjeteroEspecialidades';
-import CentrosSalud from '@/components/CentrosSalud';
+import api from '@/lib/api'
+import TituloPagina from '@/components/ui/TituloPagina'
+import TarjeteroEspecialidades from '@/components/TarjeteroEspecialidades'
+import CentrosSalud from '@/components/CentrosSalud'
 
 
 export default async function CategoriaPage({params}: {params: Promise<{slug: string[]}>}) {
