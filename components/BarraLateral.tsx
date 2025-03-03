@@ -1,6 +1,8 @@
 'use client'
 
-// import {headers}            from "next/headers"
+import {
+    useEffect,
+    useState}               from 'react'
 import {usePathname}        from 'next/navigation'
 import Link                 from "next/link"
 import Image                from "next/image"
@@ -16,41 +18,10 @@ import MiAccordionTrigger   from "@/components/ui/MiAccordionTrigger"
 import {Input}              from "@/components/ui/input"
 import {Button}             from "@/components/ui/button"
 import IsoLogo              from '@/public/IsoLogo.svg'
-import { useEffect, useState } from 'react'
 import type {ZonasSanitarias, Profesional, Especialidad} from '@/lib/api'
-
-// const zonasSanitarias = await api.listaZonasSanitarias()
-// const zonas = zonasSanitarias.zonas
-// const profesionales = await api.listaProfesionales()
-// Ordena por apellido.
-// Si el formato no es exactamente "Dr. Nombre Apellido" va a fallar:
-// const profesionalesABC = profesionales.sort((a, b) => a.nombre.split(' ')[2].localeCompare(b.nombre.split(' ')[2]))
-// const especialidades = await api.listaEspecialidades()
-// Mira el id de la especialidad en el profesional y busca el nombre en especialidades
-// const especialidadesConProfesionales = mapearRelacionados(
-//     especialidades,     // fuente de los nombres
-//     profesionales,      // pide con ids los nombres a especialidades
-//     'especialidades',   // campo que tiene los id (en profesionales)(?)
-//     'id',               // vínculo (en especialidades)(?)
-//     'nombre'            // otro campo que debe estar (desde especialidades)
-// )
-
-// const profesionalesMap = new Map(profesionales.map(p => [p.id, p.nombre]))
-// const centrosSalud = zonasSanitarias.zonas.flatMap((zona) => zona.centrosSalud)
-
-// const centrosConProfesionales = mapearRelacionados(
-//     centrosSalud,
-//     profesionales,
-//     'centrosSalud',
-//     'id',
-//     'nombre'
-// )
 
 
 export default function BarraLateral() {
-    // const headerList = await headers()
-    // const currentPath = headerList.get('x-pathname')            // Ruta actual
-    // const PAGINA_ACTIVA = currentPath?.split('/')[1]  ?? ''     // Página activa
 
     const pathname = usePathname()
     const PAGINA_ACTIVA = pathname.split('/')[1] ?? ''
@@ -87,6 +58,7 @@ export default function BarraLateral() {
 
     // Procesar los datos una vez que ya están cargados
     const zonas = zonasSanitarias.zonas
+    const centrosSalud = zonasSanitarias.zonas.flatMap((zona) => zona.centrosSalud)
     const profesionalesABC = [...profesionales].sort((a, b) =>
         a.nombre.split(" ")[2].localeCompare(b.nombre.split(" ")[2])
     )
@@ -98,7 +70,6 @@ export default function BarraLateral() {
         "id",
         "nombre"
     )
-    const centrosSalud = zonasSanitarias.zonas.flatMap((zona) => zona.centrosSalud)
     const centrosConProfesionales = mapearRelacionados(
         centrosSalud,
         profesionales,
@@ -109,12 +80,14 @@ export default function BarraLateral() {
 
     return (
         <div
-        className="
+        className='
         w-80 min-h-screen px-2
         bg-gradient-to-r from-emerald-50 to-emerald-100 border-r
-        border-emerald-300
-        shadow-[0px_50px_0px_0px_rgba(0,_0,_0,_0.5)]">
-        
+        border-emerald-300'>
+
+            {/* Encabezado de la barra lateral: logo y búsqueda */}
+
+            {/* Logo AgendaSalud con enlace a la página de inicio */}
             <div className='
             z-10 sticky top-0 py-4
             bg-gradient-to-r from-emerald-50 to-emerald-100'>
@@ -132,6 +105,7 @@ export default function BarraLateral() {
                     Agenda Salud
                 </Link>
 
+                {/* Caja de búsqueda */}
                 <div className="my-8 p-1 rounded border border-emerald-600 bg-zinc-50">
                     <div className="flex w-full max-w-sm items-center space-x-2 p-1">
                         <Input type="text" placeholder="Buscar" />
@@ -147,8 +121,12 @@ export default function BarraLateral() {
                     </div>
                 </div>
             </div>
-            
+
+            {/* Secciones de la barra lateral: centros de salud, especialidades, profesionales */}
+
             <Accordion type="single" collapsible>
+
+                {/* Centros de salud */}
                 <AccordionItem value={'1'}>
                     <div className={
                         `sticky top-52 ${PAGINA_ACTIVA === 'centro-salud' ?
@@ -182,10 +160,12 @@ export default function BarraLateral() {
                     </AccordionContent>
                 </AccordionItem>
 
+                {/* Especialidades */}
                 <AccordionItem value={'2'}>
-                    <div className={
-                        `sticky top-52 ${PAGINA_ACTIVA === 'especialidades' ?
-                        'bg-emerald-100' : 'bg-gradient-to-r from-emerald-50 to-emerald-100'}`}>
+                    <div
+                    className={
+                    `sticky top-52 ${PAGINA_ACTIVA === 'especialidades' ?
+                    'bg-emerald-100' : 'bg-gradient-to-r from-emerald-50 to-emerald-100'}`}>
                         <MiAccordionTrigger
                         url={'/especialidades'}
                         urlIcono={'/Especialidades.svg'}
@@ -213,7 +193,7 @@ export default function BarraLateral() {
                     </AccordionContent>
                 </AccordionItem>
 
-                {/* --- */}
+                {/* Profesionales en centros de salud */}
                 <AccordionItem value={'5'}>
                     <div className={
                         `sticky top-52 ${PAGINA_ACTIVA === 'profesionales' ?
@@ -253,8 +233,8 @@ export default function BarraLateral() {
                         </Accordion>
                     </AccordionContent>
                 </AccordionItem>
-                {/* --- */}
-        
+
+                {/* Todos los profesionales */}
                 <AccordionItem value={'3'}>
                     <div className='sticky top-52 bg-gradient-to-r from-emerald-50 to-emerald-100'>
                         <MiAccordionTrigger

@@ -15,7 +15,7 @@ export default function MiAccordionTrigger({url, urlIcono, titulo}: MiAccordionP
     return (
         <Link href={url}>
             <AccordionTrigger className='flex items-center px-2 text-start '>
-                <div className='flex gap-4 items-baseline'>
+                <div className='flex gap-4 items-center'>
                     {urlIcono &&
                     <Image
                     src={urlIcono}
