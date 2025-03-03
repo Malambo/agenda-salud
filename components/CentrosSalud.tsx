@@ -73,7 +73,7 @@ export default function CentrosSalud() {
             {/* Slider hijo: Centros de Salud, con transición suave */}
             <div className={`w-[1024px] ${zonaSeleccionada?.centrosSalud && zonaSeleccionada.centrosSalud.length > 0 ? 'border-b border-emerald-500 pb-2' : ''}`}>
                 <AnimatePresence mode="wait">
-                {zonaActiva && zonaSeleccionada && (
+                    {zonaActiva && zonaSeleccionada && (
                     <motion.div
                     key={zonaActiva}
                     initial={{opacity: 0, y:5}}
@@ -102,11 +102,13 @@ export default function CentrosSalud() {
                                 </CarouselItem>
                                 ))}
                             </CarouselContent>
+
                             <CarouselPrevious />
                             <CarouselNext />
+                            
                         </Carousel>
                     </motion.div>
-                )}
+                    )}
                 </AnimatePresence>
             </div>
         </div>

@@ -1,10 +1,4 @@
 import {redirect} from "next/navigation"
 
 
-export default async function Home() {
-   
-
-    return (
-        redirect('/inicio')
-    )
-}
+export default async function Home() {return (redirect('/inicio'))}

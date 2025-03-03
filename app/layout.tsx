@@ -15,7 +15,6 @@ export const dynamic = 'force-dynamic'
 export default async function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
     const headerList = await headers()
     const currentPath = headerList.get('x-pathname')
-    console.log("🚀 ~ RootLayout ~ currentPath:", currentPath)
 
     return (
         <html lang="es">
