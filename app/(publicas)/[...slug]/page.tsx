@@ -9,7 +9,6 @@ export default async function CategoriaPage({params}: {params: Promise<{slug: st
     const slug = (await params).slug
     const {urlIcono, titulo, descripcion} = await api.traeCategoria(`/${slug[0]}`)
 
-
     return (
         <>
         <div className='flex flex-col gap-24 items-center'>
@@ -18,12 +17,12 @@ export default async function CategoriaPage({params}: {params: Promise<{slug: st
         </div>
 
         <div className='mt-44'>
-            {slug[0] === 'centro-salud' && (<CentrosSalud />)}
+            {slug[0] === 'centro-salud' && (<CentrosSalud slug={slug} />)}
             {slug[0] === 'especialidades' && <TarjeteroEspecialidades />}
             {slug[0] === 'profesionales' && (
             <div>
-                <p className='font-bold text-orange-500'>
-                    {slug[0].toLocaleUpperCase()}
+                <p className='font-bold text-orange-500 uppercase'>
+                    {slug[0]}
                 </p>
             </div>
             )}

@@ -46,7 +46,7 @@ export function mapearRelacionados<
       result.urlIcon = itemBase.urlIcon as string    // Añade la URL de la imagen si existe.
     }
 
-    return result;
+    return result
   })
 }
 

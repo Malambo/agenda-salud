@@ -1,3 +1,5 @@
+import {crearSlug} from "../utils"
+
 export interface CentroSalud {
     id:             string
     urlIcon:        string
@@ -48,7 +50,7 @@ const zonasSanitarias: ZonasSanitarias = {
             {
             "id": "1",
             "urlIcon": "/Hospital.svg",
-            "nombre": "Hospital San Clemente",
+            "nombre": "General de Agudos",
             "tipo": "hospital",
             "direccion": "Avenida San Martín 505",
             "ciudad": "San Clemente",
@@ -99,7 +101,7 @@ const zonasSanitarias: ZonasSanitarias = {
             {
             "id": "5",
             "urlIcon": "/Hospital.svg",
-            "nombre": "Hospital Santa Teresita",
+            "nombre": "Sub Zonal de Santa Teresita",
             "tipo": "hospital",
             "ciudad": "Santa Teresita",
             "direccion": "Avenida 41 y calle 16",
@@ -132,7 +134,7 @@ const zonasSanitarias: ZonasSanitarias = {
             {
             "id": "8",
             "urlIcon": "/Hospital.svg",
-            "nombre": "Hospital Mar de Ajó",
+            "nombre": "Doctor Carlos Macías",
             "tipo": "hospital",
             "ciudad": "Mar de Ajó",
             "direccion": "Avenida Libertador 1780",
@@ -196,66 +198,66 @@ const zonasSanitarias: ZonasSanitarias = {
 
 
 const Profesionales: Profesional[] = [
-  { id: '1', nombre: 'Dra. Ana López', especialidades: ['1'], centrosSalud: ['1']},
-  { id: '2', nombre: 'Dr. Juan Pérez', especialidades: ['1', '2'], centrosSalud: ['2', '3']},
-  { id: '3', nombre: 'Dra. María Gómez', especialidades: ['3'], centrosSalud: ['4']},
-  { id: '4', nombre: 'Dr. Carlos Fernández', especialidades: ['1'], centrosSalud: ['5', '6']},
-  { id: '5', nombre: 'Dra. Laura Martínez', especialidades: ['2'], centrosSalud: ['7']},
-  { id: '6', nombre: 'Dr. Jorge Ramírez', especialidades: ['3'], centrosSalud: ['8', '9']},
-  { id: '7', nombre: 'Dra. Elena Sánchez', especialidades: ['1', '2'], centrosSalud: ['10']},
-  { id: '8', nombre: 'Dr. Pedro Gutiérrez', especialidades: ['4'], centrosSalud: ['11', '12']},
-  { id: '9', nombre: 'Dra. Claudia Castro', especialidades: ['5', '21', '22'], centrosSalud: ['13']},
-  { id: '10', nombre: 'Dr. Ricardo Morales', especialidades: ['2', '6'], centrosSalud: ['14']},
-  { id: '11', nombre: 'Dra. Teresa Vega', especialidades: ['3'], centrosSalud: ['1', '2']},
-  { id: '12', nombre: 'Dr. Andrés Herrera', especialidades: ['7'], centrosSalud: ['3']},
-  { id: '13', nombre: 'Dra. Silvia Ortiz', especialidades: ['8'], centrosSalud: ['4', '5']},
-  { id: '14', nombre: 'Dr. Fernando García', especialidades: ['9'], centrosSalud: ['6']},
-  { id: '15', nombre: 'Dra. Lorena Ruiz', especialidades: ['10'], centrosSalud: ['7', '8']},
-  { id: '16', nombre: 'Dr. Pablo Navarro', especialidades: ['4', '11'], centrosSalud: ['9']},
-  { id: '17', nombre: 'Dra. Diana Márquez', especialidades: ['12'], centrosSalud: ['10', '11']},
-  { id: '18', nombre: 'Dr. Víctor Ramos', especialidades: ['13'], centrosSalud: ['12']},
-  { id: '19', nombre: 'Dra. Gabriela Peña', especialidades: ['5', '14'], centrosSalud: ['13', '14']},
-  { id: '20', nombre: 'Dr. Manuel Díaz', especialidades: ['15'], centrosSalud: ['1']},
-  { id: '21', nombre: 'Dra. Isabel Torres', especialidades: ['6'], centrosSalud: ['2', '3']},
-  { id: '22', nombre: 'Dr. Javier Mendoza', especialidades: ['16'], centrosSalud: ['4']},
-  { id: '23', nombre: 'Dra. Cristina Flores', especialidades: ['7'], centrosSalud: ['5', '6']},
-  { id: '24', nombre: 'Dr. Eduardo Álvarez', especialidades: ['17'], centrosSalud: ['7']},
-  { id: '25', nombre: 'Dra. Beatriz Rojas', especialidades: ['8'], centrosSalud: ['8', '9']},
-  { id: '26', nombre: 'Dr. Antonio Soto', especialidades: ['18'], centrosSalud: ['10']},
-  { id: '27', nombre: 'Dra. Patricia León', especialidades: ['9', '21', '22'], centrosSalud: ['11', '12']},
-  { id: '28', nombre: 'Dr. Ernesto Vargas', especialidades: ['19'], centrosSalud: ['13']},
-  { id: '29', nombre: 'Dra. Susana Domínguez', especialidades: ['10'], centrosSalud: ['14']},
-  { id: '30', nombre: 'Dr. Jaime Cano', especialidades: ['20'], centrosSalud: ['1', '2']},
-  { id: '31', nombre: 'Dra. Carolina Aguilar', especialidades: ['1'], centrosSalud: ['3']},
-  { id: '32', nombre: 'Dr. Rafael Paredes', especialidades: ['2'], centrosSalud: ['5']},
-  { id: '33', nombre: 'Dra. Sofía Lozano', especialidades: ['3'], centrosSalud: ['6']},
-  { id: '34', nombre: 'Dr. Sergio Méndez', especialidades: ['4'], centrosSalud: ['7', '8']},
-  { id: '35', nombre: 'Dra. Inés Campos', especialidades: ['5', '21', '22'], centrosSalud: ['9']},
-  { id: '36', nombre: 'Dr. Óscar Gil', especialidades: ['6'], centrosSalud: ['10', '11']},
-  { id: '37', nombre: 'Dra. Alicia Guzmán', especialidades: ['7'], centrosSalud: ['12']},
-  { id: '38', nombre: 'Dr. Luis Romero', especialidades: ['8'], centrosSalud: ['13', '14']},
-  { id: '39', nombre: 'Dra. Marisa Cortés', especialidades: ['9'], centrosSalud: ['1']},
-  { id: '40', nombre: 'Dr. Ángel Herrera', especialidades: ['10'], centrosSalud: ['2', '3']},
-  { id: '41', nombre: 'Dra. Irene Salinas', especialidades: ['11'], centrosSalud: ['4']},
-  { id: '42', nombre: 'Dr. César Nieto', especialidades: ['12'], centrosSalud: ['5', '6']},
-  { id: '43', nombre: 'Dra. Natalia Estévez', especialidades: ['13'], centrosSalud: ['7']},
-  { id: '44', nombre: 'Dr. Álvaro Peña', especialidades: ['14'], centrosSalud: ['8', '9']},
-  { id: '45', nombre: 'Dra. Carmen Beltrán', especialidades: ['15', '22'], centrosSalud: ['10']},
-  { id: '46', nombre: 'Dr. Daniel Fuentes', especialidades: ['16'], centrosSalud: ['11', '12']},
-  { id: '47', nombre: 'Dra. Verónica Maldonado', especialidades: ['17'], centrosSalud: ['13']},
-  { id: '48', nombre: 'Dr. Hugo Ponce', especialidades: ['18'], centrosSalud: ['14']},
-  { id: '49', nombre: 'Dra. Paola Cruz', especialidades: ['19'], centrosSalud: ['1', '2']},
-  { id: '50', nombre: 'Dr. Francisco Ortega', especialidades: ['20'], centrosSalud: ['3']},
-  { id: '51', nombre: 'Dra. Julia Velázquez', especialidades: ['1'], centrosSalud: ['4', '5']},
-  { id: '52', nombre: 'Dr. Martín Serrano', especialidades: ['2'], centrosSalud: ['6']},
-  { id: '53', nombre: 'Dra. Andrea Villalobos', especialidades: ['3'], centrosSalud: ['7', '8']},
-  { id: '54', nombre: 'Dr. Adrián Torres', especialidades: ['4'], centrosSalud: ['9']},
-  { id: '55', nombre: 'Dra. Pilar Delgado', especialidades: ['5', '21'], centrosSalud: ['10', '11']},
-  { id: '56', nombre: 'Dr. Germán Tapia', especialidades: ['6'], centrosSalud: ['12']},
-  { id: '57', nombre: 'Dra. Mónica Barrios', especialidades: ['7'], centrosSalud: ['13', '14']},
-  { id: '58', nombre: 'Dr. Luis Aragón', especialidades: ['8'], centrosSalud: ['1']},
-  { id: '59', nombre: 'Dra. Clara Espinoza', especialidades: ['9'], centrosSalud: ['2', '3']},
-  { id: '60', nombre: 'Dr. Miguel Montoya', especialidades: ['10'], centrosSalud: ['4']}
+  {id:  '1', nombre: 'Dra. Ana López', especialidades: ['1'], centrosSalud: ['1']},
+  {id:  '2', nombre: 'Dr. Juan Pérez', especialidades: ['1', '2'], centrosSalud: ['2', '3']},
+  {id:  '3', nombre: 'Dra. María Gómez', especialidades: ['3'], centrosSalud: ['4']},
+  {id:  '4', nombre: 'Dr. Carlos Fernández', especialidades: ['1'], centrosSalud: ['5', '6']},
+  {id:  '5', nombre: 'Dra. Laura Martínez', especialidades: ['2'], centrosSalud: ['7']},
+  {id:  '6', nombre: 'Dr. Jorge Ramírez', especialidades: ['3'], centrosSalud: ['8', '9']},
+  {id:  '7', nombre: 'Dra. Elena Sánchez', especialidades: ['1', '2'], centrosSalud: ['10']},
+  {id:  '8', nombre: 'Dr. Pedro Gutiérrez', especialidades: ['4'], centrosSalud: ['11', '12']},
+  {id:  '9', nombre: 'Dra. Claudia Castro', especialidades: ['5', '21', '22'], centrosSalud: ['13']},
+  {id: '10', nombre: 'Dr. Ricardo Morales', especialidades: ['2', '6'], centrosSalud: ['14']},
+  {id: '11', nombre: 'Dra. Teresa Vega', especialidades: ['3'], centrosSalud: ['1', '2']},
+  {id: '12', nombre: 'Dr. Andrés Herrera', especialidades: ['7'], centrosSalud: ['3']},
+  {id: '13', nombre: 'Dra. Silvia Ortiz', especialidades: ['8'], centrosSalud: ['4', '5']},
+  {id: '14', nombre: 'Dr. Fernando García', especialidades: ['9'], centrosSalud: ['6']},
+  {id: '15', nombre: 'Dra. Lorena Ruiz', especialidades: ['10'], centrosSalud: ['7', '8']},
+  {id: '16', nombre: 'Dr. Pablo Navarro', especialidades: ['4', '11'], centrosSalud: ['9']},
+  {id: '17', nombre: 'Dra. Diana Márquez', especialidades: ['12'], centrosSalud: ['10', '11']},
+  {id: '18', nombre: 'Dr. Víctor Ramos', especialidades: ['13'], centrosSalud: ['12']},
+  {id: '19', nombre: 'Dra. Gabriela Peña', especialidades: ['5', '14'], centrosSalud: ['13', '14']},
+  {id: '20', nombre: 'Dr. Manuel Díaz', especialidades: ['15'], centrosSalud: ['1']},
+  {id: '21', nombre: 'Dra. Isabel Torres', especialidades: ['6'], centrosSalud: ['2', '3']},
+  {id: '22', nombre: 'Dr. Javier Mendoza', especialidades: ['16'], centrosSalud: ['4']},
+  {id: '23', nombre: 'Dra. Cristina Flores', especialidades: ['7'], centrosSalud: ['5', '6']},
+  {id: '24', nombre: 'Dr. Eduardo Álvarez', especialidades: ['17'], centrosSalud: ['7']},
+  {id: '25', nombre: 'Dra. Beatriz Rojas', especialidades: ['8'], centrosSalud: ['8', '9']},
+  {id: '26', nombre: 'Dr. Antonio Soto', especialidades: ['18'], centrosSalud: ['10']},
+  {id: '27', nombre: 'Dra. Patricia León', especialidades: ['9', '21', '22'], centrosSalud: ['11', '12']},
+  {id: '28', nombre: 'Dr. Ernesto Vargas', especialidades: ['19'], centrosSalud: ['13']},
+  {id: '29', nombre: 'Dra. Susana Domínguez', especialidades: ['10'], centrosSalud: ['14']},
+  {id: '30', nombre: 'Dr. Jaime Cano', especialidades: ['20'], centrosSalud: ['1', '2']},
+  {id: '31', nombre: 'Dra. Carolina Aguilar', especialidades: ['1'], centrosSalud: ['3']},
+  {id: '32', nombre: 'Dr. Rafael Paredes', especialidades: ['2'], centrosSalud: ['5']},
+  {id: '33', nombre: 'Dra. Sofía Lozano', especialidades: ['3'], centrosSalud: ['6']},
+  {id: '34', nombre: 'Dr. Sergio Méndez', especialidades: ['4'], centrosSalud: ['7', '8']},
+  {id: '35', nombre: 'Dra. Inés Campos', especialidades: ['5', '21', '22'], centrosSalud: ['9']},
+  {id: '36', nombre: 'Dr. Óscar Gil', especialidades: ['6'], centrosSalud: ['10', '11']},
+  {id: '37', nombre: 'Dra. Alicia Guzmán', especialidades: ['7'], centrosSalud: ['12']},
+  {id: '38', nombre: 'Dr. Luis Romero', especialidades: ['8'], centrosSalud: ['13', '14']},
+  {id: '39', nombre: 'Dra. Marisa Cortés', especialidades: ['9'], centrosSalud: ['1']},
+  {id: '40', nombre: 'Dr. Ángel Herrera', especialidades: ['10'], centrosSalud: ['2', '3']},
+  {id: '41', nombre: 'Dra. Irene Salinas', especialidades: ['11'], centrosSalud: ['4']},
+  {id: '42', nombre: 'Dr. César Nieto', especialidades: ['12'], centrosSalud: ['5', '6']},
+  {id: '43', nombre: 'Dra. Natalia Estévez', especialidades: ['13'], centrosSalud: ['7']},
+  {id: '44', nombre: 'Dr. Álvaro Peña', especialidades: ['14'], centrosSalud: ['8', '9']},
+  {id: '45', nombre: 'Dra. Carmen Beltrán', especialidades: ['15', '22'], centrosSalud: ['10']},
+  {id: '46', nombre: 'Dr. Daniel Fuentes', especialidades: ['16'], centrosSalud: ['11', '12']},
+  {id: '47', nombre: 'Dra. Verónica Maldonado', especialidades: ['17'], centrosSalud: ['13']},
+  {id: '48', nombre: 'Dr. Hugo Ponce', especialidades: ['18'], centrosSalud: ['14']},
+  {id: '49', nombre: 'Dra. Paola Cruz', especialidades: ['19'], centrosSalud: ['1', '2']},
+  {id: '50', nombre: 'Dr. Francisco Ortega', especialidades: ['20'], centrosSalud: ['3']},
+  {id: '51', nombre: 'Dra. Julia Velázquez', especialidades: ['1'], centrosSalud: ['4', '5']},
+  {id: '52', nombre: 'Dr. Martín Serrano', especialidades: ['2'], centrosSalud: ['6']},
+  {id: '53', nombre: 'Dra. Andrea Villalobos', especialidades: ['3'], centrosSalud: ['7', '8']},
+  {id: '54', nombre: 'Dr. Adrián Torres', especialidades: ['4'], centrosSalud: ['9']},
+  {id: '55', nombre: 'Dra. Pilar Delgado', especialidades: ['5', '21'], centrosSalud: ['10', '11']},
+  {id: '56', nombre: 'Dr. Germán Tapia', especialidades: ['6'], centrosSalud: ['12']},
+  {id: '57', nombre: 'Dra. Mónica Barrios', especialidades: ['7'], centrosSalud: ['13', '14']},
+  {id: '58', nombre: 'Dr. Luis Aragón', especialidades: ['8'], centrosSalud: ['1']},
+  {id: '59', nombre: 'Dra. Clara Espinoza', especialidades: ['9'], centrosSalud: ['2', '3']},
+  {id: '60', nombre: 'Dr. Miguel Montoya', especialidades: ['10'], centrosSalud: ['4']}
 ]
 
 const ENTRADA_DESCRIPCION = 'Diagnóstico y tratamiento de las enfermedades '
@@ -312,15 +314,25 @@ const api = {
     },
 
     // Obtener un centro médico específico por su ID
-    traeCentro: async (id: string): Promise<CentroSalud> => {
+    traeCentroPorId: async (id: string): Promise<CentroSalud> => {
         // Usar flatMap para aplanar los centros médicos de todas las zonas
         const centrosMedicos = zonasSanitarias.zonas.flatMap(zona => zona.centrosSalud)
         // Buscar el centro médico por ID
         const centro = centrosMedicos.find(centro => centro.id === id)
         if (!centro) {
-            throw new Error(`No se encontró el centro con id ${id}`) // Lanzar error si no se encuentra
+            throw new Error(`No se encontró el centro con id ${id}`)
         }
         return centro // Devuelve el centro médico encontrado
+    },
+
+    // Obtener centro médico por su URL
+    traeCentroPorUrl: async (url: string): Promise<CentroSalud> => {
+        const centrosMedicos = zonasSanitarias.zonas.flatMap(zona => zona.centrosSalud)
+        const centro = centrosMedicos.find(centro => crearSlug(centro.nombre) === url)
+        if (!centro) {
+            throw new Error(`No se encontró el centro con URL ${url}`)
+        }
+        return centro   // Devuelve un centro médico dado el slug
     },
 
     // Obtener todos los médicos
@@ -330,10 +342,10 @@ const api = {
 
     // Obtener un médico específico por su ID
     traeProfesional: async (id: Profesional['id']): Promise<Profesional> => {
-        const medico = Profesionales.find((medico) => medico.id === id)
+        const medico = Profesionales.find(medico => medico.id === id)
         if (!medico) {
             throw new Error(`No se encontró el médico con id ${id}`)
-       }
+        }
         return medico
     },
 
@@ -344,11 +356,36 @@ const api = {
 
     // Obtener una especialidad específica por su ID
     traeEspecialidad: async (id: Especialidad['id']): Promise<Especialidad> => {
-        const especialidad = especialidades.find((especialidad) => especialidad.id === id)
+        const especialidad = especialidades.find(especialidad => especialidad.id === id)
         if (!especialidad) {
             throw new Error(`No se encontró la especialidad con id ${id}`)
        }
         return especialidad
+    },
+
+    traeEspecialidadesPorCentro: async (id: string): Promise<string[]> => {
+        try {
+            // 1. Validar que el centro de salud exista (opcional, pero buena práctica)
+            await api.traeCentroPorId(id) // Si no existe, `traeCentroPorIdSimulado` lanzará un error que capturaremos
+    
+            // 2. Encontrar profesionales que trabajan en este centro de salud
+            const profesionalesEnCentro = Profesionales.filter(profesional => profesional.centrosSalud.includes(id))
+    
+            // 3. Obtener IDs de especialidades de estos profesionales
+            const especialidadesIdsDeProfesionales = profesionalesEnCentro.flatMap(profesional => profesional.especialidades)
+    
+            // 4. Obtener objetos de especialidades completos usando los IDs
+            const especialidadesDelCentro = especialidades.filter(especialidad => especialidadesIdsDeProfesionales.includes(especialidad.id))
+    
+            // 5. Extraer solo los nombres de las especialidades y eliminar duplicados
+            const nombresEspecialidades = [...new Set(especialidadesDelCentro.map(especialidad => especialidad.nombre))]
+    
+            return nombresEspecialidades
+    
+        } catch (error) {
+            console.error("Error al obtener especialidades del centro:", error)
+            throw new Error(`Error al obtener especialidades del centro con id ${id}: ${error}`) // Relanzamos el error para que el componente/función que llame a esta función pueda manejarlo
+        }
     },
 
     // Obtener todas las categorías
