@@ -1,19 +1,27 @@
 "use client"
 
-import {useState, useEffect, useCallback, useRef} from "react"
+import {
+    useState,
+    useEffect,
+    useCallback,
+    useRef} from "react"
 import {usePathname} from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
-import {motion, AnimatePresence} from "framer-motion"
+import {
+    motion,
+    AnimatePresence} from "framer-motion"
 import {
     Carousel,
     CarouselContent,
     CarouselItem,
     CarouselNext,
-    CarouselPrevious
-} from "./ui/carousel"
+    CarouselPrevious} from "./ui/carousel"
 import {crearSlug} from "@/lib/utils"
-import api, {type ZonasSanitarias, type CentroSalud} from "@/lib/api"
+import
+    api,
+    {type ZonasSanitarias,
+    type CentroSalud} from "@/lib/api"
 
 export default function CentrosSalud({slug}: {slug: string[]}) {
     const pathname = usePathname().split('/')
@@ -93,7 +101,7 @@ export default function CentrosSalud({slug}: {slug: string[]}) {
                     setCargando(false)
                     return
                 }
-                
+
                 // Verificar si hay slug de centro
                 const slugCentro = slug.at(-1)
                 if (slugCentro) {
@@ -118,7 +126,6 @@ export default function CentrosSalud({slug}: {slug: string[]}) {
                 setCargando(false)
             }
         }
-
         cargarZonasSanitarias()
     }, [zonaPath, slug, buscarCentroPorSlug, cargarCentroCompleto])
 
@@ -136,7 +143,7 @@ export default function CentrosSalud({slug}: {slug: string[]}) {
                 activeItem.scrollIntoView({
                     behavior: 'smooth',
                     block: 'nearest',
-                    inline: 'center'
+                    inline: 'nearest'
                 })
             }, 100)
         }
@@ -242,7 +249,11 @@ export default function CentrosSalud({slug}: {slug: string[]}) {
 
             {/* Detalles del centro de salud */}
             {centroActivo && (
-                <div className="w-[1024px] mt-24 p-8 flex gap-24 items-start justify-evenly border border-emerald-300 bg-emerald-100 shadow-md">
+                <div className="
+                w-[1024px]
+                mt-24 p-8 border
+                border-emerald-300 bg-emerald-100 shadow-md
+                flex gap-24 items-start justify-evenly">
                     <div className='flex gap-12 items-start'>
                         <Image
                         src={centroActivo.urlIcon}
