@@ -17,7 +17,7 @@ export default async function CategoriaPage({params}: {params: Promise<{slug: st
         </div>
 
         <div className='mt-44'>
-            {slug[0] === 'centro-salud' && (<CentrosSalud slug={slug} />)}
+            {slug[0] === 'centro-salud' && (<CentrosSalud />)}
             {slug[0] === 'especialidades' && <TarjeteroEspecialidades />}
             {slug[0] === 'profesionales' && (
             <div>

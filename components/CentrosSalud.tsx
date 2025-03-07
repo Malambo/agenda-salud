@@ -23,18 +23,19 @@ import
     {type ZonasSanitarias,
     type CentroSalud} from "@/lib/api"
 
-export default function CentrosSalud({slug}: {slug: string[]}) {
+export default function CentrosSalud() {
     const pathname = usePathname().split('/')
     const [zonaPath] = (pathname ?? []).slice(-2)
 
     const [datos, setDatos] = useState<ZonasSanitarias | null>(null)
-    const [zonaActiva, setZonaActiva] = useState<string | null>(null)
+    const [zonaActiva, setZonaActiva] = useState<string | null>('Zona norte')
     const [centroActivo, setCentroActivo] = useState<CentroSalud | null>(null)
     const [especialidadesCentro, setEspecialidadesCentro] = useState<string[]>([])
     const [cargando, setCargando] = useState(true)
     
-    // Refs para acceder a los elementos del carousel directamente
+    // Refs para acceder a los elementos de los carousels directamente
     const centrosCarouselRef = useRef<HTMLDivElement>(null)
+    const zonasCarouselRef = useRef<HTMLDivElement>(null)
     
     // Función para cargar todo relacionado con un centro a la vez
     const cargarCentroCompleto = useCallback(async (centro: CentroSalud, nombreZona: string) => {
@@ -63,19 +64,19 @@ export default function CentrosSalud({slug}: {slug: string[]}) {
     }, [])
 
     // Función para buscar centro por slug
-    const buscarCentroPorSlug = useCallback(async (zonasDisponibles: ZonasSanitarias, slugCentro: string) => {
-        for (const zona of zonasDisponibles.zonas) {
-            const centroEncontrado = zona.centrosSalud.find(
-                centro => crearSlug(centro.nombre) === slugCentro
-            )
+    // const buscarCentroPorSlug = useCallback(async (zonasDisponibles: ZonasSanitarias, slugCentro: string) => {
+    //     for (const zona of zonasDisponibles.zonas) {
+    //         const centroEncontrado = zona.centrosSalud.find(
+    //             centro => crearSlug(centro.nombre) === slugCentro
+    //         )
             
-            if (centroEncontrado) {
-                await cargarCentroCompleto(centroEncontrado, zona.nombreZona)
-                return true
-            }
-        }
-        return false
-    }, [cargarCentroCompleto])
+    //         if (centroEncontrado) {
+    //             await cargarCentroCompleto(centroEncontrado, zona.nombreZona)
+    //             return true
+    //         }
+    //     }
+    //     return false
+    // }, [cargarCentroCompleto])
 
     // Cargar datos de Zonas Sanitarias
     useEffect(() => {
@@ -103,23 +104,23 @@ export default function CentrosSalud({slug}: {slug: string[]}) {
                 }
 
                 // Verificar si hay slug de centro
-                const slugCentro = slug.at(-1)
-                if (slugCentro) {
-                    // Buscar el centro por slug
-                    const centroEncontrado = await buscarCentroPorSlug(zonasSanitarias, slugCentro)
-                    if (!centroEncontrado && zonaCorrespondiente.centrosSalud.length > 0) {
-                        // Si no se encuentra el centro, cargar el primero de la zona
-                        await cargarCentroCompleto(
-                            zonaCorrespondiente.centrosSalud[0], 
-                            zonaCorrespondiente.nombreZona
-                        )
-                    }
-                } else if (zonaCorrespondiente.centrosSalud.length > 0) {
-                    // Si no hay slug de centro, seleccionar el primero de la zona
-                    setZonaActiva(zonaCorrespondiente.nombreZona)
-                } else {
-                    setZonaActiva(zonaCorrespondiente.nombreZona)
-                }
+                // const slugCentro = slug.at(-1)
+                // if (slugCentro) {
+                //     // Buscar el centro por slug
+                //     const centroEncontrado = await buscarCentroPorSlug(zonasSanitarias, slugCentro)
+                //     if (!centroEncontrado && zonaCorrespondiente.centrosSalud.length > 0) {
+                //         // Si no se encuentra el centro, cargar el primero de la zona
+                //         await cargarCentroCompleto(
+                //             zonaCorrespondiente.centrosSalud[0], 
+                //             zonaCorrespondiente.nombreZona
+                //         )
+                //     }
+                // } else if (zonaCorrespondiente.centrosSalud.length > 0) {
+                //     // Si no hay slug de centro, seleccionar el primero de la zona
+                //     setZonaActiva(zonaCorrespondiente.nombreZona)
+                // } else {
+                //     setZonaActiva(zonaCorrespondiente.nombreZona)
+                // }
             } catch (error) {
                 console.error("Error al cargar las zonas sanitarias:", error)
             } finally {
@@ -127,7 +128,7 @@ export default function CentrosSalud({slug}: {slug: string[]}) {
             }
         }
         cargarZonasSanitarias()
-    }, [zonaPath, slug, buscarCentroPorSlug, cargarCentroCompleto])
+    }, [zonaPath])
 
     // Función para desplazarse al centro activo utilizando scrollIntoView
     const scrollToActiveCentro = useCallback(() => {
@@ -149,12 +150,39 @@ export default function CentrosSalud({slug}: {slug: string[]}) {
         }
     }, [centroActivo])
 
+    // Función para desplazarse a la zona activa
+    const scrollToActiveZona = useCallback(() => {
+        if (!zonaActiva || !zonasCarouselRef.current) return
+        
+        // Buscar el elemento de la zona activa usando un selector específico
+        const activeZonaSelector = `[data-zona-nombre="${zonaActiva}"]`
+        const activeZonaItem = zonasCarouselRef.current.querySelector(activeZonaSelector)
+        
+        if (activeZonaItem) {
+            // Usar scrollIntoView para desplazarse al elemento
+            setTimeout(() => {
+                activeZonaItem.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'nearest'
+                })
+            }, 100)
+        }
+    }, [zonaActiva])
+
     // Efecto para desplazarse al centro activo cuando cambia
     useEffect(() => {
         if (centroActivo && !cargando) {
             scrollToActiveCentro()
         }
     }, [centroActivo, cargando, scrollToActiveCentro])
+
+    // Efecto para desplazarse a la zona activa cuando cambia
+    useEffect(() => {
+        if (zonaActiva && !cargando) {
+            scrollToActiveZona()
+        }
+    }, [zonaActiva, cargando, scrollToActiveZona])
 
     // Manejar el cambio de centro con la nueva función
     const handleCentroChange = async (centro: CentroSalud, nombreZona: string) => {
@@ -178,7 +206,7 @@ export default function CentrosSalud({slug}: {slug: string[]}) {
             className="w-[1024px] border-b border-emerald-500" 
             opts={{align: "center", loop: false }} 
             orientation="horizontal">
-                <CarouselContent className="-ml-1">
+                <CarouselContent className="-ml-1" ref={zonasCarouselRef}>
                     {datos?.zonas.map(zona => (
                         <CarouselItem key={zona.nombreZona} className="pl-1 basis-1/3">
                             <button

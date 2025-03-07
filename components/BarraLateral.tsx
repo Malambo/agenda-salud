@@ -53,6 +53,7 @@ export default function BarraLateral() {
     if (loading) {
         return <div>Cargando...</div>
     }
+
     // No mostrar la barra lateral en la página de inicio
     if (PAGINA_ACTIVA === 'inicio' || pathname === '/') return null
 
@@ -145,13 +146,13 @@ export default function BarraLateral() {
                                     <AccordionTrigger>{zona.nombreZona}</AccordionTrigger>
                                 </div>
                                 {zona.centrosSalud.map(centro => (
-                                <AccordionContent key={centro.id} className='flex p-2 gap-x-4 text-sm items-baseline'>
+                                <AccordionContent key={centro.id} className='flex p-2 gap-x-2 text-sm items-baseline'>
                                     <Image
                                     src={centro.urlIcon}
                                     alt="img centro de salud"
                                     width={24}
                                     height={24}/>
-                                    {centro.nombre}
+                                    <p><span className='capitalize'>{centro.tipo}</span> {centro.nombre}</p>
                                 </AccordionContent>
                                 ))}
                             </AccordionItem>
@@ -215,7 +216,6 @@ export default function BarraLateral() {
                                         alt="img centro de salud"
                                         width={24}
                                         height={24} />
-
                                         {centro.nombre}
                                     </AccordionTrigger>
                                 </div>
