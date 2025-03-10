@@ -14,7 +14,7 @@ export default function InicioPage() {
                 width={720}
                 height={720 * 0.4} />
 
-                <p className='text-zinc-500 subpixel-antialiased mt-32 mb-12'><span className='font-bold'>Accedé fácilmente a los turnos médicos del sistema de Salud municipal.</span> Explorá la agenda online para ver la disponibilidad de especialistas en los centros de salud municipales. Si ya sos usuario, reservá turno ahora.</p>
+                <p className='text-zinc-500 subpixel-antialiased mt-32 mb-12'><span className='font-bold'>Accedé muy fácil a los turnos del sistema de Salud.</span> Explorá la agenda online para ver la disponibilidad de especialistas. Si ya sos usuario, <span className='font-bold'>reservá turno ahora</span>.</p>
 
                 <div className='flex flex-col gap-y-6 lg:flex-row lg:gap-x-12 lg:flex-1'>
                     <button
