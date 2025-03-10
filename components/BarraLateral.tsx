@@ -146,7 +146,7 @@ export default function BarraLateral() {
                                     <AccordionTrigger>{zona.nombreZona}</AccordionTrigger>
                                 </div>
                                 {zona.centrosSalud.map(centro => (
-                                <AccordionContent key={centro.id} className='flex p-2 gap-x-2 text-sm items-baseline'>
+                                <AccordionContent key={centro.id} className='flex p-2 gap-x-2 text-sm items-center'>
                                     <Image
                                     src={centro.urlIcon}
                                     alt="img centro de salud"
