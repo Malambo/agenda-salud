@@ -20,6 +20,7 @@ import {Button}             from "@/components/ui/button"
 import IsoLogo              from '@/public/IsoLogo.svg'
 import type {ZonasSanitarias, Profesional, Especialidad} from '@/lib/api'
 
+
 export default function BarraLateral(){
 
     const pathname = usePathname()

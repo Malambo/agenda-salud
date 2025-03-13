@@ -20,6 +20,7 @@ import {
 import {crearSlug} from "@/lib/utils"
 import api, {type ZonasSanitarias, type CentroSalud} from "@/lib/api"
 
+
 export default function CentrosSalud() {
     const pathname = usePathname().split('/')
     const [zonaPath] = (pathname ?? []).slice(-2)
