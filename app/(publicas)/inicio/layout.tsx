@@ -2,7 +2,7 @@
 export default function LayoutPublicas({children}: Readonly<{children: React.ReactNode}>) {
 
     return (
-        <div className='container mt-12 mx-auto p-12 flex flex-col items-center content-center'>
+        <div className='container mx-auto my-12 p-8 sm:p-0'>
             {children}
         </div>
     )

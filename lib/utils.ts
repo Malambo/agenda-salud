@@ -2,52 +2,79 @@ import {clsx, type ClassValue} from "clsx"
 import {twMerge} from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+    return twMerge(clsx(inputs))
 }
 
 
 interface ItemConIds<T extends string> {
     id: T
-    [key: string]: string | string[]    // Permite que el objeto tenga otras propiedades.
+    [key: string]: string | string[]        // Permite que el objeto tenga otras propiedades.
 }
 
 interface Relacion<T extends string> {
-  id: T
-  nombre: string                        // Campo adicional para el nombre u otra propiedad relevante.
-  relacionados: string[]                // Lista de IDs relacionados.
-  [key: string]: string | string[]
+    id: T
+    nombre: string                          // Campo adicional para el nombre u otra propiedad relevante.
+    relacionados: string[]                  // Lista de IDs relacionados.
+    [key: string]: string | string[]
 }
 
-export function mapearRelacionados<
-  T extends string,                     // Tipo para las claves de relación (ej. 'id' de especialidades).
-  K extends string                      // Tipo para las claves de la relación inversa (ej. 'especialidades').
->(
-  listaBase: ItemConIds<T>[],           // Lista base a la que se agregarán los relacionados (ej. especialidades).
-  listaRelacionada: ItemConIds<K>[],    // Lista que contiene las relaciones (ej. profesionales).
-  claveRelacion: K,                     // Clave del array que relaciona los elementos (ej. 'especialidades').
-  claveIdBase: T,                       // Clave que representa el identificador de los elementos base (ej. 'id' de especialidades).
-  nombreCampo: string                   // Campo adicional que se desea incluir (ej. 'especialidad').
+/**mapearRelacionados
+ * se utiliza para relacionar dos listas de objetos basándose
+ * en ciertos campos clave. Esta función es genérica y utiliza
+ * los tipos T y K para representar las claves de relación.
+ */
+export function mapearRelacionados<T extends string, K extends string>(
+    // Lista de objetos que contiene los elementos base.
+    // Cada objeto debe tener un campo id y puede tener otros campos adicionales.
+    listaBase: ItemConIds<T>[],
+    // Lista de objetos que contiene los elementos relacionados.
+    // Cada objeto debe tener un campo id y puede tener otros campos adicionales.
+    listaRelacionada: ItemConIds<K>[],
+    // Nombre del campo en los objetos de listaRelacionada que contiene los IDs de los elementos de listaBase.
+    claveRelacion: K,
+    // Nombre del campo en los objetos de listaBase que representa el identificador único.
+    claveIdBase: T,
+    // Nombre del campo adicional en los objetos de listaBase que se desea incluir en el resultado.
+    nombreCampo: string
 ): Relacion<T>[] {
-  return listaBase.map(itemBase => {
-    const relacionados = listaRelacionada
-      .filter(itemRelacionado => {
-        const relacion = itemRelacionado[claveRelacion]
-        return Array.isArray(relacion) && relacion.includes(itemBase[claveIdBase] as string)
-      })
-      .map(itemRelacionado => itemRelacionado.id)   // Agregar solo el ID de los relacionados.
 
-    const result: Relacion<T> = {
-      id: itemBase.id,
-      nombre: itemBase[nombreCampo] as string,      // Añade el campo adicional especificado.
-      relacionados,
-    }
+    /**Proceso de Mapeo
+     * La función utiliza el método map para iterar sobre cada elemento de listaBase.
+     */
+    return listaBase.map(itemBase => {
+        /**Para cada elemento de listaBase se filtran los elementos de listaRelacionada
+        * para encontrar aquellos que tienen una relación con el elemento actual de listaBase.
+        * Esto se hace comprobando si el campo claveRelacion del elemento relacionado incluye
+        * el claveIdBase del elemento base.
+        */
+        const relacionados = listaRelacionada
+            .filter(itemRelacionado => Array.isArray(
+                itemRelacionado[claveRelacion]) &&
+                itemRelacionado[claveRelacion].includes(itemBase[claveIdBase] as string))
+            .map(itemRelacionado => itemRelacionado.id)
 
-    if (itemBase.urlIcon) {
-      result.urlIcon = itemBase.urlIcon as string    // Añade la URL de la imagen si existe.
-    }
+        /**Construcción del resultado
+         * Para cada elemento de listaBase, se crea un nuevo objeto que incluye:
+         * id: El ID del elemento base.
+         * nombre: El valor del campo adicional especificado (nombreCampo).
+         * relacionados: Una lista de IDs de los elementos relacionados.
+         * urlIcon (opcional): Si el elemento base tiene un campo urlIcon, se incluye en el resultado.
+         */
+        const resultado: Relacion<T> = {
+            id: itemBase.id,
+            nombre: itemBase[nombreCampo] as string,
+            relacionados,
+            ...(itemBase.urlIcon && {urlIcon: itemBase.urlIcon as string})
+        }
 
-    return result
-  })
+        /**Retorno
+         * La función devuelve una nueva lista de objetos que contienen el ID,
+         * el nombre, los IDs de los elementos relacionados y opcionalmente el urlIcon.
+         * Este enfoque permite crear una estructura de datos que facilita la visualización
+         * y manipulación de la relación entre dos listas de objetos.
+         */
+        return resultado
+    })
 }
 
 // Slug permite barra "/"

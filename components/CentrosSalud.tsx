@@ -33,7 +33,7 @@ export default function CentrosSalud() {
     
     const centrosCarouselRef = useRef<HTMLDivElement>(null)
     const zonasCarouselRef = useRef<HTMLDivElement>(null)
-    
+
     const cargarCentroCompleto = useCallback(async (centro: CentroSalud, nombreZona: string) => {
         try {
             const centroDetallado = await api.traeCentroPorUrl(crearSlug(centro.nombre))
@@ -125,7 +125,7 @@ export default function CentrosSalud() {
         : datos?.zonas[0]
 
     return (
-        <div className="border-t border-emerald-500 flex flex-col items-center relative">
+        <div className="w-[1024px] mx-auto border-t border-emerald-500 flex flex-col items-center ">
             <Carousel 
             className="w-[1024px] border-b border-emerald-500" 
             opts={{align: "center", loop: false }} 
@@ -225,10 +225,18 @@ export default function CentrosSalud() {
                     </div>
 
                     <div className='flex-1 my-auto px-6 py-4 shadow-md rounded bg-emerald-50 border border-emerald-600'>
-                        <h3 className="font-medium mb-2">Especialidades disponibles</h3>
+                        <h3 className="font-medium mb-2 text-emerald-600">Especialidades disponibles</h3>
                         {especialidadesCentro.length > 0 ? (
                             especialidadesCentro.map(especialidad => (
+                                <div key={especialidad} className='my-4 flex gap-2 items-center'>
+                                <Image
+                                    src={`/especialidades/${crearSlug(especialidad)}.svg`}
+                                    alt={`especialidad ${especialidad}`}
+                                    height={24}
+                                    width={24}
+                                    className="size-5 sm:size-6" />
                                 <p key={especialidad} className="text-sm text-zinc-600">{especialidad}</p>
+                                </div>
                             ))
                         ) : (
                             <p className="text-sm text-zinc-500">No hay especialidades definidas</p>

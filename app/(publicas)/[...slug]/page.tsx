@@ -1,5 +1,5 @@
 import api from '@/lib/api'
-import TituloPagina from '@/components/ui/TituloPagina'
+import TitularPagina from '@/components/ui/TitularPagina'
 import TarjeteroEspecialidades from '@/components/TarjeteroEspecialidades'
 import CentrosSalud from '@/components/CentrosSalud'
 
@@ -11,21 +11,20 @@ export default async function CategoriaPage({params}: {params: Promise<{slug: st
 
     return (
         <>
-        <div className='flex flex-col gap-24 items-center'>
-            <TituloPagina urlIcono={urlIcono} titulo={titulo} />
-            <p className='w-2/3 text-pretty text-lg'>{descripcion}</p>
-        </div>
-
-        <div className='mt-44'>
-            {slug[0] === 'centro-salud' && (<CentrosSalud />)}
-            {slug[0] === 'especialidades' && <TarjeteroEspecialidades />}
-            {slug[0] === 'profesionales' && (
-            <div>
-                <p className='font-bold text-orange-500 uppercase'>
-                    {slug[0]}
-                </p>
+        <div className='container mx-auto flex flex-col gap-24 items-center'>
+            <TitularPagina urlIcono={urlIcono} titulo={titulo} descripcion={descripcion} />
+        
+            <div className='container mt-24'>
+                {slug[0] === 'centro-salud' && (<CentrosSalud />)}
+                {slug[0] === 'especialidades' && <TarjeteroEspecialidades />}
+                {slug[0] === 'profesionales' && (
+                <div>
+                    <p className='font-bold text-orange-500 uppercase'>
+                        {slug[0]}
+                    </p>
+                </div>
+                )}
             </div>
-            )}
         </div>
         </>
     )

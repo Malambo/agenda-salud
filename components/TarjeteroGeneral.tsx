@@ -7,7 +7,7 @@ export default function TarjeteroGeneral() {
 
     return (
         
-        <div className='mx-auto mt-24 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-12'>
+        <div className='mt-24 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-12 justify-between'>
             {Tarjetas.map(tarjeta => (
             <TarjetaGeneral
             key={tarjeta.url}

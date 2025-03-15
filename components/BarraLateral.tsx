@@ -25,11 +25,11 @@ export default function BarraLateral(){
 
     const pathname = usePathname()
     const paginaActiva = pathname.split('/')[1] ?? ''
-  
+
     const [zonasSanitarias, setZonasSanitarias] = useState<ZonasSanitarias>({zonas: []})
     const [profesionales, setProfesionales] = useState<Profesional[]>([])
     const [especialidades, setEspecialidades] = useState<Especialidad[]>([])
-    const [loading, setLoading] = useState(true)
+    
 
     useEffect(()=>{
         async function fetchData(){
@@ -45,13 +45,9 @@ export default function BarraLateral(){
             }catch(error){
                 console.error("Error fetching data:", error)
             }
-            setLoading(false)
         }
         fetchData()
     },[])
-
-    if(loading) return <div>Cargando...</div>
-    if(paginaActiva === 'inicio' || pathname === '/') return null
 
     const zonas = zonasSanitarias.zonas
     const centrosSalud = zonas.flatMap(zona=>zona.centrosSalud)
@@ -75,7 +71,7 @@ export default function BarraLateral(){
     )
 
     return(
-        <div className='w-80 min-h-screen px-2 bg-gradient-to-r from-emerald-50 to-emerald-100 border-r border-emerald-300'>
+        <div className='w-80 h-full px-2 bg-gradient-to-r from-emerald-50 to-emerald-100 border-r border-emerald-300'>
             <div className='z-10 sticky top-0 py-4 bg-gradient-to-r from-emerald-50 to-emerald-100'>
                 <Link href={'/'} className='mt-2 py-2 flex items-center justify-center gap-2 text-3xl text-emerald-900 text-pretty font-montserrat font-thin'>
                     <Image src={IsoLogo} alt='Logo AgendaSalud' width={40} height={40}/>

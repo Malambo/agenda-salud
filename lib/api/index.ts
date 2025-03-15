@@ -14,7 +14,7 @@ export interface CentroSalud {
 export interface ZonaSanitaria {
     id?:            string
     nombreZona:     string
-    centrosSalud: CentroSalud[]
+    centrosSalud:   CentroSalud[]
 }
 
 export interface ZonasSanitarias {
@@ -316,9 +316,9 @@ const api = {
     // Obtener un centro médico específico por su ID
     traeCentroPorId: async (id: string): Promise<CentroSalud> => {
         // Usar flatMap para aplanar los centros médicos de todas las zonas
-        const centrosMedicos = zonasSanitarias.zonas.flatMap(zona => zona.centrosSalud)
+        const centrosSalud = zonasSanitarias.zonas.flatMap(zona => zona.centrosSalud)
         // Buscar el centro médico por ID
-        const centro = centrosMedicos.find(centro => centro.id === id)
+        const centro = centrosSalud.find(centro => centro.id === id)
         if (!centro) {
             throw new Error(`No se encontró el centro con id ${id}`)
         }
@@ -366,7 +366,7 @@ const api = {
     traeEspecialidadesPorCentro: async (id: string): Promise<string[]> => {
         try {
             // 1. Validar que el centro de salud exista (opcional, pero buena práctica)
-            await api.traeCentroPorId(id) // Si no existe, `traeCentroPorIdSimulado` lanzará un error que capturaremos
+            await api.traeCentroPorId(id) // Si no existe, `traeCentroPorId` lanzará un error capturable
     
             // 2. Encontrar profesionales que trabajan en este centro de salud
             const profesionalesEnCentro = Profesionales.filter(profesional => profesional.centrosSalud.includes(id))
@@ -395,10 +395,10 @@ const api = {
 
     // Obtener una categoría específica por su URL
     traeCategoria: async (url: Categorias['url']): Promise<Categorias> => {
-        const categoria = categorias.find((categoria) => categoria.url === url)
+        const categoria = categorias.find(categoria => categoria.url === url)
         if (!categoria) {
             throw new Error(`No se encontró la categoría con URL ${url}`)
-       }
+        }
         return categoria
     }
 }

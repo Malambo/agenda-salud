@@ -6,15 +6,15 @@ export default function InicioPage() {
 
     return (
         <>
-        <div className='flex items-center justify-center gap-x-24'>
-            <div className='flex flex-col items-center'>
+        <div className='grid grid-cols-1 sm:grid-cols-5 items-center justify-center gap-x-20'>
+            <div className='sm:col-span-2 flex flex-col items-center'>
                 <Image
                 src='/Logo.svg'
                 alt='img Logo'
                 width={720}
                 height={720 * 0.4} />
 
-                <p className='text-zinc-500 subpixel-antialiased mt-32 mb-12'><span className='font-bold'>Accedé muy fácil a los turnos del sistema de Salud.</span> Explorá la agenda online para ver la disponibilidad de especialistas. Si ya sos usuario, <span className='font-bold'>reservá turno ahora</span>.</p>
+                <p className='text-zinc-500 text-xl/8 text-balance subpixel-antialiased mt-12 sm:mt-32 mb-12'>Explorá la agenda online para ver la disponibilidad de profesionales. Investigá las especialidades de cada centro de salud y si ya sos usuario, <span className='font-bold'>reservá turno ahora</span>.</p>
 
                 <div className='flex flex-col gap-y-6 lg:flex-row lg:gap-x-12 lg:flex-1'>
                     <button
@@ -46,6 +46,7 @@ export default function InicioPage() {
             </div>
 
             <Image
+            className='sm:col-span-3 order-first sm:order-last mb-12 sm:mb-0'
             src='/Hero3.png'
             alt='img Hero'
             width={850}
