@@ -203,7 +203,7 @@ const CarouselPrevious = forwardRef<HTMLButtonElement, ComponentProps<typeof But
         disabled={!canScrollPrev}
         onClick={scrollPrev}
         {...props} >
-        <ChevronLeft className={`size-4 ${canScrollPrev ? 'text-orange-600 size-6' : ''} `} />
+        <ChevronLeft className={`size-4 ${canScrollPrev ? 'text-orange-700 size-8 font-bold' : 'text-transparent'} `} />
         <span className="sr-only">anterior</span>
     </Button>
     )
@@ -230,7 +230,7 @@ const CarouselNext = forwardRef<HTMLButtonElement, ComponentProps<typeof Button>
             disabled={!canScrollNext}
             onClick={scrollNext}
             {...props}>
-            <ChevronRight className={`size-4 ${canScrollNext ? 'text-orange-600 size-6' : ''} `} />
+            <ChevronRight className={`size-4 ${canScrollNext ? 'text-orange-700 size-8 font-bold' : 'text-transparent'} `} />
             <span className="sr-only">siguiente</span>
         </Button>
     )

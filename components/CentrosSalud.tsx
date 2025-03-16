@@ -136,10 +136,10 @@ export default function CentrosSalud() {
                             <button
                             type="button"
                             onClick={() => setZonaActiva(zona.nombreZona)}
-                            className={`uppercase font-extralight text-center w-full py-2 transition-colors duration-300 ${
+                            className={`uppercase font-light text-center w-full py-2 transition-colors duration-300 ${
                                 zonaActiva === zona.nombreZona
                                     ? "bg-emerald-600 text-white"
-                                    : "bg-transparent text-zinc-500 hover:text-emerald-600"
+                                    : "bg-transparent text-zinc-600 hover:text-emerald-800"
                             }`}
                             data-zona-nombre={zona.nombreZona}>
                                 {zona.nombreZona}
@@ -228,7 +228,7 @@ export default function CentrosSalud() {
                         <h3 className="font-medium mb-2 text-emerald-600">Especialidades disponibles</h3>
                         {especialidadesCentro.length > 0 ? (
                             especialidadesCentro.map(especialidad => (
-                                <div key={especialidad} className='my-4 flex gap-2 items-center'>
+                                <div key={especialidad} className='my-4 flex gap-4 items-center'>
                                 <Image
                                     src={`/especialidades/${crearSlug(especialidad)}.svg`}
                                     alt={`especialidad ${especialidad}`}

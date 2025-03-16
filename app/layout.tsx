@@ -1,6 +1,9 @@
 import type {Metadata} from "next"
+import {Poppins} from 'next/font/google'
 import "./globals.css"
 
+
+const poppins = Poppins({subsets: ['latin'], weight: ['200', '400', '700', '900']})
 
 export const metadata: Metadata = {
   title: "Agenda Salud",
@@ -14,7 +17,7 @@ export default async function RootLayout({children}: Readonly<{children: React.R
     return (
         <html lang="es">
             <body>
-                <main className='flex-1 overflow-hidden overflow-y-auto no-scrollbar'>
+                <main className={`${poppins.className} flex-1 overflow-hidden overflow-y-auto no-scrollbar`}>
                     {children}
                 </main>
             </body>

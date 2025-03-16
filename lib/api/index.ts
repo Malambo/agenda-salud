@@ -291,7 +291,7 @@ const categorias: Categorias[] = [
         url: '/centro-salud',
         urlIcono: '/CentrosSalud.svg',
         titulo: 'Centros de salud',
-        descripcion: 'En La Costa tenés a disposición una amplia red de Salud. Encontrá el centro de atención más cercano y accedé al tratamiento que necesitás.'
+        descripcion: 'En La Costa tenés centros de atención médica en todos lados. Encontrá el que te quede más cerca y accedé al tratamiento que necesitás.'
     },
     {
         url: '/especialidades',

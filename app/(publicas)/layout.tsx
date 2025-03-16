@@ -8,7 +8,7 @@ export default function LayoutCategorias({children}: Readonly<{children: React.R
                 <BarraLateral />
             </aside>
             
-            <section className="container mx-auto mt-32 px-24">
+            <section className="container mx-auto mt-32 px-8 sm:px-24">
                 {children}
             </section>
         </main>

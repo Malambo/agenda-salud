@@ -14,14 +14,14 @@ export default function InicioPage() {
                 width={720}
                 height={720 * 0.4} />
 
-                <p className='text-zinc-500 text-xl/8 text-balance subpixel-antialiased mt-12 sm:mt-32 mb-12'>Explorá la agenda online para ver la disponibilidad de profesionales. Investigá las especialidades de cada centro de salud y si ya sos usuario, <span className='font-bold'>reservá turno ahora</span>.</p>
+                <p className='text-zinc-600 text-xl/8 text-balance font-light subpixel-antialiased mt-12 sm:mt-32 mb-12'>Explorá la agenda online para ver la disponibilidad de profesionales. Investigá las especialidades de cada centro de salud y si ya sos usuario, <span className='font-normal text-zinc-700'>reservá turno ahora</span>.</p>
 
                 <div className='flex flex-col gap-y-6 lg:flex-row lg:gap-x-12 lg:flex-1'>
                     <button
                     type='button'
                     className='
                     group
-                    w-[300px] py-4 rounded bg-emerald-700
+                    w-screen sm:w-[300px] py-4 rounded bg-emerald-700
                     text-xl text-zinc-50
                     hover:bg-gradient-to-br hover:from-emerald-500 hover:via-emerald-800 hover:to-emerald-950
                     hover:shadow-xl 
@@ -33,7 +33,7 @@ export default function InicioPage() {
                     type='button'
                     className='
                     group
-                    w-[300px] py-4 rounded
+                    w-screen sm:w-[300px] py-4 rounded
                     text-xl
                     border border-emerald-600
                     hover:border-emerald-900

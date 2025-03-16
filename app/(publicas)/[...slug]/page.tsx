@@ -14,7 +14,7 @@ export default async function CategoriaPage({params}: {params: Promise<{slug: st
         <div className='container mx-auto flex flex-col gap-24 items-center'>
             <TitularPagina urlIcono={urlIcono} titulo={titulo} descripcion={descripcion} />
         
-            <div className='container mt-24'>
+            <div className='container sm:mt-24'>
                 {slug[0] === 'centro-salud' && (<CentrosSalud />)}
                 {slug[0] === 'especialidades' && <TarjeteroEspecialidades />}
                 {slug[0] === 'profesionales' && (
