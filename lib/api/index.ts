@@ -42,6 +42,46 @@ export interface Categorias {
     [key: string]:  string | string[]
 }
 
+export interface BloqueTurnos {
+    id: string
+    idProfesional: string
+    idCentroSalud: string
+    idEspecialidad: string
+    
+    // Información de recurrencia
+    tipoRecurrencia: 'simple' | 'semanal' | 'mensual' | 'personalizado'
+    
+    // Para recurrencia simple (una sola fecha)
+    fecha?: string // formato "YYYY-MM-DD", solo para tipoRecurrencia "simple"
+    
+    // Para recurrencia semanal
+    diasSemana?: ('lunes' | 'martes' | 'miércoles' | 'jueves' | 'viernes' | 'sábado' | 'domingo')[] 
+    
+    // Para recurrencia mensual
+    semanaDelMes?: (1 | 2 | 3 | 4 | 5 | -1)[] // -1 representa "último"
+    diasDelMes?: number[] // días específicos del mes (1-31)
+    
+    // Para recurrencia personalizada
+    reglaCron?: string // Expresión cron para patrones complejos
+    
+    // Fechas de validez
+    fechaInicio: string // Fecha desde la que comienza la recurrencia
+    fechaFin: string | null // Fecha hasta la que aplica la recurrencia (opcional)
+    
+    // Información del horario
+    horaInicio: string // formato "HH:MM"
+    horaFin: string // formato "HH:MM"
+    duracionTurno: number // en minutos
+    
+    // Control de disponibilidad
+    maximoTurnos: number // calculado o especificado
+    intervaloEntreConsultas: number // minutos entre el fin de un turno y el inicio del siguiente
+    
+    // Información adicional
+    notas: string | null
+    activo: boolean // para deshabilitar temporalmente
+}
+
 const zonasSanitarias: ZonasSanitarias = {
     zonas: [
         {
@@ -286,6 +326,87 @@ const especialidades: Especialidad[] = [
     {id: '21', nombre: 'Ginecología', descripcion: `${ENTRADA_DESCRIPCION}del sistema reproductor femenino.`}
 ]
 
+// Nueva colección para bloques de turnos
+const bloquesTurnos: BloqueTurnos[] = [
+    {
+      id: "BT001",
+      idProfesional: "1", // Dra. Ana López
+      idCentroSalud: "1", // General de Agudos
+      idEspecialidad: "1", // Cardiología
+      tipoRecurrencia: "semanal",
+      diasSemana: ["lunes", "miércoles"],
+      fechaInicio: "2025-04-01",
+      fechaFin: null,
+      horaInicio: "09:00",
+      horaFin: "12:00",
+      duracionTurno: 20,
+      maximoTurnos: 15,
+      intervaloEntreConsultas: 0,
+      notas: null,
+      activo: true
+    },
+    {
+      id: "BT002",
+      idProfesional: "2", // Dr. Juan Pérez
+      idCentroSalud: "1", // Otro centro
+      idEspecialidad: "1", // Cardiología
+      tipoRecurrencia: "mensual",
+      semanaDelMes: [1],
+      diasSemana: ["viernes"],
+      fechaInicio: "2025-04-01",
+      fechaFin: null,
+      horaInicio: "14:00",
+      horaFin: "18:00",
+      duracionTurno: 30,
+      maximoTurnos: 8,
+      intervaloEntreConsultas: 5,
+      notas: "Primeros viernes de cada mes",
+      activo: true
+    },
+    {
+      id: "BT003",
+      idProfesional: "2", // Dr. Juan Pérez
+      idCentroSalud: "2", // Otro centro
+      idEspecialidad: "1", // Cardiología
+      tipoRecurrencia: "mensual",
+      semanaDelMes: [1],
+      diasSemana: ["viernes"],
+      fechaInicio: "2025-04-01",
+      fechaFin: null,
+      horaInicio: "14:00",
+      horaFin: "18:00",
+      duracionTurno: 30,
+      maximoTurnos: 8,
+      intervaloEntreConsultas: 5,
+      notas: "Primeros viernes de cada mes",
+      activo: true
+    },
+    {
+      id: "BT004",
+      idProfesional: "2", // Dr. Juan Pérez
+      idCentroSalud: "5", // Otro centro
+      idEspecialidad: "1", // Cardiología
+      tipoRecurrencia: "mensual",
+      semanaDelMes: [1],
+      diasSemana: ["viernes"],
+      fechaInicio: "2025-04-01",
+      fechaFin: null,
+      horaInicio: "14:00",
+      horaFin: "18:00",
+      duracionTurno: 30,
+      maximoTurnos: 8,
+      intervaloEntreConsultas: 5,
+      notas: "Primeros viernes de cada mes",
+      activo: true
+    },
+    // Más  de turnos...
+  ]
+  
+  // En el futuro, cuando implementes la reserva de turnos:
+//   const turnos: Turno[] = [
+//     // Esta colección se poblaría cuando habilites la reserva de turnos
+//   ]
+
 const categorias: Categorias[] = [
     {
         url: '/centro-salud',
@@ -306,6 +427,8 @@ const categorias: Categorias[] = [
         descripcion: 'Conocé a quienes cuidan tu salud en la red de atención sanitaria de La Costa. Encontrá el apoyo profesional que necesitás para tu consulta.'
     }
 ]
+
+
 
 const api = {
     // Obtener todas las zonas sanitarias
@@ -400,7 +523,74 @@ const api = {
             throw new Error(`No se encontró la categoría con URL ${url}`)
         }
         return categoria
+    },
+
+    // Nuevas funciones para los bloques de turnos    
+    // Obtener todos los bloques de turnos
+    listaBloquesTurnos: async (): Promise<BloqueTurnos[]> => {
+        return bloquesTurnos
+    },
+    
+    // Obtener bloques de turnos por profesional
+    traeBloquesTurnosPorProfesional: async (idProfesional: string): Promise<BloqueTurnos[]> => {
+        return bloquesTurnos.filter(bloque => bloque.idProfesional === idProfesional)
+    },
+    
+    // Obtener bloques de turnos por centro de salud
+    traeBloquesTurnosPorCentro: async (idCentroSalud: string): Promise<BloqueTurnos[]> => {
+        return bloquesTurnos.filter(bloque => bloque.idCentroSalud === idCentroSalud)
+    },
+    
+    // Obtener bloques de turnos por especialidad
+    traeBloquesTurnosPorEspecialidad: async (idEspecialidad: string): Promise<BloqueTurnos[]> => {
+        return bloquesTurnos.filter(bloque => bloque.idEspecialidad === idEspecialidad)
+    },
+    
+    // Obtener profesionales disponibles en una fecha específica
+    traeProfesionalesDisponiblesEnFecha: async (fecha: string): Promise<Profesional[]> => {
+        // Implementar la lógica de verificación de disponibilidad
+        // similar a la del componente React que te mostré
+        const fechaObj = new Date(fecha)
+        const profesionalesDisponibles: Profesional[] = []
+        const profesionalesIds = new Set<string>()
+        
+        for (const bloque of bloquesTurnos) {
+            if (!bloque.activo) continue
+            
+            // Verificar disponibilidad del bloque en la fecha
+            const disponible = verificarDisponibilidadBloque(bloque, fechaObj)
+            
+            if (disponible && !profesionalesIds.has(bloque.idProfesional)) {
+                profesionalesIds.add(bloque.idProfesional)
+                const profesional = await api.traeProfesional(bloque.idProfesional)
+                profesionalesDisponibles.push(profesional)
+            }
+        }
+
+        return profesionalesDisponibles
+    },
+        
+    // Función auxiliar para verificar disponibilidad
+    verificarDisponibilidadProfesional: async (idProfesional: string, fecha: string): Promise<{
+        disponible: boolean
+        horarios: {
+            inicio: string
+            fin: string
+            centro: string
+            especialidad: string
+        }[]
+    }> => {
+        // Implementar la lógica de verificación similar a la del componente React
+        // Aquí se debe implementar la lógica y devolver el resultado
+        return {disponible: false, horarios: []}
     }
 }
+      
+// Función auxiliar para verificar disponibilidad de un bloque
+function verificarDisponibilidadBloque(bloque: BloqueTurnos, fecha: Date): boolean {
+// Implementar la lógica similar a la del componente React
+// ...
+}
+
 
 export default api
