@@ -18,7 +18,7 @@ export default async function CategoriaPage({params}: {params: Promise<{slug: st
                 {slug[0] === 'centro-salud' && (<CentrosSalud />)}
                 {slug[0] === 'especialidades' && <TarjeteroEspecialidades />}
                 {slug[0] === 'profesionales' && (
-                <div>
+                <div className='flex justify-center'>
                     <p className='font-bold text-orange-500 uppercase'>
                         {slug[0]}
                     </p>

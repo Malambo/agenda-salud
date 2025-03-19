@@ -9,7 +9,7 @@ export default function LayoutCategorias({children}: Readonly<{children: React.R
             </aside>
             
             <div className="flex-1 ml-80">
-                <div className='sticky top-0 z-10 py-4 px-8 bg-zinc-200/90 border-b border-zinc-400 flex justify-end'>
+                <div className='sticky top-0 z-10 py-4 px-8 bg-emerald-50/90 border-b border-zinc-400 flex justify-end'>
                     <p>navegación</p>
                 </div>
                 <section className="my-32 px-8 sm:px-24">

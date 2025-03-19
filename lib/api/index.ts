@@ -370,7 +370,7 @@ const bloquesTurnos: BloqueTurnos[] = [
       idEspecialidad: "1", // Cardiología
       tipoRecurrencia: "mensual",
       semanaDelMes: [1],
-      diasSemana: ["viernes"],
+      diasSemana: ["lunes", "viernes"],
       fechaInicio: "2025-04-01",
       fechaFin: null,
       horaInicio: "14:00",
@@ -388,7 +388,7 @@ const bloquesTurnos: BloqueTurnos[] = [
       idEspecialidad: "1", // Cardiología
       tipoRecurrencia: "mensual",
       semanaDelMes: [1],
-      diasSemana: ["viernes"],
+      diasSemana: ["lunes", "miércoles", "viernes"],
       fechaInicio: "2025-04-01",
       fechaFin: null,
       horaInicio: "14:00",

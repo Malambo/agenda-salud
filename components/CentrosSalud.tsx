@@ -239,7 +239,7 @@ export default function CentrosSalud() {
                         </div>
                     </div>
 
-                    <div className='flex gap-4 px-6 py-4 shadow-md rounded bg-emerald-50 border border-emerald-600'>
+                    <div className='flex gap-12 px-6 py-4 shadow-md rounded bg-emerald-50 border border-emerald-600'>
                         <div>
                             <h3 className="font-medium mb-2 text-emerald-600">Especialidades disponibles</h3>
                             {especialidadesCentro.length > 0 ? (
@@ -259,7 +259,8 @@ export default function CentrosSalud() {
                             )}
                         </div>
 
-                        <ul className='my-auto px-6 py-4 shadow-md rounded bg-emerald-100 border border-emerald-600'>
+                        {turnos.find(turno => turno.idCentroSalud === centroActivo.id) && 
+                        <ul className='mt-0 px-6 py-4 shadow-md rounded bg-emerald-100 border border-emerald-600'>
                             <p className="font-medium mb-2 text-emerald-600">Turnos</p>
                             {turnos?.map(turno => (
                                 <li key={turno.id}>
@@ -279,6 +280,8 @@ export default function CentrosSalud() {
                                 </li>
                             ))}
                         </ul>
+                        }
+                        
                     </div>
                 </div>
             )}
