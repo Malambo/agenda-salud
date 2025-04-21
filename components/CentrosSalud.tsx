@@ -180,7 +180,7 @@ export default function CentrosSalud() {
                                 key={centro.id}
                                 className={`shrink-0 basis-1/2 sm:basis-1/3 flex justify-center transition ${
                                     centroActivo?.id === centro.id 
-                                        ? 'scale-105 text-emerald-600 font-bold bg-emerald-200/50 py-2 border-b-4 border-emerald-500' 
+                                        ? 'scale-105 py-2 text-emerald-600 font-bold bg-emerald-200/50' 
                                         : 'hover:scale-105 hover:animate-out transition duration-700 py-2'
                                 }`}
                                 data-centro-id={centro.id}>
