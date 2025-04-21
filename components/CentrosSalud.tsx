@@ -180,7 +180,7 @@ export default function CentrosSalud() {
                                 key={centro.id}
                                 className={`shrink-0 basis-1/2 sm:basis-1/3 flex justify-center transition ${
                                     centroActivo?.id === centro.id 
-                                        ? 'scale-105 text-emerald-600 font-bold bg-emerald-200/50 py-2' 
+                                        ? 'scale-105 text-emerald-600 font-bold bg-emerald-200/50 py-2 border-b-4 border-emerald-500' 
                                         : 'hover:scale-105 hover:animate-out transition duration-700 py-2'
                                 }`}
                                 data-centro-id={centro.id}>
@@ -226,7 +226,7 @@ export default function CentrosSalud() {
                         height={80} />
                         <div>
                             <p className='text-zinc-500 text-xs uppercase'>{centroActivo.ciudad}</p>
-                            <h2 className="text-xl font-bold text-orange-500">
+                            <h2 className="text-xl font-bold text-emerald-600">
                                 <span className='capitalize'>{centroActivo.tipo}</span> {centroActivo.nombre}
                             </h2>
                             <p className="text-zinc-500">{centroActivo.direccion}</p>
