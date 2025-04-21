@@ -151,7 +151,7 @@ export default function CentrosSalud() {
                         onClick={() => setZonaActiva(zona.nombreZona)}
                         className={`uppercase font-light text-center w-full py-2 transition-colors duration-300 ${
                             zonaActiva === zona.nombreZona
-                                ? "bg-emerald-600 text-white"
+                                ? "bg-emerald-600 text-white font-normal"
                                 : "bg-transparent text-zinc-600 hover:text-emerald-800"
                         }`}
                         data-zona-nombre={zona.nombreZona}>
@@ -174,14 +174,14 @@ export default function CentrosSalud() {
                     exit={{opacity: 0 }}
                     transition={{duration: 0.3 }}>
                         <Carousel className="w-full">
-                            <CarouselContent className="p-2" ref={centrosCarouselRef}>
+                            <CarouselContent className="" ref={centrosCarouselRef}>
                                 {zonaSeleccionada.centrosSalud.map(centro => (
                                 <CarouselItem
                                 key={centro.id}
                                 className={`shrink-0 basis-1/2 sm:basis-1/3 flex justify-center transition ${
                                     centroActivo?.id === centro.id 
-                                        ? 'scale-105 text-emerald-600 font-bold' 
-                                        : 'hover:scale-105 hover:animate-out transition duration-700'
+                                        ? 'scale-105 text-emerald-600 font-bold bg-emerald-200/50 py-2' 
+                                        : 'hover:scale-105 hover:animate-out transition duration-700 py-2'
                                 }`}
                                 data-centro-id={centro.id}>
                                     <Link
@@ -214,10 +214,10 @@ export default function CentrosSalud() {
             {centroActivo && (
             <div className="
             w-full
-            mt-24 p-8 border
-            border-emerald-300 bg-emerald-100 shadow-md
-            flex gap-24 items-start justify-between">
-                <div className='flex flex-col gap-8'>
+            p-8 border border-t-0
+            border-emerald-500 bg-emerald-200/50 shadow-md
+            flex gap-36 items-start justify-between">
+                <div className='w-1/3 flex flex-col gap-8'>
                     <div className='flex gap-12 items-start'>
                         <Image
                         src={centroActivo.urlIcon}
@@ -239,18 +239,18 @@ export default function CentrosSalud() {
                     </div>
                 </div>
 
-                <div className='flex gap-12 px-6 py-4 shadow-md rounded bg-emerald-50 border border-emerald-600'>
-                    <div>
-                        <h3 className="font-medium mb-2">Especialidades disponibles</h3>
+                <div className='w-2/3'>
+                {/* <div className='flex gap-12 px-6 py-4 shadow-md rounded bg-emerald-50 border border-emerald-600'> */}
+                    <div className='mb-8 flex flex-wrap gap-2'>
+                        {/* <h3 className="font-medium mb-2">Especialidades disponibles</h3> */}
                         {especialidadesCentro.length > 0
                         ? (especialidadesCentro.map(especialidad => (
-                          <div key={especialidad} className='my-4 flex gap-4 items-center'>
+                          <div key={especialidad} className='px-6 py-2 flex gap-2 items-center bg-emerald-100 border rounded-full border-emerald-400'>
                               <Image
                               src={`/especialidades/${crearSlug(especialidad)}.svg`}
                               alt={`especialidad ${especialidad}`}
                               height={24}
-                              width={24}
-                              className="size-5 sm:size-6" />
+                              width={24} />
                               <p key={especialidad} className="text-sm text-zinc-600">{especialidad}</p>
                           </div>
                           )))
