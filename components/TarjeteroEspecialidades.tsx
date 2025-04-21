@@ -11,6 +11,7 @@ const especialidadesConProfesionales = mapearRelacionados(
     'id',               // vínculo (en especialidades)(?)
     'nombre'            // otro campo que debe estar (desde especialidades)
 )
+especialidadesConProfesionales.sort((a,b) => a.nombre.localeCompare(b.nombre))
 
 
 export default async function TarjeteroEspecialidades() {

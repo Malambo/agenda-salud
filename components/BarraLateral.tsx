@@ -8,7 +8,7 @@ import Link                 from "next/link"
 import Image                from "next/image"
 import {User, Search}       from "lucide-react"
 import api                  from "@/lib/api"
-import {mapearRelacionados} from "@/lib/utils"
+import {crearSlug, mapearRelacionados} from "@/lib/utils"
 import {
     Accordion,
     AccordionContent,
@@ -64,6 +64,7 @@ export default function BarraLateral(){
         "id",
         "nombre"
     )
+    especialidadesConProfesionales.sort((a,b) => a.nombre.localeCompare(b.nombre))
     const centrosConProfesionales = mapearRelacionados(
         centrosSalud,
         profesionales,
@@ -95,19 +96,20 @@ export default function BarraLateral(){
                         <MiAccordionTrigger url={'/centro-salud'} urlIcono={'/CentrosSalud.svg'} titulo={'Centros de salud'}/>
                     </div>
                     <AccordionContent>
-                        <Accordion type="single" collapsible className='bg-[#e8faf0] rounded text-zinc-800 p-4 shadow-md'>
+                        <Accordion type="single" collapsible className='bg-[#e8faf0] rounded text-zinc-700 p-4'>
                             {zonas.map(zona=>(
-                                <AccordionItem key={zona.nombreZona} value={zona.nombreZona}>
-                                    <div className='flex'>
-                                        <AccordionTrigger>{zona.nombreZona}</AccordionTrigger>
-                                    </div>
-                                    {zona.centrosSalud.map(centro=>(
-                                        <AccordionContent key={centro.id} className='flex p-2 gap-x-2 text-sm items-center'>
-                                            <Image src={centro.urlIcon} alt="img centro de salud" width={24} height={24}/>
-                                            <p><span className='capitalize'>{centro.tipo}</span> {centro.nombre}</p>
-                                        </AccordionContent>
-                                    ))}
-                                </AccordionItem>
+                            <AccordionItem key={zona.nombreZona} value={zona.nombreZona}>
+                                <div className='flex'>
+                                    <AccordionTrigger>{zona.nombreZona}</AccordionTrigger>
+                                </div>
+
+                                {zona.centrosSalud.map(centro=>(
+                                <AccordionContent key={centro.id} className='flex p-2 gap-x-2 text-sm items-center'>
+                                    <Image src={centro.urlIcon} alt="img centro de salud" width={24} height={24}/>
+                                    <p><span className='capitalize'>{centro.tipo}</span> {centro.nombre}</p>
+                                </AccordionContent>
+                                ))}
+                            </AccordionItem>
                             ))}
                         </Accordion>
                     </AccordionContent>
@@ -118,11 +120,19 @@ export default function BarraLateral(){
                         <MiAccordionTrigger url={'/especialidades'} urlIcono={'/Especialidades.svg'} titulo={'Especialidades'}/>
                     </div>
                     <AccordionContent>
-                        <Accordion type="single" collapsible className='bg-[#e8faf0] rounded text-zinc-800 p-4 shadow-md'>
+                        <Accordion type="single" collapsible className='bg-[#e8faf0] rounded text-zinc-800 p-4'>
                             {especialidadesConProfesionales.map(especialidad=>(
                                 <AccordionItem key={especialidad.id} value={especialidad.id}>
                                     <div className='flex gap-2 items-center'>
-                                        <AccordionTrigger className='font-medium'>{especialidad.nombre}</AccordionTrigger>
+                                        <AccordionTrigger className='flex gap-4 items-center text-emerald-700'>
+                                            <Image
+                                            src={`/especialidades/${crearSlug(especialidad.nombre)}.svg`}
+                                            alt={`especialidad ${especialidad.nombre}`}
+                                            height={12}
+                                            width={12}
+                                            className="size-5 sm:size-6" />
+                                            {especialidad.nombre}
+                                        </AccordionTrigger>
                                     </div>
                                     {especialidad.relacionados.map(idProf=>{
                                         const profesionalNombre = profesionalesMap.get(idProf)
@@ -143,12 +153,12 @@ export default function BarraLateral(){
                         <MiAccordionTrigger url={'/profesionales'} urlIcono={'/Profesionales.svg'} titulo={'Profesionales en centros'}/>
                     </div>
                     <AccordionContent>
-                        <Accordion type="single" collapsible className='bg-[#e8faf0] rounded text-zinc-800 p-4 shadow-md'>
+                        <Accordion type="single" collapsible className='bg-[#e8faf0] rounded text-zinc-800 p-4'>
                             {centrosConProfesionales.map(centro=>(
                                 <AccordionItem key={centro.id} value={centro.id}>
-                                    <div className='flex gap-2 items-center'>
-                                        <AccordionTrigger className='font-medium flex gap-2 items-center'>
-                                            <Image src={centro.urlIcon as string} alt="img centro de salud" width={24} height={24}/>
+                                    <div className='flex gap-4 items-center'>
+                                        <AccordionTrigger className='flex gap-2 items-center'>
+                                            <Image src={centro.urlIcon as string} alt="img centro de salud" width={18} height={18}/>
                                             {centro.nombre}
                                         </AccordionTrigger>
                                     </div>
@@ -171,7 +181,7 @@ export default function BarraLateral(){
                         <MiAccordionTrigger url={'/profesionales'} urlIcono={'/Profesionales.svg'} titulo={'Todos los profesionales'}/>
                     </div>
                     <AccordionContent>
-                        <Accordion type="single" collapsible className='bg-[#e8faf0] rounded text-zinc-800 p-4 shadow-md'>
+                        <Accordion type="single" collapsible className='bg-[#e8faf0] rounded text-zinc-800 p-4'>
                             {profesionalesABC.map(profesional=>(
                                 <AccordionItem key={profesional.id} value={profesional.id}>
                                     <div className='flex gap-2 items-center'>

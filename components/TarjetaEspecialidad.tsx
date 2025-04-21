@@ -23,10 +23,10 @@ export default async function TarjetaEspecialidad({especialidad, cantProfesional
             <div
             className="
             relative group
-            flex-1 p-8 rounded shadow
+            flex-1 p-8 rounded shadow-sm
             bg-[#e8faf0]
-            border border-emerald-600
-            hover:border-emerald-800
+            border border-emerald-200
+            hover:border-emerald-600
             hover:bg-gradient-to-br hover:from-emerald-50 hover:via-emerald-50 hover:to-emerald-100
             hover:shadow-lg
             cursor-pointer transition duration-500 ease-in-out">

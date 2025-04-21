@@ -20,10 +20,10 @@ export default function MiAccordionTrigger({url, urlIcono, titulo}: MiAccordionP
                     <Image
                     src={urlIcono}
                     alt={`imagen de ${titulo}`}
-                    width={32}
-                    height={32}/>
+                    width={24}
+                    height={24}/>
                     }
-                    <p className="text-emerald-900 text-lg text-start">{titulo}</p>
+                    <p className="text-emerald-900 text-start">{titulo}</p>
                 </div>
             </AccordionTrigger>
         </Link>
