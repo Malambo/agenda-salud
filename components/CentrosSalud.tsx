@@ -249,9 +249,9 @@ export default function CentrosSalud() {
                               <Image
                               src={`/especialidades/${crearSlug(especialidad)}.svg`}
                               alt={`especialidad ${especialidad}`}
-                              height={24}
-                              width={24} />
-                              <p key={especialidad} className="text-sm text-zinc-600">{especialidad}</p>
+                              height={18}
+                              width={18} />
+                              <p key={especialidad} className="text-xs text-zinc-600">{especialidad}</p>
                           </div>
                           )))
                         : <p className="text-sm text-zinc-500">No hay especialidades definidas</p>
