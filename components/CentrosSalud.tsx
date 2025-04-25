@@ -41,10 +41,10 @@ export default function CentrosSalud() {
     const cargarCentroCompleto = useCallback(async (centro: CentroSalud, nombreZona: string) => {
         try {
             const centroDetallado = await api.traeCentroPorUrl(crearSlug(centro.nombre))
-            const especialidades = centroDetallado?.id
-                ? await api.traeEspecialidadesPorCentro(centroDetallado.id) 
+            const especialidades = centroDetallado?.id ?
+                await api.traeEspecialidadesPorCentro(centroDetallado.id) 
                 : []
-            setCentroActivo(centroDetallado || centro)
+            setCentroActivo(centroDetallado ?? centro)
             setZonaActiva(nombreZona)
             setEspecialidadesCentro(especialidades)
             return true
@@ -67,8 +67,8 @@ export default function CentrosSalud() {
                     setCargando(false)
                     return
                 }
-                const zonaCorrespondiente = zonaPath 
-                    ? zonasSanitarias.zonas.find(z => crearSlug(z.nombreZona) === zonaPath)
+                const zonaCorrespondiente = zonaPath ?
+                    zonasSanitarias.zonas.find(z => crearSlug(z.nombreZona) === zonaPath)
                     : zonasSanitarias.zonas[0]
                 if (!zonaCorrespondiente) {
                     setZonaActiva(zonasSanitarias.zonas[0].nombreZona)
@@ -169,18 +169,18 @@ export default function CentrosSalud() {
                 <AnimatePresence mode="wait">
                     <motion.div
                     key={zonaActiva || 'default'}
-                    initial={{opacity: 0 }}
-                    animate={{opacity: 1 }}
-                    exit={{opacity: 0 }}
-                    transition={{duration: 0.3 }}>
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    exit={{opacity: 0}}
+                    transition={{duration: 0.3}}>
                         <Carousel className="w-full">
                             <CarouselContent className="" ref={centrosCarouselRef}>
                                 {zonaSeleccionada.centrosSalud.map(centro => (
                                 <CarouselItem
                                 key={centro.id}
                                 className={`shrink-0 basis-1/2 sm:basis-1/3 flex justify-center transition ${
-                                    centroActivo?.id === centro.id 
-                                        ? 'scale-105 py-2 text-emerald-600 font-bold bg-emerald-200/50' 
+                                    centroActivo?.id === centro.id ?
+                                        'scale-105 py-2 font-medium bg-emerald-200/50' 
                                         : 'hover:scale-105 hover:animate-out transition duration-700 py-2'
                                 }`}
                                 data-centro-id={centro.id}>
@@ -215,7 +215,8 @@ export default function CentrosSalud() {
             <div className="
             w-full
             p-8 border border-t-0
-            border-emerald-500 bg-emerald-200/50 shadow-md
+            border-emerald-500 bg-emerald-200/50 shadow
+            bg-gradient-to-b from-emerald-200/20 via-emerald-100 to-emerald-100
             flex gap-36 items-start justify-between">
                 <div className='w-1/3 flex flex-col gap-8'>
                     <div className='flex gap-12 items-start'>
@@ -226,15 +227,29 @@ export default function CentrosSalud() {
                         height={80} />
                         <div>
                             <p className='text-zinc-500 text-xs uppercase'>{centroActivo.ciudad}</p>
-                            <h2 className="text-xl font-bold text-emerald-600">
-                                <span className='capitalize'>{centroActivo.tipo}</span> {centroActivo.nombre}
+                            <h2 className="text-xl font-bold text-amber-600">
+                                <span className='capitalize text-pretty'>{centroActivo.tipo}</span> {centroActivo.nombre}
                             </h2>
-                            <p className="text-zinc-500">{centroActivo.direccion}</p>
-                            <ul className="text-zinc-500 text-sm mt-2">
-                                {centroActivo.telefonos.map(telefono => (
-                                    <li key={telefono}>{telefono}</li>
-                                ))}
-                            </ul>
+                            <div className='mt-4 flex items-center gap-2'>
+                            <Image
+                                src={'/ubicacion.svg'}
+                                alt="img teléfono"
+                                width={36}
+                                height={36} />
+                                <p className="text-zinc-500">{centroActivo.direccion}</p>
+                            </div>
+                            <div className='mt-2 flex items-center gap-2'>
+                                <Image
+                                src={'/manotelefono.svg'}
+                                alt="img teléfono"
+                                width={36}
+                                height={36} />
+                                <ul className="text-zinc-500 text-sm mt-2">
+                                    {centroActivo.telefonos.map(telefono => (
+                                        <li key={telefono}>{telefono}</li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -247,9 +262,9 @@ export default function CentrosSalud() {
                               <Image
                               src={`/especialidades/${crearSlug(especialidad)}.svg`}
                               alt={`especialidad ${especialidad}`}
-                              height={24}
-                              width={24} />
-                              <p key={especialidad} className="text-sm text-zinc-600">{especialidad}</p>
+                              height={18}
+                              width={18} />
+                              <p key={especialidad} className="text-xs text-zinc-600">{especialidad}</p>
                           </div>
                           )))
                         : <p className="text-sm text-zinc-500">No hay especialidades definidas</p>
@@ -278,7 +293,7 @@ export default function CentrosSalud() {
                         ))}
                     </ul>
                     }
-                    
+
                 </div>
             </div>
             )}

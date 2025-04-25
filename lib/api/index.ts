@@ -204,8 +204,8 @@ const zonasSanitarias: ZonasSanitarias = {
             "nombre": "Lucila del Mar",
             "tipo": "unidad sanitaria",
             "ciudad": "Lucila del Mar",
-            "direccion": "Avenida Talas del Tuyú y Avenida XV",
-            "telefonos": ["0224615506248"]
+            "direccion": "Mendoza 5130",
+            "telefonos": ["02257462305", "02257635679"]
             },
             {
             "id": "12",

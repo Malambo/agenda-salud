@@ -18,8 +18,8 @@ export default function TarjetaGeneral({url, urlIcono, titulo, descripcion}: Tar
             className="
             group
             p-8 rounded shadow
-            bg-[#e8faf0]
-            border border-emerald-600
+            bg-emerald-50
+            border border-emerald-200
             hover:border-emerald-800
             hover:bg-gradient-to-br hover:from-emerald-50 hover:via-emerald-50 hover:to-emerald-100
             hover:shadow-lg

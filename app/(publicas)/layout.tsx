@@ -12,6 +12,7 @@ export default function LayoutCategorias({children}: Readonly<{children: React.R
                 <div className='sticky top-0 z-10 py-4 px-8 bg-emerald-50/90 border-b border-zinc-400 flex justify-end'>
                     <p>navegación</p>
                 </div>
+
                 <section className="my-32 px-8 sm:px-24">
                     {children}
                 </section>
@@ -19,4 +20,3 @@ export default function LayoutCategorias({children}: Readonly<{children: React.R
         </div>
     )
 }
-
