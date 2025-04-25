@@ -240,9 +240,7 @@ export default function CentrosSalud() {
                 </div>
 
                 <div className='w-2/3'>
-                {/* <div className='flex gap-12 px-6 py-4 shadow-md rounded bg-emerald-50 border border-emerald-600'> */}
                     <div className='mb-8 flex flex-wrap gap-2'>
-                        {/* <h3 className="font-medium mb-2">Especialidades disponibles</h3> */}
                         {especialidadesCentro.length > 0
                         ? (especialidadesCentro.map(especialidad => (
                           <div key={especialidad} className='px-6 py-2 flex gap-2 items-center bg-emerald-100 border rounded-full border-emerald-400'>
