@@ -193,10 +193,10 @@ export default function CentrosSalud() {
                                         handleCentroChange(centro, zonaSeleccionada.nombreZona)
                                     }}>
                                     <Image
-                                        src={centro.urlIcon}
-                                        alt={centro.nombre}
-                                        width={18}
-                                        height={18} />
+                                    src={centro.urlIcon}
+                                    alt={centro.nombre}
+                                    width={18}
+                                    height={18} />
                                     <p className="truncate capitalize">
                                         {centro.tipo} {centro.nombre}
                                     </p>
