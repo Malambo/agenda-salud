@@ -44,7 +44,7 @@ export default function CentrosSalud() {
             const especialidades = centroDetallado?.id ?
                 await api.traeEspecialidadesPorCentro(centroDetallado.id) 
                 : []
-            setCentroActivo(centroDetallado ?? centro)
+            setCentroActivo(centroDetallado)
             setZonaActiva(nombreZona)
             setEspecialidadesCentro(especialidades)
             return true
@@ -136,7 +136,11 @@ export default function CentrosSalud() {
     const zonaSeleccionada = zonaActiva ?
         datos?.zonas.find(z => z.nombreZona === zonaActiva) 
         : datos?.zonas[0]
-
+    
+    const handleZona = (nombreZona: string) => {
+        setZonaActiva(nombreZona)
+        setCentroActivo(null)
+    }
     return (
         <div className="w-full mx-auto border-t border-emerald-500 flex flex-col items-center">
             <Carousel 
@@ -148,7 +152,7 @@ export default function CentrosSalud() {
                     <CarouselItem key={zona.nombreZona} className="pl-1 basis-1/2 sm:basis-1/4">
                         <button
                         type="button"
-                        onClick={() => setZonaActiva(zona.nombreZona)}
+                        onClick={() => handleZona(zona.nombreZona)}
                         className={`uppercase font-light text-center w-full py-2 transition-colors duration-300 ${
                             zonaActiva === zona.nombreZona
                                 ? "bg-emerald-600 text-white font-normal"
@@ -212,6 +216,14 @@ export default function CentrosSalud() {
             )}
 
             {centroActivo && (
+                <AnimatePresence mode="wait">
+                <motion.div
+                key={zonaActiva || 'default'}
+                initial={{opacity: 0, scale: 0}}
+                animate={{opacity: 1, scale: 1}}
+                exit={{opacity: 1, scale: 1}}
+                // transition={{duration: 0.3}}
+                >
             <div className="
             w-full
             p-8 border border-t-0
@@ -220,6 +232,7 @@ export default function CentrosSalud() {
             flex gap-36 items-start justify-between">
                 <div className='w-1/3 flex flex-col gap-8'>
                     <div className='flex gap-12 items-start'>
+                        
                         <Image
                         src={centroActivo.urlIcon}
                         alt="img centro de salud"
@@ -251,6 +264,7 @@ export default function CentrosSalud() {
                                 </ul>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
 
@@ -296,6 +310,8 @@ export default function CentrosSalud() {
 
                 </div>
             </div>
+            </motion.div>
+            </AnimatePresence>
             )}
         </div>
     )
