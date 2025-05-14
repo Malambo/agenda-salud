@@ -118,11 +118,6 @@ export default function CentrosSalud() {
         }
     }, [centroActivo, zonaActiva, cargando, scrollToActiveItem])
 
-    const handleZonaChange = async (nombreZona: string) => {
-        setZonaActiva(nombreZona)
-        setCentroActivo(null)
-    }
-
     const handleCentroChange = async (centro: CentroSalud, nombreZona: string) => {
         setCargando(true)
         await cargarCentroCompleto(centro, nombreZona)
