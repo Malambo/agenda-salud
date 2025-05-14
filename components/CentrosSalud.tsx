@@ -42,7 +42,6 @@ export default function CentrosSalud() {
 
     // Función para cargar centro de salud
     const cargarCentroCompleto = useCallback(async (centro: CentroSalud, nombreZona: string) => {
-<<<<<<< HEAD
         try {
             const centroDetallado = await api.traeCentroPorUrl(crearSlug(centro.nombre))
             const especialidades = centroDetallado?.id ?
@@ -60,24 +59,6 @@ export default function CentrosSalud() {
             return false
         }
     }, [])
-=======
-    try {
-        const centroDetallado = await api.traeCentroPorUrl(crearSlug(centro.nombre))
-        const especialidades = centroDetallado?.id ? 
-        await api.traeEspecialidadesPorCentro(centroDetallado.id) : []
-        
-        setCentroActivo(centroDetallado ?? centro)
-        setZonaActiva(nombreZona)
-        setEspecialidadesCentro(especialidades)
-        return true
-    } catch (error) {
-        console.error("Error al cargar los detalles del centro:", error)
-        setCentroActivo(centro)
-        setZonaActiva(nombreZona)
-        setEspecialidadesCentro([])
-        return false
-    }}, [])
->>>>>>> 503db3f76cc8eabc1ac949dbaab937f3d4793c21
 
     // Cargar zonas al inicio
     useEffect(() => {
@@ -150,7 +131,6 @@ export default function CentrosSalud() {
 
     if (cargando) return <div className="text-center py-8">Cargando datos...</div>
 
-<<<<<<< HEAD
     const zonaSeleccionada = zonaActiva ?
         datos?.zonas.find(z => z.nombreZona === zonaActiva) 
         : datos?.zonas[0]
@@ -159,10 +139,6 @@ export default function CentrosSalud() {
         setZonaActiva(nombreZona)
         setCentroActivo(null)
     }
-=======
-    const zonaSeleccionada = datos?.zonas.find(z => z.nombreZona === zonaActiva) || datos?.zonas[0]
-
->>>>>>> 503db3f76cc8eabc1ac949dbaab937f3d4793c21
     return (
         <div className="w-full mx-auto border-t border-emerald-500 flex flex-col items-center">
             {/* Carousel de zonas */}
@@ -175,7 +151,6 @@ export default function CentrosSalud() {
                     <CarouselItem key={zona.nombreZona} className="pl-1 basis-1/2 sm:basis-1/4">
                         <button
                         type="button"
-<<<<<<< HEAD
                         onClick={() => handleZona(zona.nombreZona)}
                         className={`uppercase font-light text-center w-full py-2 transition-colors duration-300 ${
                             zonaActiva === zona.nombreZona
@@ -183,16 +158,6 @@ export default function CentrosSalud() {
                                 : "bg-transparent text-zinc-600 hover:text-emerald-800"
                         }`}
                         data-zona-nombre={zona.nombreZona}>
-=======
-                        onClick={() => handleZonaChange(zona.nombreZona)}
-                        data-zona-nombre={zona.nombreZona}
-                        className={`
-                        w-full py-2 uppercase font-light hover:font-normal text-center transition-colors duration-300 ${
-                        zonaActiva === zona.nombreZona ?
-                        "bg-emerald-600 text-white font-normal"
-                        : "bg-transparent text-zinc-600 hover:text-emerald-800"
-                        }`}>
->>>>>>> 503db3f76cc8eabc1ac949dbaab937f3d4793c21
                             {zona.nombreZona}
                         </button>
                     </CarouselItem>
