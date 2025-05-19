@@ -216,105 +216,103 @@ export default function CentrosSalud() {
 
             {/* Detalles del centro */}
             {centroActivo && (
-                <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait">
                 <motion.div
                 key={zonaActiva || 'default'}
                 initial={{opacity: 0, scale: 0}}
                 animate={{opacity: 1, scale: 1}}
                 exit={{opacity: 1, scale: 1}}
-                // transition={{duration: 0.3}}
-                >
-            <div className="
-            w-full
-            p-8 border border-t-0
-            border-emerald-500 bg-emerald-200/50 shadow
-            bg-gradient-to-b from-emerald-200/20 via-emerald-100 to-emerald-100
-            flex gap-36 items-start justify-between">
-                <div className='w-1/3 flex flex-col gap-8'>
-                    <div className='flex gap-12 items-start'>
-                        
-                        <Image
-                        src={centroActivo.urlIcon}
-                        alt="img centro de salud"
-                        width={80}
-                        height={80} />
-                        <div>
-                            <p className='text-zinc-500 text-xs uppercase'>{centroActivo.ciudad}</p>
-                            <h2 className="text-xl font-bold text-amber-600">
-                                <span className='capitalize text-pretty'>{centroActivo.tipo}</span> {centroActivo.nombre}
-                            </h2>
-                            <div className='mt-4 flex items-center gap-2'>
+                transition={{duration: 0.3}}>
+                    <div className="
+                    w-full
+                    p-8 border border-t-0
+                    border-emerald-500 bg-emerald-200/50 shadow
+                    bg-gradient-to-b from-emerald-200/20 via-emerald-100 to-emerald-100
+                    flex gap-36 items-start justify-between">
+                        <div className='w-1/3 flex flex-col gap-8'>
+                            <div className='flex gap-12 items-start'>
                                 <Image
-                                src={'/ubicacion.svg'}
-                                alt="img teléfono"
-                                width={28}
-                                height={28} />
-                                <p className="text-zinc-500">{centroActivo.direccion}</p>
-                            </div>
-                            <div className='mt-2 flex items-center gap-2'>
-                                <Image
-                                src={'/manotelefono.svg'}
-                                alt="img teléfono"
-                                width={36}
-                                height={36} />
-                                <ul className="text-zinc-500 text-sm mt-2">
-                                {centroActivo.telefonos.map(telefono => (
-                                    <li key={telefono}>{telefono}</li>
-                                ))}
-                                </ul>
+                                src={centroActivo.urlIcon}
+                                alt="img centro de salud"
+                                width={80}
+                                height={80} />
+                                <div>
+                                    <p className='text-zinc-500 text-xs uppercase'>{centroActivo.ciudad}</p>
+                                    <h2 className="text-xl font-bold text-amber-600">
+                                        <span className='capitalize text-pretty'>{centroActivo.tipo}</span> {centroActivo.nombre}
+                                    </h2>
+                                    <div className='mt-4 flex items-center gap-2'>
+                                        <Image
+                                        src={'/ubicacion.svg'}
+                                        alt="img teléfono"
+                                        width={28}
+                                        height={28} />
+                                        <p className="text-zinc-500">{centroActivo.direccion}</p>
+                                    </div>
+                                    <div className='mt-2 flex items-center gap-2'>
+                                        <Image
+                                        src={'/manotelefono.svg'}
+                                        alt="img teléfono"
+                                        width={36}
+                                        height={36} />
+                                        <ul className="text-zinc-500 text-sm mt-2">
+                                        {centroActivo.telefonos.map(telefono => (
+                                            <li key={telefono}>{telefono}</li>
+                                        ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
-                        
-                    </div>
-                </div>
 
-                <div className='w-2/3'>
-                    <div className='mb-8 flex flex-wrap gap-2'>
-                        {especialidadesCentro.length > 0 ? (
-                        especialidadesCentro.map(especialidad => (
-                            <div
-                            key={especialidad}
-                            className='
-                            px-6 py-2 flex gap-2 items-center
-                            bg-emerald-100 border rounded-full border-emerald-400'>
-                                <Image
-                                src={`/especialidades/${crearSlug(especialidad)}.svg`}
-                                alt={`especialidad ${especialidad}`}
-                                height={18}
-                                width={18} />
-                                <p className="text-xs text-zinc-600">{especialidad}</p>
+                        <div className='w-2/3'>
+                            <div className='mb-8 flex flex-wrap gap-2'>
+                                {especialidadesCentro.length > 0 ? (
+                                especialidadesCentro.map(especialidad => (
+                                    <div
+                                    key={especialidad}
+                                    className='
+                                    px-6 py-2 flex gap-2 items-center
+                                    bg-emerald-100 border rounded-full border-emerald-400'>
+                                        <Image
+                                        src={`/especialidades/${crearSlug(especialidad)}.svg`}
+                                        alt={`especialidad ${especialidad}`}
+                                        height={18}
+                                        width={18} />
+                                        <p className="text-xs text-zinc-600">{especialidad}</p>
+                                    </div>
+                                ))
+                                )
+                                : (<p className="text-sm text-zinc-500">No hay especialidades definidas</p>)
+                                }
                             </div>
-                        ))
-                        )
-                        : (<p className="text-sm text-zinc-500">No hay especialidades definidas</p>)
-                        }
-                    </div>
 
-                    {turnos.find(turno => turno.idCentroSalud === centroActivo.id) && (
-                    <ul className='mt-0 px-6 py-4 flex gap-4 flex-wrap shadow-md bg-emerald-50 border border-emerald-200'>
-                    <p className="font-medium mb-2 text-emerald-600">Turnos</p>
-                    {turnos.map(turno => (
-                        <li key={turno.id} className='grow border-l pl-2 border-emerald-600'>
-                        <p className='font-bold'>{turno.id}</p>
-                        {turno.diasSemana?.map(dia => (<span key={dia}>{dia} </span>))}
-                        <p>Especialidad: {turno.idEspecialidad}</p>
-                        <p>Profesional: {turno.idProfesional}</p>
-                        <ul>
-                            <li>{turno.fechaInicio} {turno.fechaFin}</li>
-                            <li>{turno.activo ? 'activo' : 'no disponible'}</li>
-                            <li>{turno.fecha}</li>
-                            <li>{turno.horaInicio} - {turno.horaFin}</li>
-                            <li>Duración: {turno.duracionTurno} minutos</li>
-                            <li>{turno.tipoRecurrencia}</li>
-                            <li>{turno.notas}</li>
-                        </ul>
-                        </li>
-                    ))}
-                    </ul>
-                    )}
-                </div>
-            </div>
-            </motion.div>
+                            {turnos.find(turno => turno.idCentroSalud === centroActivo.id) && (
+                            <ul className='mt-0 px-6 py-4 flex gap-4 flex-wrap shadow-md bg-emerald-50 border border-emerald-200'>
+                            <p className="font-medium mb-2 text-emerald-600">Turnos</p>
+                            {turnos.map(turno => (
+                                <li key={turno.id} className='grow border-l pl-2 border-emerald-600'>
+                                <p className='font-bold'>{turno.id}</p>
+                                {turno.diasSemana?.map(dia => (<span key={dia}>{dia} </span>))}
+                                <p>Especialidad: {turno.idEspecialidad}</p>
+                                <p>Profesional: {turno.idProfesional}</p>
+                                <ul>
+                                    <li>{turno.fechaInicio} {turno.fechaFin}</li>
+                                    <li>{turno.activo ? 'activo' : 'no disponible'}</li>
+                                    <li>{turno.fecha}</li>
+                                    <li>{turno.horaInicio} - {turno.horaFin}</li>
+                                    <li>Duración: {turno.duracionTurno} minutos</li>
+                                    <li>{turno.tipoRecurrencia}</li>
+                                    <li>{turno.notas}</li>
+                                </ul>
+                                </li>
+                            ))}
+                            </ul>
+                            )}
+                        </div>
+                    </div>
+                </motion.div>
             </AnimatePresence>
             )}
         </div>

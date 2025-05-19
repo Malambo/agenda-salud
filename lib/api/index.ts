@@ -4,7 +4,7 @@ export interface CentroSalud {
     id:             string
     urlIcon:        string
     nombre:         string
-    tipo:           'hospital' | 'caps' | 'unidad sanitaria'
+    tipo:           'hospital' | 'CAPS' | 'unidad sanitaria'
     direccion:      string
     ciudad:         string
     telefonos:      string[]
@@ -100,7 +100,7 @@ const zonasSanitarias: ZonasSanitarias = {
             "id": "2",
             "urlIcon": "/CentroMedico.svg",
             "nombre": "Juan XXIII",
-            "tipo": "caps",
+            "tipo": "CAPS",
             "ciudad": "San Clemente",
             "direccion": "Calle 10 y Avenida I",
             "telefonos": ["02252422525"]
@@ -109,7 +109,7 @@ const zonasSanitarias: ZonasSanitarias = {
             "id": "3",
             "urlIcon": "/CentroMedico.svg",
             "nombre": "Barrio San Martín",
-            "tipo": "caps",
+            "tipo": "CAPS",
             "ciudad": "San Clemente",
             "direccion": "Calle 10 e/ 37 y 38",
             "telefonos": ["022521558"]
@@ -118,7 +118,7 @@ const zonasSanitarias: ZonasSanitarias = {
             "id": "4",
             "urlIcon": "/CentroMedico.svg",
             "nombre": "El Tala",
-            "tipo": "caps",
+            "tipo": "CAPS",
             "ciudad": "San Clemente",
             "direccion": "Avenida Talas del Tuyú y Avenida XV",
             "telefonos": ["0224615506248"]
@@ -151,7 +151,7 @@ const zonasSanitarias: ZonasSanitarias = {
             "id": "6",
             "urlIcon": "/CentroMedico.svg",
             "nombre": "Barrio Parque Golf",
-            "tipo": "caps",
+            "tipo": "CAPS",
             "ciudad": "Santa Teresita",
             "direccion": "Calle 124 y calle 103",
             "telefonos": ["02246422815"]
@@ -160,7 +160,7 @@ const zonasSanitarias: ZonasSanitarias = {
             "id": "7",
             "urlIcon": "/CentroMedico.svg",
             "nombre": "Barrio Las Quintas",
-            "tipo": "caps",
+            "tipo": "CAPS",
             "ciudad": "Santa Teresita",
             "direccion": "Calle 16 e/ 41 y 42",
             "telefonos": ["02246421989"]
@@ -193,7 +193,7 @@ const zonasSanitarias: ZonasSanitarias = {
             "id": "10",
             "urlIcon": "/CentroMedico.svg",
             "nombre": "Aguas Verdes",
-            "tipo": "caps",
+            "tipo": "CAPS",
             "ciudad": "Aguas Verdes",
             "direccion": "Destructor San Juan 535",
             "telefonos": ["02257462613"]
@@ -211,7 +211,7 @@ const zonasSanitarias: ZonasSanitarias = {
             "id": "12",
             "urlIcon": "/CentroMedico.svg",
             "nombre": "San Bernardo",
-            "tipo": "caps",
+            "tipo": "CAPS",
             "ciudad": "San Bernardo",
             "direccion": "Falkner y Jujuy",
             "telefonos": ["0224615506248"]
@@ -226,7 +226,7 @@ const zonasSanitarias: ZonasSanitarias = {
             "id": "13",
             "urlIcon": "/CentroMedico.svg",
             "nombre": "Costa Esmeralda",
-            "tipo": "caps",
+            "tipo": "CAPS",
             "ciudad": "Costa Esmeralda",
             "direccion": "Costa Esmeralda Road",
             "telefonos": ["02254421132", "02254422303"]
