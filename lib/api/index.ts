@@ -4,7 +4,7 @@ export interface CentroSalud {
     id:             string
     urlIcon:        string
     nombre:         string
-    tipo:           'hospital' | 'caps' | 'unidad sanitaria'
+    tipo:           'hospital' | 'CAPS' | 'unidad sanitaria'
     direccion:      string
     ciudad:         string
     telefonos:      string[]
@@ -100,7 +100,7 @@ const zonasSanitarias: ZonasSanitarias = {
             "id": "2",
             "urlIcon": "/CentroMedico.svg",
             "nombre": "Juan XXIII",
-            "tipo": "caps",
+            "tipo": "CAPS",
             "ciudad": "San Clemente",
             "direccion": "Calle 10 y Avenida I",
             "telefonos": ["02252422525"]
@@ -109,7 +109,7 @@ const zonasSanitarias: ZonasSanitarias = {
             "id": "3",
             "urlIcon": "/CentroMedico.svg",
             "nombre": "Barrio San Martín",
-            "tipo": "caps",
+            "tipo": "CAPS",
             "ciudad": "San Clemente",
             "direccion": "Calle 10 e/ 37 y 38",
             "telefonos": ["022521558"]
@@ -118,7 +118,7 @@ const zonasSanitarias: ZonasSanitarias = {
             "id": "4",
             "urlIcon": "/CentroMedico.svg",
             "nombre": "El Tala",
-            "tipo": "caps",
+            "tipo": "CAPS",
             "ciudad": "San Clemente",
             "direccion": "Avenida Talas del Tuyú y Avenida XV",
             "telefonos": ["0224615506248"]
@@ -151,7 +151,7 @@ const zonasSanitarias: ZonasSanitarias = {
             "id": "6",
             "urlIcon": "/CentroMedico.svg",
             "nombre": "Barrio Parque Golf",
-            "tipo": "caps",
+            "tipo": "CAPS",
             "ciudad": "Santa Teresita",
             "direccion": "Calle 124 y calle 103",
             "telefonos": ["02246422815"]
@@ -160,7 +160,7 @@ const zonasSanitarias: ZonasSanitarias = {
             "id": "7",
             "urlIcon": "/CentroMedico.svg",
             "nombre": "Barrio Las Quintas",
-            "tipo": "caps",
+            "tipo": "CAPS",
             "ciudad": "Santa Teresita",
             "direccion": "Calle 16 e/ 41 y 42",
             "telefonos": ["02246421989"]
@@ -193,7 +193,7 @@ const zonasSanitarias: ZonasSanitarias = {
             "id": "10",
             "urlIcon": "/CentroMedico.svg",
             "nombre": "Aguas Verdes",
-            "tipo": "caps",
+            "tipo": "CAPS",
             "ciudad": "Aguas Verdes",
             "direccion": "Destructor San Juan 535",
             "telefonos": ["02257462613"]
@@ -211,7 +211,7 @@ const zonasSanitarias: ZonasSanitarias = {
             "id": "12",
             "urlIcon": "/CentroMedico.svg",
             "nombre": "San Bernardo",
-            "tipo": "caps",
+            "tipo": "CAPS",
             "ciudad": "San Bernardo",
             "direccion": "Falkner y Jujuy",
             "telefonos": ["0224615506248"]
@@ -226,7 +226,7 @@ const zonasSanitarias: ZonasSanitarias = {
             "id": "13",
             "urlIcon": "/CentroMedico.svg",
             "nombre": "Costa Esmeralda",
-            "tipo": "caps",
+            "tipo": "CAPS",
             "ciudad": "Costa Esmeralda",
             "direccion": "Costa Esmeralda Road",
             "telefonos": ["02254421132", "02254422303"]
@@ -292,7 +292,7 @@ const Profesionales: Profesional[] = [
   {id: '52', nombre: 'Dr. Martín Serrano', especialidades: ['2'], centrosSalud: ['6']},
   {id: '53', nombre: 'Dra. Andrea Villalobos', especialidades: ['3'], centrosSalud: ['7', '8']},
   {id: '54', nombre: 'Dr. Adrián Torres', especialidades: ['4'], centrosSalud: ['9']},
-  {id: '55', nombre: 'Dra. Pilar Delgado', especialidades: ['5', '21'], centrosSalud: ['10', '11']},
+  {id: '55', nombre: 'Dra. Pilar Delgado', especialidades: ['5', '21', '22'], centrosSalud: ['10', '11']},
   {id: '56', nombre: 'Dr. Germán Tapia', especialidades: ['6'], centrosSalud: ['12']},
   {id: '57', nombre: 'Dra. Mónica Barrios', especialidades: ['7'], centrosSalud: ['13', '14']},
   {id: '58', nombre: 'Dr. Luis Aragón', especialidades: ['8'], centrosSalud: ['1']},
@@ -341,7 +341,7 @@ const bloquesTurnos: BloqueTurnos[] = [
       horaFin: "12:00",
       duracionTurno: 20,
       maximoTurnos: 15,
-      intervaloEntreConsultas: 0,
+      intervaloEntreConsultas: 5,
       notas: null,
       activo: true
     },
@@ -490,21 +490,21 @@ const api = {
         try {
             // 1. Validar que el centro de salud exista (opcional, pero buena práctica)
             await api.traeCentroPorId(id) // Si no existe, `traeCentroPorId` lanzará un error capturable
-    
+
             // 2. Encontrar profesionales que trabajan en este centro de salud
             const profesionalesEnCentro = Profesionales.filter(profesional => profesional.centrosSalud.includes(id))
-    
+
             // 3. Obtener IDs de especialidades de estos profesionales
             const especialidadesIdsDeProfesionales = profesionalesEnCentro.flatMap(profesional => profesional.especialidades)
-    
+
             // 4. Obtener objetos de especialidades completos usando los IDs
             const especialidadesDelCentro = especialidades.filter(especialidad => especialidadesIdsDeProfesionales.includes(especialidad.id))
-    
+
             // 5. Extraer solo los nombres de las especialidades y eliminar duplicados
             const nombresEspecialidades = [...new Set(especialidadesDelCentro.map(especialidad => especialidad.nombre))]
-    
+
             return nombresEspecialidades
-    
+
         } catch (error) {
             console.error("Error al obtener especialidades del centro:", error)
             throw new Error(`Error al obtener especialidades del centro con id ${id}: ${error}`) // Relanzamos el error para que el componente/función que llame a esta función pueda manejarlo
@@ -549,7 +549,6 @@ const api = {
     // Obtener profesionales disponibles en una fecha específica
     traeProfesionalesDisponiblesEnFecha: async (fecha: string): Promise<Profesional[]> => {
         // Implementar la lógica de verificación de disponibilidad
-        // similar a la del componente React que te mostré
         const fechaObj = new Date(fecha)
         const profesionalesDisponibles: Profesional[] = []
         const profesionalesIds = new Set<string>()
@@ -586,11 +585,4 @@ const api = {
     }
 }
       
-// Función auxiliar para verificar disponibilidad de un bloque
-function verificarDisponibilidadBloque(bloque: BloqueTurnos, fecha: Date): boolean {
-// Implementar la lógica similar a la del componente React
-// ...
-}
-
-
 export default api
