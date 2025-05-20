@@ -511,6 +511,12 @@ const api = {
         }
     },
 
+    // Obtener los nombres de todas las especialidades de cada profesional
+    traeEspecialidadesPorProfesional: async (id: string): Promise<string[]> => {
+        const profesional = await api.traeProfesional(id)
+        return profesional.especialidades
+    },
+
     // Obtener todas las categorías
     listaCategorias: async (): Promise<Categorias[]> => {
         return categorias

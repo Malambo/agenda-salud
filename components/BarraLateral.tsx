@@ -8,7 +8,9 @@ import Link                 from "next/link"
 import Image                from "next/image"
 import {User, Search}       from "lucide-react"
 import api                  from "@/lib/api"
-import {crearSlug, mapearRelacionados} from "@/lib/utils"
+import {
+    crearSlug,
+    mapearRelacionados}     from "@/lib/utils"
 import {
     Accordion,
     AccordionContent,
@@ -150,7 +152,7 @@ export default function BarraLateral(){
 
                 <AccordionItem value={'5'}>
                     <div className={`sticky top-52 ${paginaActiva === 'profesionales' ? 'bg-emerald-100' : 'bg-gradient-to-r from-emerald-50 to-emerald-100'}`}>
-                        <MiAccordionTrigger url={'/profesionales'} urlIcono={'/Profesionales.svg'} titulo={'Profesionales en centros'}/>
+                        <MiAccordionTrigger url={'/profesionales'} urlIcono={'/Profesionales.svg'} titulo={'Profesionales por centro'}/>
                     </div>
                     <AccordionContent>
                         <Accordion type="single" collapsible className='bg-[#e8faf0] rounded text-zinc-800 p-4'>
@@ -163,12 +165,12 @@ export default function BarraLateral(){
                                         </AccordionTrigger>
                                     </div>
                                     {centro.relacionados.map(idProf=>{
-                                        const profesionalNombre = profesionalesMap.get(idProf)
-                                        return(
-                                            <AccordionContent key={idProf} className='flex gap-2 px-2 text-sm text-zinc-700'>
-                                                <User className="size-4"/> {profesionalNombre?.split('. ')[1]}
-                                            </AccordionContent>
-                                        )
+                                    const profesionalNombre = profesionalesMap.get(idProf)
+                                    return(
+                                        <AccordionContent key={idProf} className='flex gap-2 px-2 text-sm text-zinc-700'>
+                                            <User className="size-4"/> {profesionalNombre?.split('. ')[1]}
+                                        </AccordionContent>
+                                    )
                                     })}
                                 </AccordionItem>
                             ))}
@@ -188,10 +190,10 @@ export default function BarraLateral(){
                                         <User className='size-4'/>
                                         <AccordionTrigger className='font-medium'>{profesional.nombre}</AccordionTrigger>
                                     </div>
-                                    {profesional.especialidades.map(idProf=>(
-                                        <AccordionContent key={idProf} className='text-sm px-4'>
-                                            {especialidades.find(especialidad=>especialidad.id === idProf)?.nombre}
-                                        </AccordionContent>
+                                    {profesional.especialidades.map(idEspProf=>(
+                                    <AccordionContent key={idEspProf} className='text-sm px-4'>
+                                        {especialidades.find(especialidad => especialidad.id === idEspProf)?.nombre}
+                                    </AccordionContent>
                                     ))}
                                 </AccordionItem>
                             ))}

@@ -63,27 +63,26 @@ export default function CentrosSalud() {
     // Cargar zonas al inicio
     useEffect(() => {
         const cargarZonas = async () => {
-        try {
-            setCargando(true)
-            const zonasSanitarias = await api.listaZonasSanitarias()
-            setDatos(zonasSanitarias)
-            
-            if (zonasSanitarias.zonas.length > 0) {
-                const zonaCorrespondiente = zonaPath ?
-                zonasSanitarias.zonas.find(z => crearSlug(z.nombreZona) === zonaPath) :
-                zonasSanitarias.zonas[0]
+            try {
+                setCargando(true)
+                const zonasSanitarias = await api.listaZonasSanitarias()
+                setDatos(zonasSanitarias)
                 
-                if (zonaCorrespondiente) {
-                setZonaActiva(zonaCorrespondiente.nombreZona)
-                } else {
-                setZonaActiva(zonasSanitarias.zonas[0].nombreZona)
+                if (zonasSanitarias.zonas.length > 0) {
+                    const zonaCorrespondiente = zonaPath ?
+                    zonasSanitarias.zonas.find(z => crearSlug(z.nombreZona) === zonaPath)
+                    : zonasSanitarias.zonas[0]
+                    
+                    if (zonaCorrespondiente) {
+                        setZonaActiva(zonaCorrespondiente.nombreZona)
+                    } else {
+                        setZonaActiva(zonasSanitarias.zonas[0].nombreZona)
+                    }
                 }
             }
-        } catch (error) {
-            console.error("Error al cargar las zonas sanitarias:", error)
-        } finally {
-            setCargando(false)
-        }}
+            catch (error) {console.error("Error al cargar las zonas sanitarias:", error)}
+            finally {setCargando(false)}
+        }
         cargarZonas()
     }, [zonaPath])
 
@@ -91,8 +90,8 @@ export default function CentrosSalud() {
     useEffect(() => {
         if (centroActivo?.id) {
             api.traeBloquesTurnosPorCentro(centroActivo.id)
-            .then(setTurnos)
-            .catch(err => console.error("Error al cargar turnos:", err))
+                .then(setTurnos)
+                .catch(err => console.error("Error al cargar turnos:", err))
         }
     }, [centroActivo])
 
@@ -134,6 +133,7 @@ export default function CentrosSalud() {
         setZonaActiva(nombreZona)
         setCentroActivo(null)
     }
+    
     return (
         <div className="w-full mx-auto border-t border-emerald-500 flex flex-col items-center">
             {/* Carousel de zonas */}
@@ -290,24 +290,24 @@ export default function CentrosSalud() {
 
                             {turnos.find(turno => turno.idCentroSalud === centroActivo.id) && (
                             <ul className='mt-0 px-6 py-4 flex gap-4 flex-wrap shadow-md bg-emerald-50 border border-emerald-200'>
-                            <p className="font-medium mb-2 text-emerald-600">Turnos</p>
-                            {turnos.map(turno => (
+                                <p className="font-medium mb-2 text-emerald-600">Turnos</p>
+                                {turnos.map(turno => (
                                 <li key={turno.id} className='grow border-l pl-2 border-emerald-600'>
-                                <p className='font-bold'>{turno.id}</p>
-                                {turno.diasSemana?.map(dia => (<span key={dia}>{dia} </span>))}
-                                <p>Especialidad: {turno.idEspecialidad}</p>
-                                <p>Profesional: {turno.idProfesional}</p>
-                                <ul>
-                                    <li>{turno.fechaInicio} {turno.fechaFin}</li>
-                                    <li>{turno.activo ? 'activo' : 'no disponible'}</li>
-                                    <li>{turno.fecha}</li>
-                                    <li>{turno.horaInicio} - {turno.horaFin}</li>
-                                    <li>Duración: {turno.duracionTurno} minutos</li>
-                                    <li>{turno.tipoRecurrencia}</li>
-                                    <li>{turno.notas}</li>
-                                </ul>
+                                    <p className='font-bold'>{turno.id}</p>
+                                    {turno.diasSemana?.map(dia => (<span key={dia}>{dia} </span>))}
+                                    <p>Especialidad: {turno.idEspecialidad}</p>
+                                    <p>Profesional: {turno.idProfesional}</p>
+                                    <ul>
+                                        <li>{turno.fechaInicio} {turno.fechaFin}</li>
+                                        <li>{turno.activo ? 'activo' : 'no disponible'}</li>
+                                        <li>{turno.fecha}</li>
+                                        <li>{turno.horaInicio} - {turno.horaFin}</li>
+                                        <li>Duración: {turno.duracionTurno} minutos</li>
+                                        <li>{turno.tipoRecurrencia}</li>
+                                        <li>{turno.notas}</li>
+                                    </ul>
                                 </li>
-                            ))}
+                                ))}
                             </ul>
                             )}
                         </div>
