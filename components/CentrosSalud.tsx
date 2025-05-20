@@ -222,12 +222,7 @@ export default function CentrosSalud() {
                 initial={{opacity: 0, scale: 0}}
                 animate={{opacity: 1, scale: 1}}
                 exit={{opacity: 1, scale: 1}}
-<<<<<<< HEAD
-                // transition={{duration: 0.3}}
-                >
-=======
                 transition={{duration: 0.3}}>
->>>>>>> f319343ca2a619560f682adf4b3920691c621b10
                     <div className="
                     w-full
                     p-8 border border-t-0
@@ -236,10 +231,6 @@ export default function CentrosSalud() {
                     flex gap-36 items-start justify-between">
                         <div className='w-1/3 flex flex-col gap-8'>
                             <div className='flex gap-12 items-start'>
-<<<<<<< HEAD
-                                
-=======
->>>>>>> f319343ca2a619560f682adf4b3920691c621b10
                                 <Image
                                 src={centroActivo.urlIcon}
                                 alt="img centro de salud"
@@ -299,26 +290,6 @@ export default function CentrosSalud() {
 
                             {turnos.find(turno => turno.idCentroSalud === centroActivo.id) && (
                             <ul className='mt-0 px-6 py-4 flex gap-4 flex-wrap shadow-md bg-emerald-50 border border-emerald-200'>
-<<<<<<< HEAD
-                                <p className="font-medium mb-2 text-emerald-600">Turnos</p>
-                                {turnos.map(turno => (
-                                <li key={turno.id} className='grow border-l pl-2 border-emerald-600'>
-                                    <p className='font-bold'>{turno.id}</p>
-                                    {turno.diasSemana?.map(dia => (<span key={dia}>{dia} </span>))}
-                                    <p>Especialidad: {turno.idEspecialidad}</p>
-                                    <p>Profesional: {turno.idProfesional}</p>
-                                    <ul>
-                                        <li>{turno.fechaInicio} {turno.fechaFin}</li>
-                                        <li>{turno.activo ? 'activo' : 'no disponible'}</li>
-                                        <li>{turno.fecha}</li>
-                                        <li>{turno.horaInicio} - {turno.horaFin}</li>
-                                        <li>Duración: {turno.duracionTurno} minutos</li>
-                                        <li>{turno.tipoRecurrencia}</li>
-                                        <li>{turno.notas}</li>
-                                    </ul>
-                                </li>
-                                ))}
-=======
                             <p className="font-medium mb-2 text-emerald-600">Turnos</p>
                             {turnos.map(turno => (
                                 <li key={turno.id} className='grow border-l pl-2 border-emerald-600'>
@@ -337,7 +308,6 @@ export default function CentrosSalud() {
                                 </ul>
                                 </li>
                             ))}
->>>>>>> f319343ca2a619560f682adf4b3920691c621b10
                             </ul>
                             )}
                         </div>
