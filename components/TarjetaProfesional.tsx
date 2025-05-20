@@ -30,7 +30,7 @@ export default async function TarjetaProfesional({idProfesional}: TarjetaProfesi
 
 
     return (
-        <Accordion type="single" collapsible>
+        <Accordion type="single" collapsible className='rounded-md bg-white shadow'>
             <AccordionItem value={'0'}>
                 <div className='sticky top-52 bg-gradient-to-r from-emerald-50 to-emerald-100'>
                     <MiAccordionTrigger url={'/profesionales'} urlIcono={'/Profesionales.svg'} titulo={profesional.nombre}/>
