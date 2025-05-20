@@ -1,6 +1,7 @@
 import api from '@/lib/api'
 import TitularPagina from '@/components/ui/TitularPagina'
 import TarjeteroEspecialidades from '@/components/TarjeteroEspecialidades'
+import TarjeteroProfesionales from '@/components/TarjeteroProfesionales'
 import CentrosSalud from '@/components/CentrosSalud'
 
 
@@ -16,13 +17,7 @@ export default async function CategoriaPage({params}: {params: Promise<{slug: st
             <div className='container sm:mt-24'>
                 {slug[0] === 'centro-salud' && (<CentrosSalud />)}
                 {slug[0] === 'especialidades' && <TarjeteroEspecialidades />}
-                {slug[0] === 'profesionales' && (
-                <div className='flex justify-center'>
-                    <p className='font-bold text-orange-600 uppercase'>
-                        {slug[0]} {slug[1]}
-                    </p>
-                </div>
-                )}
+                {slug[0] === 'profesionales' && (<TarjeteroProfesionales />)}
             </div>
         </div>
     )

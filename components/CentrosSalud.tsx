@@ -222,7 +222,8 @@ export default function CentrosSalud() {
                 initial={{opacity: 0, scale: 0}}
                 animate={{opacity: 1, scale: 1}}
                 exit={{opacity: 1, scale: 1}}
-                transition={{duration: 0.3}}>
+                // transition={{duration: 0.3}}
+                >
                     <div className="
                     w-full
                     p-8 border border-t-0
@@ -256,9 +257,9 @@ export default function CentrosSalud() {
                                         width={36}
                                         height={36} />
                                         <ul className="text-zinc-500 text-sm mt-2">
-                                        {centroActivo.telefonos.map(telefono => (
+                                            {centroActivo.telefonos.map(telefono => (
                                             <li key={telefono}>{telefono}</li>
-                                        ))}
+                                            ))}
                                         </ul>
                                     </div>
                                 </div>
@@ -269,22 +270,23 @@ export default function CentrosSalud() {
                         <div className='w-2/3'>
                             <div className='mb-8 flex flex-wrap gap-2'>
                                 {especialidadesCentro.length > 0 ? (
-                                especialidadesCentro.map(especialidad => (
-                                    <div
-                                    key={especialidad}
-                                    className='
-                                    px-6 py-2 flex gap-2 items-center
-                                    bg-emerald-100 border rounded-full border-emerald-400'>
-                                        <Image
-                                        src={`/especialidades/${crearSlug(especialidad)}.svg`}
-                                        alt={`especialidad ${especialidad}`}
-                                        height={18}
-                                        width={18} />
-                                        <p className="text-xs text-zinc-600">{especialidad}</p>
-                                    </div>
-                                ))
+                                    especialidadesCentro.map(especialidad => (
+                                        <div
+                                        key={especialidad}
+                                        className='
+                                        px-6 py-2 flex gap-2 items-center
+                                        bg-emerald-100 border rounded-full border-emerald-400
+                                        hover:contrast-150 cursor-pointer'>
+                                            <Image
+                                            src={`/especialidades/${crearSlug(especialidad)}.svg`}
+                                            alt={`especialidad ${especialidad}`}
+                                            height={18}
+                                            width={18} />
+                                            <p className="text-xs text-zinc-600">{especialidad}</p>
+                                        </div>
+                                    ))
                                 )
-                                : (<p className="text-sm text-zinc-500">No hay especialidades definidas</p>)
+                                : <p className="text-sm text-zinc-500">No hay especialidades definidas</p>
                                 }
                             </div>
 

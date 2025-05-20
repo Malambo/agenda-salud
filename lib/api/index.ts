@@ -25,7 +25,7 @@ export interface Profesional {
     id:             string
     nombre:         string
     especialidades: string[]
-    [key: string]:  string | string[]
+    centrosSalud:  string[]
 }
 
 export interface Especialidad {
@@ -292,7 +292,7 @@ const Profesionales: Profesional[] = [
   {id: '52', nombre: 'Dr. Martín Serrano', especialidades: ['2'], centrosSalud: ['6']},
   {id: '53', nombre: 'Dra. Andrea Villalobos', especialidades: ['3'], centrosSalud: ['7', '8']},
   {id: '54', nombre: 'Dr. Adrián Torres', especialidades: ['4'], centrosSalud: ['9']},
-  {id: '55', nombre: 'Dra. Pilar Delgado', especialidades: ['5', '21'], centrosSalud: ['10', '11']},
+  {id: '55', nombre: 'Dra. Pilar Delgado', especialidades: ['5', '21', '22'], centrosSalud: ['10', '11']},
   {id: '56', nombre: 'Dr. Germán Tapia', especialidades: ['6'], centrosSalud: ['12']},
   {id: '57', nombre: 'Dra. Mónica Barrios', especialidades: ['7'], centrosSalud: ['13', '14']},
   {id: '58', nombre: 'Dr. Luis Aragón', especialidades: ['8'], centrosSalud: ['1']},
@@ -341,7 +341,7 @@ const bloquesTurnos: BloqueTurnos[] = [
       horaFin: "12:00",
       duracionTurno: 20,
       maximoTurnos: 15,
-      intervaloEntreConsultas: 0,
+      intervaloEntreConsultas: 5,
       notas: null,
       activo: true
     },
@@ -429,12 +429,15 @@ const categorias: Categorias[] = [
 ]
 
 
-
 const api = {
     // Obtener todas las zonas sanitarias
     listaZonasSanitarias: async (): Promise<ZonasSanitarias> => {
         return zonasSanitarias // Devuelve el objeto ZonasSanitarias
     },
+
+    listaCentros: async (): Promise<CentroSalud[]> => {
+        return zonasSanitarias.zonas.flatMap(zona => zona.centrosSalud) // Devuelve todos los centros de salud
+    },    
 
     // Obtener un centro médico específico por su ID
     traeCentroPorId: async (id: string): Promise<CentroSalud> => {
@@ -490,21 +493,21 @@ const api = {
         try {
             // 1. Validar que el centro de salud exista (opcional, pero buena práctica)
             await api.traeCentroPorId(id) // Si no existe, `traeCentroPorId` lanzará un error capturable
-    
+
             // 2. Encontrar profesionales que trabajan en este centro de salud
             const profesionalesEnCentro = Profesionales.filter(profesional => profesional.centrosSalud.includes(id))
-    
+
             // 3. Obtener IDs de especialidades de estos profesionales
             const especialidadesIdsDeProfesionales = profesionalesEnCentro.flatMap(profesional => profesional.especialidades)
-    
+
             // 4. Obtener objetos de especialidades completos usando los IDs
             const especialidadesDelCentro = especialidades.filter(especialidad => especialidadesIdsDeProfesionales.includes(especialidad.id))
-    
+
             // 5. Extraer solo los nombres de las especialidades y eliminar duplicados
             const nombresEspecialidades = [...new Set(especialidadesDelCentro.map(especialidad => especialidad.nombre))]
-    
+
             return nombresEspecialidades
-    
+
         } catch (error) {
             console.error("Error al obtener especialidades del centro:", error)
             throw new Error(`Error al obtener especialidades del centro con id ${id}: ${error}`) // Relanzamos el error para que el componente/función que llame a esta función pueda manejarlo
@@ -555,7 +558,6 @@ const api = {
     // Obtener profesionales disponibles en una fecha específica
     traeProfesionalesDisponiblesEnFecha: async (fecha: string): Promise<Profesional[]> => {
         // Implementar la lógica de verificación de disponibilidad
-        // similar a la del componente React que te mostré
         const fechaObj = new Date(fecha)
         const profesionalesDisponibles: Profesional[] = []
         const profesionalesIds = new Set<string>()
@@ -592,11 +594,4 @@ const api = {
     }
 }
       
-// Función auxiliar para verificar disponibilidad de un bloque
-function verificarDisponibilidadBloque(bloque: BloqueTurnos, fecha: Date): boolean {
-// Implementar la lógica similar a la del componente React
-// ...
-}
-
-
 export default api
