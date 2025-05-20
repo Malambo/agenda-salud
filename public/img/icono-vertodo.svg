@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+<g>
+	<g>
+		<g>
+			<rect y="11.111" fill="#268044" width="5.556" height="5.556"/>
+			<rect y="22.222" fill="#268044" width="5.556" height="5.555"/>
+			<path fill="#268044" d="M0,5.556h5.556V0C2.486,0,0,2.486,0,5.556z"/>
+			<rect y="33.334" fill="#268044" width="5.556" height="5.555"/>
+			<path fill="#268044" d="M44.444,0v5.556H50C50,2.486,47.514,0,44.444,0z"/>
+			<rect x="22.222" fill="#268044" width="5.555" height="5.556"/>
+			<path fill="#268044" d="M5.556,50v-5.556H0C0,47.514,2.486,50,5.556,50z"/>
+			<rect x="11.111" y="44.444" fill="#268044" width="5.556" height="5.556"/>
+			<rect x="11.111" fill="#268044" width="5.556" height="5.556"/>
+			<path fill="#268044" d="M44.444,50C47.514,50,50,47.514,50,44.444h-5.556V50z"/>
+			<rect x="44.444" y="22.222" fill="#268044" width="5.556" height="5.555"/>
+			<rect x="22.222" y="44.444" fill="#268044" width="5.555" height="5.556"/>
+			<rect x="44.444" y="11.111" fill="#268044" width="5.556" height="5.556"/>
+			<rect x="44.444" y="33.334" fill="#268044" width="5.556" height="5.555"/>
+			<rect x="33.334" y="44.444" fill="#268044" width="5.555" height="5.556"/>
+			<path fill="#268044" d="M11.111,38.889h27.778V11.111H11.111V38.889z M16.667,16.667h16.667v16.667H16.667V16.667z"/>
+			<rect x="33.334" fill="#268044" width="5.555" height="5.556"/>
+		</g>
+	</g>
+</g>
+</svg>
