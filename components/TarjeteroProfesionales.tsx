@@ -8,12 +8,14 @@ export default async function TarjeteroProfesionales() {
 
     return (
         <div className='grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 xl:grid-cols-3'>
-            {profesionales.map(profesional => (
-            <div key={profesional.id}>
-                <TarjetaProfesional
+            
+            <div>
+                {profesionales.map(profesional => (
+                    <TarjetaProfesional key={profesional.id}
                 idProfesional={profesional.id} />
+                ))}
             </div>
-            ))}
+            
         </div>
     )
 }

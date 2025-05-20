@@ -25,7 +25,7 @@ export interface Profesional {
     id:             string
     nombre:         string
     especialidades: string[]
-    [key: string]:  string | string[]
+    centrosSalud:  string[]
 }
 
 export interface Especialidad {
@@ -429,12 +429,15 @@ const categorias: Categorias[] = [
 ]
 
 
-
 const api = {
     // Obtener todas las zonas sanitarias
     listaZonasSanitarias: async (): Promise<ZonasSanitarias> => {
         return zonasSanitarias // Devuelve el objeto ZonasSanitarias
     },
+
+    listaCentros: async (): Promise<CentroSalud[]> => {
+        return zonasSanitarias.zonas.flatMap(zona => zona.centrosSalud) // Devuelve todos los centros de salud
+    },    
 
     // Obtener un centro médico específico por su ID
     traeCentroPorId: async (id: string): Promise<CentroSalud> => {
