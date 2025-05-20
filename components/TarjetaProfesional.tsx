@@ -2,9 +2,9 @@
 import {
     Accordion,
     AccordionContent,
-    AccordionItem}       from "@/components/ui/accordion"
-import MiAccordionTrigger   from "@/components/ui/MiAccordionTrigger"
-import api from '@/lib/api'
+    AccordionItem}        from "@/components/ui/accordion"
+import MiAccordionTrigger from "@/components/ui/MiAccordionTrigger"
+import api                from '@/lib/api'
 
 
 interface TarjetaProfesionalProps {
@@ -32,11 +32,11 @@ export default async function TarjetaProfesional({idProfesional}: TarjetaProfesi
     return (
         <Accordion type="single" collapsible className='rounded-md bg-white shadow'>
             <AccordionItem value={'0'}>
-                <div className='sticky top-52 bg-gradient-to-r from-emerald-50 to-emerald-100'>
-                    <MiAccordionTrigger url={'/profesionales'} urlIcono={'/Profesionales.svg'} titulo={profesional.nombre}/>
+                <div className='pl-4 bg-gradient-to-r from-emerald-50 to-emerald-100'>
+                    <MiAccordionTrigger url={'#'} urlIcono={'/Profesionales.svg'} titulo={profesional.nombre}/>
                 </div>
                 <AccordionContent>
-                    <div className='flex gap-8 justify-start'>
+                    <div className='px-6 py-4 flex gap-8 justify-start'>
                         <div className='flex flex-col justify-start font-bold'>
                             {especialidadesProfesional.map((especialidadProfesional, index) => (
                             <div key={index} className='flex justify-start'>
