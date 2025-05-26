@@ -25,7 +25,8 @@ export interface Profesional {
     id:             string
     nombre:         string
     especialidades: string[]
-    centrosSalud:  string[]
+    centrosSalud:   string[]
+    [key: string]:  string | string[]
 }
 
 export interface Especialidad {
@@ -463,6 +464,13 @@ const api = {
 
     // Obtener todos los médicos
     listaProfesionales: async (): Promise<Profesional[]> => {
+        return Profesionales
+    },
+    // Profesionales en orden alfabético
+    listaProfesionalesABC: async (): Promise<Profesional[]> => {
+        Profesionales.sort((a,b)=>
+        a.nombre.split(" ")[2].localeCompare(b.nombre.split(" ")[2])
+    )
         return Profesionales
     },
 

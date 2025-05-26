@@ -13,7 +13,7 @@ export default function LayoutCategorias({children}: Readonly<{children: React.R
                     <p>navegación</p>
                 </div>
 
-                <section className="my-32 px-8 sm:px-24">
+                <section className="mt-24 px-8 sm:px-24">
                     {children}
                 </section>
             </div>

@@ -1,7 +1,7 @@
 import api from "@/lib/api"
 import TarjetaProfesional from "./TarjetaProfesional"
 
-const profesionales = await api.listaProfesionales() // define profesionales
+const profesionales = await api.listaProfesionalesABC() // define profesionales
 
 
 export default async function TarjeteroProfesionales() {

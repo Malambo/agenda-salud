@@ -40,7 +40,7 @@ export default function BarraLateral(){
             try{
                 const [zonasSanitariasData, profesionalesData, especialidadesData] = await Promise.all([
                     api.listaZonasSanitarias(),
-                    api.listaProfesionales(),
+                    api.listaProfesionalesABC(),
                     api.listaEspecialidades()
                 ])
                 setZonasSanitarias(zonasSanitariasData)
@@ -55,9 +55,6 @@ export default function BarraLateral(){
 
     const zonas = zonasSanitarias.zonas
     const centrosSalud = zonas.flatMap(zona=>zona.centrosSalud)
-    const profesionalesABC = [...profesionales].sort((a,b)=>
-        a.nombre.split(" ")[2].localeCompare(b.nombre.split(" ")[2])
-    )
     const profesionalesMap = new Map(profesionales.map(p=>[p.id, p.nombre]))
     const especialidadesConProfesionales = mapearRelacionados(
         especialidades,
@@ -184,18 +181,18 @@ export default function BarraLateral(){
                     </div>
                     <AccordionContent>
                         <Accordion type="single" collapsible className='bg-[#e8faf0] rounded text-zinc-800 p-4'>
-                            {profesionalesABC.map(profesional=>(
-                                <AccordionItem key={profesional.id} value={profesional.id}>
-                                    <div className='flex gap-2 items-center'>
-                                        <User className='size-4'/>
-                                        <AccordionTrigger className='font-medium'>{profesional.nombre}</AccordionTrigger>
-                                    </div>
-                                    {profesional.especialidades.map(idEspProf=>(
-                                    <AccordionContent key={idEspProf} className='text-sm px-4'>
-                                        {especialidades.find(especialidad => especialidad.id === idEspProf)?.nombre}
-                                    </AccordionContent>
-                                    ))}
-                                </AccordionItem>
+                            {profesionales.map(profesional=>(
+                            <AccordionItem key={profesional.id} value={profesional.id}>
+                                <div className='flex gap-2 items-center'>
+                                    <User className='size-4'/>
+                                    <AccordionTrigger className='font-medium'>{profesional.nombre}</AccordionTrigger>
+                                </div>
+                                {profesional.especialidades.map(idEspProf=>(
+                                <AccordionContent key={idEspProf} className='text-sm px-4'>
+                                    {especialidades.find(especialidad => especialidad.id === idEspProf)?.nombre}
+                                </AccordionContent>
+                                ))}
+                            </AccordionItem>
                             ))}
                         </Accordion>
                     </AccordionContent>

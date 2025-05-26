@@ -1,60 +1,83 @@
-
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem}        from "@/components/ui/accordion"
-import MiAccordionTrigger from "@/components/ui/MiAccordionTrigger"
-import api                from '@/lib/api'
+import Link from 'next/link'
+import Image from 'next/image'
+import api  from '@/lib/api'
 
 
-interface TarjetaProfesionalProps {
-    idProfesional: string
-}
-
-
-export default async function TarjetaProfesional({idProfesional}: TarjetaProfesionalProps) {
+export default async function TarjetaProfesional({idProfesional}: {idProfesional: string}) {
 
     const profesional = await api.traeProfesional(idProfesional)
     const especialidades = await api.listaEspecialidades()
     const centros = await api.listaCentros()
 
     const especialidadesProfesional = profesional.especialidades.map(idEspecialidad => {
-        const especialidad = especialidades.find(e=>e.id===idEspecialidad)
-        return especialidad ? especialidad.nombre : ''
+        const especialidad = especialidades.find(e => e.id === idEspecialidad)
+        return especialidad ? especialidad.nombre : 'especialidad no encontrada'
     })
 
-    const centrosProfesional = profesional.centrosSalud.map((idCentro: string) => {
-        const centro = centros.find(c=>c.id===idCentro)
-        return centro ? centro.nombre : ''
+    const centrosProfesional = profesional.centrosSalud.map(idCentro => {
+        const centro = centros.find(c => c.id === idCentro)
+        return centro ? centro : undefined
     })
-
 
     return (
-        <Accordion type="single" collapsible className='rounded-md bg-white shadow'>
-            <AccordionItem value={'0'}>
-                <div className='pl-4 bg-gradient-to-r from-emerald-50 to-emerald-100'>
-                    <MiAccordionTrigger url={'#'} urlIcono={'/Profesionales.svg'} titulo={profesional.nombre}/>
-                </div>
-                <AccordionContent>
-                    <div className='px-6 py-4 flex gap-8 justify-start'>
-                        <div className='flex flex-col justify-start font-bold'>
-                            {especialidadesProfesional.map((especialidadProfesional, index) => (
-                            <div key={index} className='flex justify-start'>
-                                <p className='text-sm text-left'>{especialidadProfesional}</p>
-                            </div>
-                            ))}
-                        </div>
+        <Link
+        href="#"
+        aria-label={`Ir a la especialidad ${profesional.nombre}`}>
+            <div
+            className="
+            relative group
+            p-8 rounded shadow-sm
+            bg-white
+            border border-emerald-200
+            hover:border-emerald-600
+            hover:bg-gradient-to-br hover:from-white hover:via-emerald-50 hover:to-emerald-100/75
+            hover:shadow-lg
+            cursor-pointer transition duration-500 ease-in-out">
 
-                        <div className='flex flex-col justify-start'>
-                            {centrosProfesional.map((centrosProfesional, index) => (
-                            <div key={index} className='flex justify-start'>
-                                <p className='text-sm text-left'>{centrosProfesional}</p>
-                            </div>
-                            ))}
+                <div className="flex flex-col gap-6 sm:flex-row sm:gap-8">
+                    <div
+                    className="
+                    flex items-center justify-center shrink-0
+                    size-14 sm:size-20
+                    rounded-full border-2
+                    bg-emerald-100 border-emerald-200/80
+                    group-hover:scale-110 group-hover:shadow group-hover:animate-out
+                    transition duration-700
+                    overflow-hidden">
+                        <Image
+                            src={'/profesional.png'}
+                            alt={`Avatar de ${profesional.nombre}`}
+                            width={128}   // ← Tamaño mayor al contenedor
+                            height={128}  // ← Para asegurar que llene el círculo
+                            className="size-full object-cover object-top" />
+                    </div>
+                    
+                    <div className="flex flex-col">
+                        <div className='group/tooltip relative inline-block'>
+                            <h2 className="text-lg font-bold text-orange-500">{profesional.nombre}</h2>
+                        </div>
+                        <div className='group/tooltip relative inline-block'>
+                            <h2 className="text-zinc-500 text-sm">Matrícula: MN123456</h2>
                         </div>
                     </div>
-                </AccordionContent>
-            </AccordionItem>
-        </Accordion>
+                </div>
+                <div className='mt-8 flex justify-between border-t border-zinc-200 pt-4 text-sm'>
+                    <div>
+                        {centrosProfesional.map(centro => (
+                        <div key={centro?.id} className='flex-1'>
+                            <p><span className='capitalize'>{centro?.tipo}</span> {centro?.nombre}</p>
+                        </div>
+                        ))}
+                    </div>
+                    <div>
+                        {especialidadesProfesional.map(especialidad => (
+                        <div key={especialidad}>
+                            <h2>{especialidad}</h2>
+                        </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </Link>
     )
 }

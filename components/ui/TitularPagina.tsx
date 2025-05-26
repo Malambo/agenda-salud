@@ -14,10 +14,10 @@ export default function TitularPagina({urlIcono, titulo, descripcion}: TitularPa
         <div className='flex flex-col items-center'>
             <div className='flex gap-8 items-center'>
                 <Image
-                    src={urlIcono}
-                    alt='img icono'
-                    width={60}
-                    height={60} />
+                src={urlIcono}
+                alt='img icono'
+                width={60}
+                height={60} />
                 <h1 className='text-3xl sm:text-5xl font-extrabold text-orange-500'>{titulo}</h1>
             </div>
 

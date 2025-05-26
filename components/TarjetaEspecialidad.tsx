@@ -50,7 +50,7 @@ export default async function TarjetaEspecialidad({especialidad, cantProfesional
 
                     <div className="flex flex-col ">
                         <div className='group/tooltip relative inline-block'>
-                            <h2 className="text-xl font-bold text-orange-500">{especialidad}</h2>
+                            <h2 className="text-lg font-bold text-orange-500">{especialidad}</h2>
 
                             {/* Tooltip */}
                             <div className="
@@ -73,7 +73,10 @@ export default async function TarjetaEspecialidad({especialidad, cantProfesional
                                 border-r-[10px] border-r-transparent" />
                             </div>
                         </div>
-                        <p className="text-zinc-400 text-sm font-medium">{cantProfesionales} profesionales</p>
+                        <div className='flex gap-4 text-zinc-400 text-sm font-medium'>
+                            <p>{cantProfesionales} profesionales</p>
+                            <p>Centros de salud</p>
+                        </div>
                     </div>
                 </div>
             </div>
