@@ -45,19 +45,19 @@ export default async function TarjetaProfesional({idProfesional}: {idProfesional
                     transition duration-700
                     overflow-hidden">
                         <Image
-                            src={'/profesional.png'}
-                            alt={`Avatar de ${profesional.nombre}`}
-                            width={128}   // ← Tamaño mayor al contenedor
-                            height={128}  // ← Para asegurar que llene el círculo
-                            className="size-full object-cover object-top" />
+                        src={'/profesional.png'}
+                        alt={`Avatar de ${profesional.nombre}`}
+                        width={128}   // ← Tamaño mayor al contenedor
+                        height={128}  // ← Para asegurar que llene el círculo
+                        className="size-full object-cover object-top" />
                     </div>
                     
                     <div className="flex flex-col">
                         <div className='group/tooltip relative inline-block'>
-                            <h2 className="text-lg font-bold text-orange-500">{profesional.nombre}</h2>
+                            <h2 className="font-bold text-lg text-orange-500">{profesional.nombre}</h2>
                         </div>
                         <div className='group/tooltip relative inline-block'>
-                            <h2 className="text-zinc-500 text-sm">Matrícula: MN123456</h2>
+                            <h2 className="text-zinc-500 text-sm">Matrícula: {profesional.matricula}</h2>
                         </div>
                     </div>
                 </div>

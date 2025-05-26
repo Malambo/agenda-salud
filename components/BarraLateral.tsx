@@ -2,28 +2,28 @@
 
 import {
     useEffect,
-    useState}               from 'react'
-import {usePathname}        from 'next/navigation'
-import Link                 from "next/link"
-import Image                from "next/image"
-import {User, Search}       from "lucide-react"
-import api                  from "@/lib/api"
+    useState}             from 'react'
+import {usePathname}      from 'next/navigation'
+import Link               from "next/link"
+import Image              from "next/image"
+import {User, Search}     from "lucide-react"
+import api                from "@/lib/api"
 import {
     crearSlug,
-    mapearRelacionados}     from "@/lib/utils"
+    mapearRelacionados}   from "@/lib/utils"
 import {
     Accordion,
     AccordionContent,
     AccordionItem,
-    AccordionTrigger}       from "@/components/ui/accordion"
-import MiAccordionTrigger   from "@/components/ui/MiAccordionTrigger"
-import {Input}              from "@/components/ui/input"
-import {Button}             from "@/components/ui/button"
-import IsoLogo              from '@/public/IsoLogo.svg'
+    AccordionTrigger}     from "@/components/ui/accordion"
+import MiAccordionTrigger from "@/components/ui/MiAccordionTrigger"
+import {Input}            from "@/components/ui/input"
+import {Button}           from "@/components/ui/button"
+import IsoLogo            from '@/public/IsoLogo.svg'
 import type {
     ZonasSanitarias,
     Profesional,
-    Especialidad}           from '@/lib/api'
+    Especialidad}         from '@/lib/api'
 
 
 export default function BarraLateral(){
@@ -121,27 +121,27 @@ export default function BarraLateral(){
                     <AccordionContent>
                         <Accordion type="single" collapsible className='bg-[#e8faf0] rounded text-zinc-800 p-4'>
                             {especialidadesConProfesionales.map(especialidad=>(
-                                <AccordionItem key={especialidad.id} value={especialidad.id}>
-                                    <div className='flex gap-2 items-center'>
-                                        <AccordionTrigger className='flex gap-4 items-center text-emerald-700'>
-                                            <Image
-                                            src={`/especialidades/${crearSlug(especialidad.nombre)}.svg`}
-                                            alt={`especialidad ${especialidad.nombre}`}
-                                            height={12}
-                                            width={12}
-                                            className="size-5 sm:size-6" />
-                                            {especialidad.nombre}
-                                        </AccordionTrigger>
-                                    </div>
-                                    {especialidad.relacionados.map(idProf=>{
-                                        const profesionalNombre = profesionalesMap.get(idProf)
-                                        return(
-                                            <AccordionContent key={idProf} className='flex gap-2 px-2 text-sm text-zinc-700'>
-                                                <User className="size-4"/> {profesionalNombre?.split('. ')[1]}
-                                            </AccordionContent>
-                                        )
-                                    })}
-                                </AccordionItem>
+                            <AccordionItem key={especialidad.id} value={especialidad.id}>
+                                <div className='flex gap-2 items-center'>
+                                    <AccordionTrigger className='flex gap-4 items-center text-emerald-700'>
+                                        <Image
+                                        src={`/especialidades/${crearSlug(especialidad.nombre)}.svg`}
+                                        alt={`especialidad ${especialidad.nombre}`}
+                                        height={12}
+                                        width={12}
+                                        className="size-5 sm:size-6" />
+                                        {especialidad.nombre}
+                                    </AccordionTrigger>
+                                </div>
+                                {especialidad.relacionados.map(idProf=>{
+                                const profesionalNombre = profesionalesMap.get(idProf)
+                                    return(
+                                        <AccordionContent key={idProf} className='flex gap-2 px-2 text-sm text-zinc-700'>
+                                            <User className="size-4"/> {profesionalNombre?.split('. ')[1]}
+                                        </AccordionContent>
+                                    )
+                                })}
+                            </AccordionItem>
                             ))}
                         </Accordion>
                     </AccordionContent>
@@ -154,22 +154,22 @@ export default function BarraLateral(){
                     <AccordionContent>
                         <Accordion type="single" collapsible className='bg-[#e8faf0] rounded text-zinc-800 p-4'>
                             {centrosConProfesionales.map(centro=>(
-                                <AccordionItem key={centro.id} value={centro.id}>
-                                    <div className='flex gap-4 items-center'>
-                                        <AccordionTrigger className='flex gap-2 items-center'>
-                                            <Image src={centro.urlIcon as string} alt="img centro de salud" width={18} height={18}/>
-                                            {centro.nombre}
-                                        </AccordionTrigger>
-                                    </div>
-                                    {centro.relacionados.map(idProf=>{
-                                    const profesionalNombre = profesionalesMap.get(idProf)
+                            <AccordionItem key={centro.id} value={centro.id}>
+                                <div className='flex gap-4 items-center'>
+                                    <AccordionTrigger className='flex gap-2 items-center'>
+                                        <Image src={centro.urlIcon as string} alt="img centro de salud" width={18} height={18}/>
+                                        {centro.nombre}
+                                    </AccordionTrigger>
+                                </div>
+                                {centro.relacionados.map(idProf=>{
+                                const profesionalNombre = profesionalesMap.get(idProf)
                                     return(
                                         <AccordionContent key={idProf} className='flex gap-2 px-2 text-sm text-zinc-700'>
                                             <User className="size-4"/> {profesionalNombre?.split('. ')[1]}
                                         </AccordionContent>
                                     )
-                                    })}
-                                </AccordionItem>
+                                })}
+                            </AccordionItem>
                             ))}
                         </Accordion>
                     </AccordionContent>

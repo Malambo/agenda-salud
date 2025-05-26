@@ -256,14 +256,13 @@ export default function CentrosSalud() {
                                         alt="img teléfono"
                                         width={36}
                                         height={36} />
-                                        <ul className="text-zinc-500 text-sm mt-2">
+                                        <ul className="text-zinc-500 mt-2">
                                             {centroActivo.telefonos.map(telefono => (
                                             <li key={telefono}>{telefono}</li>
                                             ))}
                                         </ul>
                                     </div>
                                 </div>
-                                
                             </div>
                         </div>
 
