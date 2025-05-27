@@ -565,42 +565,42 @@ const api = {
     },
     
     // Obtener profesionales disponibles en una fecha específica
-    traeProfesionalesDisponiblesEnFecha: async (fecha: string): Promise<Profesional[]> => {
-        // Implementar la lógica de verificación de disponibilidad
-        const fechaObj = new Date(fecha)
-        const profesionalesDisponibles: Profesional[] = []
-        const profesionalesIds = new Set<string>()
+    // traeProfesionalesDisponiblesEnFecha: async (fecha: string): Promise<Profesional[]> => {
+    //     // Implementar la lógica de verificación de disponibilidad
+    //     const fechaObj = new Date(fecha)
+    //     const profesionalesDisponibles: Profesional[] = []
+    //     const profesionalesIds = new Set<string>()
         
-        for (const bloque of bloquesTurnos) {
-            if (!bloque.activo) continue
+    //     for (const bloque of bloquesTurnos) {
+    //         if (!bloque.activo) continue
             
-            // Verificar disponibilidad del bloque en la fecha
-            const disponible = verificarDisponibilidadBloque(bloque, fechaObj)
+    //         // Verificar disponibilidad del bloque en la fecha
+    //         const disponible = verificarDisponibilidadBloque(bloque, fechaObj)
             
-            if (disponible && !profesionalesIds.has(bloque.idProfesional)) {
-                profesionalesIds.add(bloque.idProfesional)
-                const profesional = await api.traeProfesional(bloque.idProfesional)
-                profesionalesDisponibles.push(profesional)
-            }
-        }
+    //         if (disponible && !profesionalesIds.has(bloque.idProfesional)) {
+    //             profesionalesIds.add(bloque.idProfesional)
+    //             const profesional = await api.traeProfesional(bloque.idProfesional)
+    //             profesionalesDisponibles.push(profesional)
+    //         }
+    //     }
 
-        return profesionalesDisponibles
-    },
+    //     return profesionalesDisponibles
+    // },
         
     // Función auxiliar para verificar disponibilidad
-    verificarDisponibilidadProfesional: async (idProfesional: string, fecha: string): Promise<{
-        disponible: boolean
-        horarios: {
-            inicio: string
-            fin: string
-            centro: string
-            especialidad: string
-        }[]
-    }> => {
-        // Implementar la lógica de verificación similar a la del componente React
-        // Aquí se debe implementar la lógica y devolver el resultado
-        return {disponible: false, horarios: []}
-    }
+    // verificarDisponibilidadProfesional: async (idProfesional: string, fecha: string): Promise<{
+    //     disponible: boolean
+    //     horarios: {
+    //         inicio: string
+    //         fin: string
+    //         centro: string
+    //         especialidad: string
+    //     }[]
+    // }> => {
+    //     // Implementar la lógica de verificación similar a la del componente React
+    //     // Aquí se debe implementar la lógica y devolver el resultado
+    //     return {disponible: false, horarios: []}
+    // }
 }
       
 export default api
