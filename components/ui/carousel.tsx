@@ -77,13 +77,6 @@ const Carousel = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement> & Car
         return
       }
 
-  // Log for debugging
-  console.log(
-    "onSelect - Selected:", api.selectedScrollSnap(),
-    "Last Index:", api.scrollSnapList().length - 1,
-    "Can Scroll Next:", api.canScrollNext()
-  );
-
       setCanScrollPrev(api.canScrollPrev())
       setCanScrollNext(api.canScrollNext())
     }, [])
