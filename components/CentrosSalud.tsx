@@ -188,7 +188,7 @@ export default function CentrosSalud() {
                                     <Link
                                     href={`/centro-salud/${crearSlug(zonaSeleccionada.nombreZona)}/${crearSlug(centro.nombre)}`}
                                     className="flex gap-2 whitespace-nowrap p-2"
-                                    onClick={(e) => {
+                                    onClick={e => {
                                         e.preventDefault()
                                         handleCentroChange(centro, zonaSeleccionada.nombreZona)
                                     }}>
@@ -258,7 +258,7 @@ export default function CentrosSalud() {
                                         height={36} />
                                         <ul className="text-zinc-500 mt-2">
                                             {centroActivo.telefonos.map(telefono => (
-                                            <li key={telefono}>{telefono}</li>
+                                            <li key={telefono} className='tabular-nums'>{telefono}</li>
                                             ))}
                                         </ul>
                                     </div>

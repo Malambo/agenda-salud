@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "Horarios y turnos médicos del sistema municipal de Salud del partido de La Costa",
 }
 
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
 
 
 export default async function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
