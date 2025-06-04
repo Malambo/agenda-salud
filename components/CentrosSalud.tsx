@@ -96,7 +96,7 @@ export default function CentrosSalud() {
     }, [centroActivo])
 
   // Función para desplazar a elementos activos
-    const scrollToActiveItem = useCallback(({ref, selector}: {ref: React.RefObject<HTMLDivElement>, selector: string}) => {
+    const scrollAItemActivo = useCallback(({ref, selector}: {ref: React.RefObject<HTMLDivElement>, selector: string}) => {
         setTimeout(() => {
             const element = ref.current?.querySelector(selector) as HTMLElement
             element?.scrollIntoView({
@@ -110,12 +110,12 @@ export default function CentrosSalud() {
     // Aplicar scroll a elementos activos
     useEffect(() => {
         if (centroActivo && !cargando) {
-            scrollToActiveItem({ref: centrosCarouselRef, selector: `[data-centro-id="${centroActivo.id}"]`})
+            scrollAItemActivo({ref: centrosCarouselRef, selector: `[data-centro-id="${centroActivo.id}"]`})
         }
         if (zonaActiva && !cargando) {
-            scrollToActiveItem({ref: zonasCarouselRef, selector: `[data-zona-nombre="${zonaActiva}"]`})
+            scrollAItemActivo({ref: zonasCarouselRef, selector: `[data-zona-nombre="${zonaActiva}"]`})
         }
-    }, [centroActivo, zonaActiva, cargando, scrollToActiveItem])
+    }, [centroActivo, zonaActiva, cargando, scrollAItemActivo])
 
     const handleCentroChange = async (centro: CentroSalud, nombreZona: string) => {
         setCargando(true)
