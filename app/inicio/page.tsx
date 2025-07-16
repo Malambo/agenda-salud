@@ -25,8 +25,8 @@ export default function InicioPage() {
                     text-xl text-zinc-50
                     hover:bg-gradient-to-br hover:from-emerald-500 hover:via-emerald-800 hover:to-emerald-950
                     hover:shadow-xl 
-                    transition duration-500 ease-in-out'>
-                        <p className='group-hover:scale-105 group-hover:animate-out transition duration-500'>Reservá turno</p>
+                    transition duration-300 ease-in-out'>
+                        <p className='group-hover:scale-105 transition duration-300'>Reservá turno</p>
                     </button>
 
                     <button
@@ -39,8 +39,8 @@ export default function InicioPage() {
                     hover:border-emerald-900
                     hover:bg-gradient-to-br hover:from-white hover:via-emerald-100 hover:to-emerald-200
                     hover:shadow-lg
-                    transition duration-500 ease-in-out'>
-                        <p className='group-hover:scale-105 group-hover:animate-out transition duration-500'>Explorá la agenda</p>
+                    transition duration-300 ease-in-out'>
+                        <p className='group-hover:scale-105 transition duration-300'>Explorá la agenda</p>
                     </button>
                 </div>
             </div>

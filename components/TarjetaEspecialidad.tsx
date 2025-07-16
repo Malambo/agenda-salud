@@ -29,7 +29,7 @@ export default async function TarjetaEspecialidad({especialidad, cantProfesional
             hover:border-emerald-600
             hover:bg-gradient-to-br hover:from-white hover:via-emerald-50 hover:to-emerald-100
             hover:shadow-lg
-            cursor-pointer transition duration-500 ease-in-out">
+            cursor-pointer transition duration-300 ease-in-out">
 
                 <div className="flex flex-col gap-6 sm:flex-row sm:gap-8">
                     <div
@@ -38,8 +38,8 @@ export default async function TarjetaEspecialidad({especialidad, cantProfesional
                     size-10 sm:size-16
                     rounded-full border-2
                     bg-emerald-100 border-emerald-200/80
-                    group-hover:scale-110 group-hover:shadow group-hover:animate-out
-                    transition duration-700">
+                    group-hover:scale-110 group-hover:shadow
+                    transition duration-300">
                         <Image
                         src={`/especialidades/${crearSlug(especialidad)}.svg`}
                         alt={`especialidad ${especialidad}`}

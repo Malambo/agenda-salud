@@ -182,7 +182,7 @@ export default function CentrosSalud() {
                                     className={`shrink-0 basis-1/2 sm:basis-1/3 flex justify-center transition ${
                                     centroActivo?.id === centro.id ?
                                         'scale-105 py-2 font-medium bg-emerald-200/50' 
-                                        : 'hover:scale-105 hover:animate-out transition duration-700 py-2'
+                                        : 'hover:scale-105 transition duration-300 py-2'
                                     }`}
                                     data-centro-id={centro.id}>
                                     <Link
@@ -222,7 +222,6 @@ export default function CentrosSalud() {
                 initial={{opacity: 0, scale: 0}}
                 animate={{opacity: 1, scale: 1}}
                 exit={{opacity: 1, scale: 1}}
-                // transition={{duration: 0.3}}
                 >
                     <div className="
                     w-full

@@ -23,7 +23,7 @@ export default function TarjetaGeneral({url, urlIcono, titulo, descripcion}: Tar
             hover:border-emerald-800
             hover:bg-gradient-to-br hover:from-emerald-50 hover:via-emerald-50 hover:to-emerald-100
             hover:shadow-lg
-            cursor-pointer transition duration-500 ease-in-out">
+            cursor-pointer transition duration-300 ease-in-out">
                 <div className='flex flex-col gap-6 sm:flex-row sm:gap-12'>
                     <div
                     className="
@@ -31,8 +31,8 @@ export default function TarjetaGeneral({url, urlIcono, titulo, descripcion}: Tar
                     size-16 sm:size-20
                     rounded-full border-2
                     bg-emerald-100 border-emerald-200/80
-                    group-hover:scale-110 group-hover:shadow group-hover:animate-out
-                    transition duration-700">
+                    group-hover:scale-110 group-hover:shadow
+                    transition duration-300">
                         <Image
                         src={urlIcono}
                         alt='img Tarjeta'
@@ -40,8 +40,8 @@ export default function TarjetaGeneral({url, urlIcono, titulo, descripcion}: Tar
                         width={60}
                         className='
                         size-8 sm:size-12
-                        group-hover:scale-110 group-hover:animate-out
-                        transition duration-700'/>
+                        group-hover:scale-110
+                        transition duration-300'/>
                     </div>
 
                     <div className='flex flex-col'>
